@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projects Portfolio — Suman Krishna. AIHire, CTG Faculty App, Deep Learning, Computer Vision, and Power BI analytics case studies.">
+  <title>Projects Showcase | Suman Krishna — ML & Data Science Engineer</title>
+  
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div id="scroll-progress"></div>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand" aria-label="Suman Krishna Home">
+        <div class="nav-logo-box">SK</div>
+        <span class="brand-text">Suman Krishna</span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="projects.html" class="nav-link active">Projects</a></li>
+          <li><a href="certifications.html" class="nav-link">Certifications</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="btn-icon-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <i class="fa-solid fa-sun"></i>
+          </button>
+          <a href="resume.html" class="btn btn-primary btn-sm">
+            <i class="fa-regular fa-file-lines"></i>
+            <span>Resume</span>
+          </a>
+        </div>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Header Banner -->
+    <section class="page-hero">
+      <div class="container page-hero-content">
+        <div class="breadcrumb-nav">
+          <a href="index.html">Home</a>
+          <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
+          <span>Projects</span>
+        </div>
+        <h1 class="section-title">Engineered with <span class="text-gradient">Precision &amp; Purpose</span></h1>
+        <p class="section-subtitle">Deep learning architectures, LLM systems, business intelligence suites, and interactive AI web applications.</p>
+      </div>
+    </section>
+
+    <!-- Projects Filter & Grid Section -->
+    <section class="section projects-section">
+      <div class="container">
+        <!-- Filter Buttons -->
+        <div class="projects-filter-bar">
+          <button class="filter-btn active" data-filter="all">All Projects (9)</button>
+          <button class="filter-btn" data-filter="ml">Deep Learning &amp; LLMs</button>
+          <button class="filter-btn" data-filter="cv">Computer Vision</button>
+          <button class="filter-btn" data-filter="bi">Data Analytics &amp; Enterprise</button>
+          <button class="filter-btn" data-filter="iot">Robotics &amp; IoT</button>
+        </div>
+
+        <!-- Dynamic Projects Grid (Rendered via JS from projectsData) -->
+        <div class="projects-grid" id="projects-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Details Case Study Modal -->
+    <div class="modal-overlay" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-text">
+      <div class="modal-backdrop"></div>
+      <div class="modal-window">
+        <button class="modal-close" aria-label="Close project modal">&times;</button>
+        <div id="project-modal-body">
+          <!-- Rendered dynamically from projectsData -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="nav-brand">
+            <div class="nav-logo-box">SK</div>
+            <span class="brand-text">Suman Krishna</span>
+          </div>
+          <p class="footer-brand-p">
+            Machine Learning Engineer, Data Science Engineer, Google Student Ambassador &amp; GDG Member dedicated to building intelligent, human-centric software.
+          </p>
+        </div>
+
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="about.html" class="footer-link">About</a></li>
+          <li><a href="experience.html" class="footer-link">Experience</a></li>
+          <li><a href="projects.html" class="footer-link">Projects</a></li>
+          <li><a href="certifications.html" class="footer-link">Certifications</a></li>
+          <li><a href="resume.html" class="footer-link">Resume</a></li>
+          <li><a href="contact.html" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Suman Krishna. All rights reserved.</div>
+        <div>Crafted with precision for AI &amp; Data Science impact.</div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Scroll back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script src="assets/js/projects-data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

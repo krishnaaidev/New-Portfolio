@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Suman Krishna — Curriculum Vitae. Machine Learning Engineer, Data Science Engineer, Google Student Ambassador & GDG Member.">
+  <title>Curriculum Vitae | Suman Krishna</title>
+  
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div id="scroll-progress"></div>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand" aria-label="Suman Krishna Home">
+        <div class="nav-logo-box">SK</div>
+        <span class="brand-text">Suman Krishna</span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="experience.html" class="nav-link">Experience</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="certifications.html" class="nav-link">Certifications</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="btn-icon-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <i class="fa-solid fa-sun"></i>
+          </button>
+          <button onclick="window.print()" class="btn btn-primary btn-sm">
+            <i class="fa-solid fa-print"></i>
+            <span>Print / PDF</span>
+          </button>
+        </div>
+      </nav>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Top Action Bar for Resume -->
+    <div class="container btn-print-hide" style="padding-top: 7rem; padding-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <a href="index.html" class="btn btn-secondary btn-sm">
+        <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+      </a>
+      <div style="display: flex; gap: 0.75rem;">
+        <button onclick="window.print()" class="btn btn-primary btn-sm">
+          <i class="fa-solid fa-print"></i> Print / Save as PDF
+        </button>
+        <a href="assets/docs/Suman_Krishna_Resume.pdf" download="Suman_Krishna_Resume.pdf" class="btn btn-outline btn-sm">
+          <i class="fa-solid fa-download"></i> Download Uploaded PDF
+        </a>
+      </div>
+    </div>
+
+    <!-- Printable Resume Sheet Paper -->
+    <div class="resume-sheet-wrap">
+      <div class="container">
+        <article class="resume-paper">
+          <!-- Header -->
+          <header class="resume-paper-header">
+            <div>
+              <h1 class="resume-name">SUMAN KRISHNA</h1>
+              <div class="resume-subheading">
+                Final Year Undergraduate, Department of Computer Science &amp; Engineering
+              </div>
+              <div class="resume-contact-inline">
+                <span><i class="fa-regular fa-envelope"></i> <a href="mailto:suman2301275@ctiemt.ctgroup.in">suman2301275@ctiemt.ctgroup.in</a></span>
+                <span><i class="fa-solid fa-envelope-open-text"></i> <a href="mailto:krishna.techx.31@gmail.com">krishna.techx.31@gmail.com</a></span>
+                <span><i class="fa-solid fa-phone"></i> +91-96081-10425</span>
+              </div>
+              <div class="resume-contact-inline" style="margin-top: 0.4rem;">
+                <span><i class="fa-brands fa-linkedin"></i> <a href="https://linkedin.com/in/suman-krishna-7a17a6275" target="_blank">linkedin.com/in/suman-krishna-7a17a6275</a></span>
+                <span><i class="fa-brands fa-github"></i> <a href="https://github.com/krishnaaidev" target="_blank">github.com/krishnaaidev</a></span>
+                <span><i class="fa-solid fa-location-dot"></i> Jalandhar, Punjab / Samastipur, Bihar</span>
+              </div>
+            </div>
+          </header>
+
+          <!-- Professional Summary -->
+          <section class="resume-block">
+            <h2 class="resume-block-title"><i class="fa-solid fa-user-tie"></i> Professional Summary</h2>
+            <p style="font-size: 0.94rem; color: var(--text-secondary); line-height: 1.7;">
+              Aspiring Machine Learning and Data Science Engineer with hands-on experience in building production ML pipelines, fine-tuned LLM recruitment systems, multimodal clinical deep learning models (NLP, Computer Vision), and interactive executive analytics dashboards (Power BI, Tableau). Recognized Google Student Ambassador and active Google Developer Groups (GDG) Member with proven leadership coordinating campus-wide technical workshops and cultural events (500+ attendees).
+            </p>
+          </section>
+
+          <!-- Education -->
+          <section class="resume-block">
+            <h2 class="resume-block-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <span class="resume-entry-role">B.Tech — Computer Science and Engineering</span>
+                <span class="resume-entry-date">2023 – 2027 (Final Year)</span>
+              </div>
+              <div class="resume-entry-company">CT Institute of Engineering Management and Technology, Jalandhar, Punjab</div>
+              <div style="font-size: 0.9rem; color: var(--accent-emerald); font-weight: 700; margin-top: 0.2rem;">
+                Cumulative Grade Point Average (CGPA): 8.0 / 10.0
+              </div>
+            </div>
+            <div class="resume-entry" style="margin-top: 1rem;">
+              <div class="resume-entry-header">
+                <span class="resume-entry-role">Class XII (BSEB)</span>
+                <span class="resume-entry-date">2020 – 2022</span>
+              </div>
+              <div class="resume-entry-company">S.M.R.C.K College, Samastipur, Bihar</div>
+            </div>
+            <div class="resume-entry" style="margin-top: 1rem;">
+              <div class="resume-entry-header">
+                <span class="resume-entry-role">Class X (CBSE)</span>
+                <span class="resume-entry-date">2020</span>
+              </div>
+              <div class="resume-entry-company">St. Paul Secondary School, Samastipur, Bihar</div>
+            </div>
+          </section>
+
+          <!-- Key Projects with Proper Detailing -->
+          <section class="resume-block">
+            <h2 class="resume-block-title"><i class="fa-solid fa-code"></i> Key Technical Projects</h2>
+
+            <!-- Project 1: AIHire -->
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <span class="resume-entry-role">AIHire: Autonomous AI Interview &amp; Candidate Evaluation Platform</span>
+                <span class="resume-entry-date">2026 — B.Tech Capstone Project</span>
+              </div>
+              <div class="resume-entry-company">Technologies: Fine-tuned LLMs, FastAPI, Next.js, Speech-to-Text, NLP, Docker, Render</div>
+              <ul class="resume-bullet-list">
+                <li>Designed and developed an end-to-end autonomous recruitment decision-support system conducting real-time technical candidate screening interviews.</li>
+                <li>Engineered adaptive LLM questioning engine dynamically generating relevant technical follow-up questions from candidate answers.</li>
+                <li>Integrated real-time speech-to-text audio streaming coupled with vocal prosody, confidence analysis, and sentiment scoring pipelines.</li>
+                <li>Built automated resume parser evaluating candidate credentials against multi-attribute job descriptions with 95%+ precision fit scores.</li>
+                <li>Containerized system with Docker and deployed responsive frontend and backend microservices on Render cloud infrastructure.</li>
+              </ul>
+            </div>
+
+            <!-- Project 2: CTG Faculty App -->
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <span class="resume-entry-role">CTG Faculty App: KRA &amp; KPI Performance Management System</span>
+                <span class="resume-entry-date">2026 — for CT Group of Institutions</span>
+              </div>
+              <div class="resume-entry-company">Technologies: Next.js 14 (App Router), TypeScript, Tailwind CSS, Better-SQLite3, RBAC, SheetJS</div>
+              <ul class="resume-bullet-list">
+                <li>Architected an enterprise digital appraisal platform tracking academic, research, and administrative performance across a strict 1,000-Mark institutional framework.</li>
+                <li>Implemented 3-tier Role-Based Access Control (RBAC) governance for Faculty self-appraisal, HOD review, and HOI executive approval with JWT security.</li>
+                <li>Engineered dynamic scoring engine with real-time mark calculation, documentation attachment verification, and transparent audit logging.</li>
+                <li>Built automated one-click SheetJS Excel export enabling instant generation of formatted accreditation and faculty evaluation audit spreadsheets.</li>
+              </ul>
+            </div>
+
+            <!-- Project 3: Superstore Dashboard -->
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <span class="resume-entry-role">Superstore Sales and Profit Analytics Dashboard</span>
+                <span class="resume-entry-date">June 2026 — for EduTech Solutions</span>
+              </div>
+              <div class="resume-entry-company">Technologies: Power BI, Python (Automated EDA), SQL, Data Modeling, DAX</div>
+              <ul class="resume-bullet-list">
+                <li>Built interactive 4-page Power BI dashboard featuring synchronized drill-through hierarchies, regional segmentation, and product performance.</li>
+                <li>Authored one-click Python EDA scripts outputting automated statistical distribution charts, correlation matrices, and outlier logs.</li>
+                <li>Executed profit-discount sensitivity analysis isolating chronically unprofitable SKU subcategories and establishing optimal discount caps.</li>
+              </ul>
+            </div>
+
+            <!-- Project 4: Multimodal Depression Detection -->
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <span class="resume-entry-role">Multimodal Depression Detection System</span>
+                <span class="resume-entry-date">May 2026 – Present</span>
+              </div>
+              <div class="resume-entry-company">Technologies: BERT, Wav2Vec 2.0, ResNet-LSTM, PyTorch, FastAPI, WebSockets, Chrome Extension</div>
+              <ul class="resume-bullet-list">
+                <li>Acquired and preprocessed clinical USC DAIC-WOZ audio, transcription, and facial action unit datasets for psychiatric screening.</li>
+                <li>Architected tri-modal late-fusion deep neural network combining BERT (text), Wav2Vec 2.0 (speech audio), and ResNet-LSTM (facial landmarks).</li>
+                <li>Engineered low-latency FastAPI backend with WebSocket streaming and developed telehealth Chrome extension for passive consultation monitoring.</li>
+              </ul>
+            </div>
+
+            <!-- Project 5: Plant Disease Recognition -->
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <span class="resume-entry-role">Plant &amp; Crop Disease Recognition System</span>
+                <span class="resume-entry-date">Jul 2025 – Nov 2025</span>
+              </div>
+              <div class="resume-entry-company">Technologies: Convolutional Neural Networks (CNNs), TensorFlow, OpenCV, Flask, Python</div>
+              <ul class="resume-bullet-list">
+                <li>Trained deep CNN on 54,000+ PlantVillage images with CLAHE image normalization and data augmentation, reaching 96.7% test accuracy across 38 classes.</li>
+                <li>Deployed lightweight Flask web application providing real-time photo uploads, disease diagnosis, confidence metrics, and chemical/organic treatments.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Work Experience -->
+          <section class="resume-block">
+            <h2 class="resume-block-title"><i class="fa-solid fa-briefcase"></i> Work Experience</h2>
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <span class="resume-entry-role">Data Analytics Intern</span>
+                <span class="resume-entry-date">Apr 2026 – Jun 2026</span>
+              </div>
+              <div class="resume-entry-company">EduTech Solutions</div>
+              <ul class="resume-bullet-list">
+                <li>Built interactive executive dashboards in Power BI and Excel tracking sales conversions, customer cohorts, and SaaS operational KPIs.</li>
+                <li>Conducted A/B tests and predictive time-series models in Python and SQL to optimize learner engagement and marketing allocation.</li>
+                <li>Engineered automated data cleaning pipelines and synthesized student completion reports delivered directly to company leadership.</li>
+              </ul>
+            </div>
+
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <span class="resume-entry-role">Machine Learning Intern &amp; Trainee</span>
+                <span class="resume-entry-date">Jun 2025 – Sep 2025</span>
+              </div>
+              <div class="resume-entry-company">Averixis Solutions Pvt. Ltd.</div>
+              <ul class="resume-bullet-list">
+                <li>Constructed and benchmarked production ML pipelines using Python, Scikit-learn, and TensorFlow for client computer vision tasks (~94% accuracy).</li>
+                <li>Engineered automated validation frameworks reducing model inference latency by 40% through post-training optimization.</li>
+                <li>Collaborated within agile engineering team to deploy containerized machine learning microservices into production workflows.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Positions of Responsibility -->
+          <section class="resume-block">
+            <h2 class="resume-block-title"><i class="fa-solid fa-users"></i> Positions of Responsibility</h2>
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <span class="resume-entry-role">Google Student Ambassador</span>
+                <span class="resume-entry-date">Sep 2025 – Present</span>
+              </div>
+              <div class="resume-entry-company">Google • Campus Lead</div>
+              <ul class="resume-bullet-list">
+                <li>Official Google representative on campus; organized workshops, technical seminars, and hackathons mentoring 500+ student developers.</li>
+              </ul>
+            </div>
+
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <span class="resume-entry-role">Google Developer Groups (GDG) Member</span>
+                <span class="resume-entry-date">Sep 2026 – Present</span>
+              </div>
+              <div class="resume-entry-company">Google Developer Groups • Campus Chapter</div>
+              <ul class="resume-bullet-list">
+                <li>Active core member facilitating peer-to-peer cloud study jams, developer workshops, and open-source project initiatives.</li>
+              </ul>
+            </div>
+
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <span class="resume-entry-role">Head Coordinator — United Fest 2025</span>
+                <span class="resume-entry-date">2025</span>
+              </div>
+              <div class="resume-entry-company">CT Institute Campus Festival</div>
+              <ul class="resume-bullet-list">
+                <li>Directed state-themed flagship festival; managed 10+ departmental coordinators, 50+ volunteers, and 500+ attendees.</li>
+              </ul>
+            </div>
+
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <span class="resume-entry-role">Head Coordinator — 15-Day Robotics Workshop &amp; Robo Race 2026</span>
+                <span class="resume-entry-date">Mar–Apr 2025</span>
+              </div>
+              <div class="resume-entry-company">Campus Technical Society</div>
+              <ul class="resume-bullet-list">
+                <li>Supervised 10+ lab mentors and coordinated hardware logistics and competitive trials for 150+ student participants.</li>
+              </ul>
+            </div>
+
+            <div class="resume-entry">
+              <div class="resume-entry-header">
+                <span class="resume-entry-role">Technical Support Coordinator — Byteverse 1.0 Hackathon</span>
+                <span class="resume-entry-date">Aug–Sep 2025</span>
+              </div>
+              <div class="resume-entry-company">Byteverse Hackathon Lead</div>
+              <ul class="resume-bullet-list">
+                <li>Led technical troubleshooting team resolving live software, API, and deployment bottlenecks for 250+ hackathon participants.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Government & Industry Certifications -->
+          <section class="resume-block">
+            <h2 class="resume-block-title"><i class="fa-solid fa-medal"></i> Government &amp; Industry Certifications (NASSCOM Gold)</h2>
+            <ul class="resume-bullet-list">
+              <li><strong>AWS Cloud Practitioner Essentials_FSP:</strong> NASSCOM IT-ITeS SSC &amp; AWS • <strong>Score: 100.00% (Gold)</strong> (ID: FSP/2026/9/10410900)</li>
+              <li><strong>Gen AI 101:</strong> NASSCOM IT-ITeS SSC &amp; Ministry of Electronics &amp; IT • <strong>Score: 100.00% (Gold)</strong> (ID: FSP/2026/9/10379378)</li>
+              <li><strong>Adobe Creativity &amp; GenAI:</strong> NASSCOM IT-ITeS SSC &amp; Adobe • <strong>Score: 98.00% (Gold)</strong> (ID: FSP/2026/9/10416339)</li>
+              <li><strong>Adobe - Essentials of Generative AI Content Creation:</strong> NASSCOM &amp; Adobe • <strong>Score: 98.00% (Gold)</strong> (ID: FSP/2026/9/10416298)</li>
+              <li><strong>Certificate program in Prompt Engineering and ChatGPT:</strong> NASSCOM IT-ITeS SSC • <strong>Score: 96.00% (Gold)</strong> (ID: FSP/2026/9/10407328)</li>
+              <li><strong>Certificate program in Deep Learning / NLP / AI:</strong> NASSCOM IT-ITeS SSC • <strong>Score: 93.00% (Gold)</strong> (ID: FSP/2026/9/10379368)</li>
+              <li><strong>Fueling Data Intelligence in Modern DataOps:</strong> NASSCOM FutureSkills Prime • <strong>Score: 91.25% (Gold)</strong> (ID: FSP/2026/9/10407191)</li>
+            </ul>
+          </section>
+
+          <!-- Technical Skills -->
+          <section class="resume-block">
+            <h2 class="resume-block-title"><i class="fa-solid fa-wrench"></i> Technical Competencies</h2>
+            <div class="resume-skills-group">
+              <strong>Programming Languages:</strong> Python (Expert), SQL (PostgreSQL, MySQL), Kotlin, TypeScript, JavaScript (ES6+), HTML5/CSS3, Flutter, Embedded C++
+            </div>
+            <div class="resume-skills-group">
+              <strong>Machine Learning &amp; Deep Learning:</strong> PyTorch, TensorFlow, Scikit-learn, OpenCV, BERT, Wav2Vec 2.0, CNNs, ResNet-LSTM, Hugging Face
+            </div>
+            <div class="resume-skills-group">
+              <strong>Generative AI &amp; Prompting:</strong> Prompt Engineering, ChatGPT API, LLMs, Adobe Firefly, LangChain (Basics), RAG concepts
+            </div>
+            <div class="resume-skills-group">
+              <strong>Cloud, DevOps &amp; DataOps:</strong> AWS Cloud (EC2, S3, IAM, CloudWatch), DataOps Pipelines, Docker, Better-SQLite3, SheetJS, CI/CD, Linux
+            </div>
+            <div class="resume-skills-group">
+              <strong>Analytics &amp; BI:</strong> Power BI, Tableau, Pandas, NumPy, Advanced Excel, A/B Testing, Time-Series Forecasting, EDA
+            </div>
+            <div class="resume-skills-group">
+              <strong>Web Platforms:</strong> Next.js 14, Tailwind CSS, FastAPI, Flask, Git, GitHub, Render, Netlify
+            </div>
+          </section>
+
+          <!-- Scholastic Achievements -->
+          <section class="resume-block" style="margin-bottom: 0;">
+            <h2 class="resume-block-title"><i class="fa-solid fa-trophy"></i> Scholastic Achievements</h2>
+            <ul class="resume-bullet-list">
+              <li><strong>1st Position</strong> – Best Photography &amp; Cinematography Competition (Sept 2023)</li>
+              <li><strong>2nd Position</strong> – Inter-Collegiate Quiz Debate Championship (Oct 2023)</li>
+              <li><strong>2nd Position</strong> – Chess Tournament at Annual Sports Meet (Dec 2024) • Rating: <strong>750+ on Chess.com</strong></li>
+              <li><strong>3rd Position</strong> – Algorithmic Code Debugging Competition (2024)</li>
+              <li><strong>Official Anchor</strong> – Sci-Tech Fiesta Annual Science &amp; Technology Symposium (Feb 2026, 500+ attendees)</li>
+              <li><strong>Coordinator</strong> – Byteverse 1.0 Hackathon Technical Operations (Aug–Sep 2025)</li>
+            </ul>
+          </section>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer btn-print-hide">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="nav-brand">
+            <div class="nav-logo-box">SK</div>
+            <span class="brand-text">Suman Krishna</span>
+          </div>
+          <p class="footer-brand-p">
+            Machine Learning Engineer, Data Science Engineer, Google Student Ambassador &amp; GDG Member dedicated to building intelligent, human-centric software.
+          </p>
+        </div>
+
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="about.html" class="footer-link">About</a></li>
+          <li><a href="experience.html" class="footer-link">Experience</a></li>
+          <li><a href="projects.html" class="footer-link">Projects</a></li>
+          <li><a href="certifications.html" class="footer-link">Certifications</a></li>
+          <li><a href="resume.html" class="footer-link">Resume</a></li>
+          <li><a href="contact.html" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Suman Krishna. All rights reserved.</div>
+        <div>Crafted with precision for AI &amp; Data Science impact.</div>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Scroll back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

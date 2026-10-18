@@ -2369,3 +2369,216 @@ textarea.form-control {
     padding: 1.5rem;
   }
 }
+
+/* ==========================================================================
+   Multi-Page Header & Breadcrumbs
+   ========================================================================== */
+.page-hero {
+  padding: 8rem 0 3.5rem;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(99, 102, 241, 0.05) 50%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.breadcrumb-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.breadcrumb-nav a {
+  color: var(--accent-cyan);
+}
+
+.breadcrumb-nav a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Printable & Web ATS Resume Styles
+   ========================================================================== */
+.resume-sheet-wrap {
+  padding: 3rem 0 5rem;
+}
+
+.resume-paper {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--bg-card-solid);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--border-radius-lg);
+  padding: 3.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.resume-paper-header {
+  border-bottom: 2px solid var(--border-subtle);
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.resume-name {
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+
+.resume-subheading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  margin-bottom: 0.75rem;
+}
+
+.resume-contact-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+.resume-contact-inline a:hover {
+  color: var(--accent-cyan);
+}
+
+.resume-block {
+  margin-bottom: 2.5rem;
+}
+
+.resume-block-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.resume-block-title i {
+  color: var(--accent-cyan);
+  font-size: 1.1rem;
+}
+
+.resume-entry {
+  margin-bottom: 1.5rem;
+}
+
+.resume-entry:last-child {
+  margin-bottom: 0;
+}
+
+.resume-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.resume-entry-role {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.resume-entry-company {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+
+.resume-entry-date {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.resume-bullet-list {
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+}
+
+.resume-bullet-list li {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  list-style-type: disc;
+}
+
+.resume-skills-group {
+  margin-bottom: 0.75rem;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.resume-skills-group strong {
+  color: var(--text-primary);
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .navbar, .footer, .btn-print-hide, #scroll-progress, #back-to-top {
+    display: none !important;
+  }
+  .resume-paper {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .resume-paper * {
+    color: #111111 !important;
+  }
+  .text-gradient {
+    -webkit-text-fill-color: #000000 !important;
+  }
+}
