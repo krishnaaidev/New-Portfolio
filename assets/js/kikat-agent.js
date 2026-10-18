@@ -3,15 +3,9 @@
  * Kikat AI Voice Agent — Suman Krishna's Portfolio Companion
  * ============================================================================
  * Persona: Kikat (Female Voice AI Assistant)
- * Capabilities:
- * - Web Speech Synthesis with natural English female/girl voice selection
- * - Speech-to-Text Voice Recognition (Mic Input)
- * - Comprehensive knowledge base about Suman Krishna:
- *   Projects (AIHire, CTG Faculty App in Flutter, Depression Detection, etc.)
- *   RedRob Test Score (763/1000), 7x NASSCOM Gold Certifications,
- *   Chess rating (750+), GDG, Google Ambassador, Internships,
- *   Photography page (@bruh.vision), Personal (@krishna.ai.dev), Contact, etc.
- * - Interactive Sound Wave Visualizer, Replay audio button, Mute/Unmute
+ * Voice: Natural English female/girl voice synthesis via Web Speech API
+ * Mic: Speech-to-Text Voice Recognition via Web Speech API
+ * Positioning: Floating bottom-right corner before footer (Self-contained CSS)
  * ============================================================================
  */
 
@@ -21,6 +15,661 @@
   // Prevent double-initialization
   if (window.KikatAgentInitialized) return;
   window.KikatAgentInitialized = true;
+
+  /* ==========================================================================
+     1. Inject Self-Contained Styles
+     Guarantees Kikat is ALWAYS beautifully styled and floats in bottom-right corner
+     even under aggressive browser/CDN caching.
+     ========================================================================== */
+  function injectSelfContainedStyles() {
+    if (document.getElementById("kikat-agent-styles")) return;
+
+    const css = `
+/* ==========================================================================
+   KIKAT AI VOICE AGENT FLOATING STYLES (Self-Contained)
+   ========================================================================== */
+#kikat-launcher {
+  position: fixed !important;
+  bottom: 26px !important;
+  right: 26px !important;
+  width: 62px !important;
+  height: 62px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #0284c7 0%, #8b5cf6 50%, #ec4899 100%) !important;
+  border: 2px solid rgba(255, 255, 255, 0.45) !important;
+  box-shadow: 0 10px 30px rgba(2, 132, 199, 0.5), 0 0 25px rgba(139, 92, 246, 0.4) !important;
+  cursor: pointer !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #ffffff !important;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  animation: kikat-launcher-pulse 3s infinite !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  outline: none !important;
+  user-select: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+#kikat-launcher:hover {
+  transform: scale(1.08) translateY(-3px) !important;
+  box-shadow: 0 16px 40px rgba(56, 189, 248, 0.65), 0 0 30px rgba(236, 72, 153, 0.45) !important;
+}
+
+#kikat-launcher.open {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+  border-color: rgba(239, 68, 68, 0.6) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+  animation: none !important;
+}
+
+@keyframes kikat-launcher-pulse {
+  0% {
+    box-shadow: 0 8px 25px rgba(2, 132, 199, 0.5), 0 0 0 0 rgba(139, 92, 246, 0.6);
+  }
+  70% {
+    box-shadow: 0 8px 25px rgba(2, 132, 199, 0.5), 0 0 0 18px rgba(139, 92, 246, 0);
+  }
+  100% {
+    box-shadow: 0 8px 25px rgba(2, 132, 199, 0.5), 0 0 0 0 rgba(139, 92, 246, 0);
+  }
+}
+
+.kikat-launcher-avatar {
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.45rem !important;
+  transition: transform 0.35s ease !important;
+  color: #ffffff !important;
+}
+
+#kikat-launcher.open .kikat-launcher-avatar {
+  transform: rotate(90deg) !important;
+}
+
+.kikat-launcher-badge {
+  position: absolute !important;
+  top: -2px !important;
+  right: -2px !important;
+  width: 17px !important;
+  height: 17px !important;
+  background: #10b981 !important;
+  border: 3px solid #0b101c !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 8px #10b981 !important;
+}
+
+.kikat-launcher-tooltip {
+  position: absolute !important;
+  right: 76px !important;
+  white-space: nowrap !important;
+  background: rgba(11, 16, 28, 0.96) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  color: #ffffff !important;
+  padding: 0.55rem 1rem !important;
+  border-radius: 999px !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 18px rgba(56, 189, 248, 0.25) !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  transform: translateX(10px) !important;
+  transition: all 0.25s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+#kikat-launcher:hover .kikat-launcher-tooltip {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+}
+
+/* Floating Chat Window */
+#kikat-widget {
+  position: fixed !important;
+  bottom: 98px !important;
+  right: 26px !important;
+  width: 400px !important;
+  max-width: calc(100vw - 32px) !important;
+  height: 590px !important;
+  max-height: calc(100vh - 120px) !important;
+  background: linear-gradient(180deg, rgba(13, 20, 36, 0.98) 0%, rgba(9, 13, 26, 0.98) 100%) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(56, 189, 248, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  z-index: 99998 !important;
+  display: none !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(20px) scale(0.95) !important;
+  transform-origin: bottom right !important;
+  transition: all 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+  color: #f1f5f9 !important;
+  box-sizing: border-box !important;
+}
+
+#kikat-widget * {
+  box-sizing: border-box !important;
+}
+
+#kikat-widget.active {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) scale(1) !important;
+  pointer-events: auto !important;
+}
+
+/* Header */
+.kikat-header {
+  padding: 0.95rem 1.15rem !important;
+  background: linear-gradient(90deg, rgba(15, 23, 42, 0.98), rgba(30, 27, 75, 0.92)) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0.75rem !important;
+  flex-shrink: 0 !important;
+}
+
+.kikat-header-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.7rem !important;
+}
+
+.kikat-avatar-wrap {
+  position: relative !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #06b6d4, #a855f7, #ec4899) !important;
+  padding: 2px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.35) !important;
+}
+
+.kikat-avatar-img {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50% !important;
+  background: #0f172a !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.35rem !important;
+  color: #38bdf8 !important;
+}
+
+.kikat-online-dot {
+  position: absolute !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  width: 12px !important;
+  height: 12px !important;
+  background: #10b981 !important;
+  border: 2px solid #0f172a !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 6px #10b981 !important;
+}
+
+.kikat-header-title {
+  font-size: 1.05rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+  letter-spacing: -0.01em !important;
+}
+
+.kikat-voice-badge {
+  font-size: 0.68rem !important;
+  padding: 0.18rem 0.5rem !important;
+  border-radius: 999px !important;
+  background: rgba(168, 85, 247, 0.22) !important;
+  color: #d8b4fe !important;
+  border: 1px solid rgba(168, 85, 247, 0.4) !important;
+  font-weight: 700 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+}
+
+.kikat-header-subtitle {
+  font-size: 0.74rem !important;
+  color: #94a3b8 !important;
+  margin-top: 2px !important;
+}
+
+.kikat-header-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+  flex-shrink: 0 !important;
+}
+
+/* Sound Wave Animation Bars */
+.kikat-waves {
+  display: flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+  height: 20px !important;
+  padding: 0 0.4rem !important;
+  opacity: 0.4 !important;
+  transition: opacity 0.25s ease !important;
+}
+
+.kikat-waves.speaking {
+  opacity: 1 !important;
+}
+
+.kikat-wave-bar {
+  width: 3px !important;
+  height: 6px !important;
+  background: #38bdf8 !important;
+  border-radius: 3px !important;
+  transition: height 0.15s ease !important;
+}
+
+.kikat-waves.speaking .kikat-wave-bar:nth-child(1) {
+  animation: kikat-wave-bounce 0.6s ease-in-out infinite alternate !important;
+}
+.kikat-waves.speaking .kikat-wave-bar:nth-child(2) {
+  animation: kikat-wave-bounce 0.45s ease-in-out infinite 0.15s alternate !important;
+}
+.kikat-waves.speaking .kikat-wave-bar:nth-child(3) {
+  animation: kikat-wave-bounce 0.7s ease-in-out infinite 0.3s alternate !important;
+}
+.kikat-waves.speaking .kikat-wave-bar:nth-child(4) {
+  animation: kikat-wave-bounce 0.52s ease-in-out infinite 0.1s alternate !important;
+}
+
+@keyframes kikat-wave-bounce {
+  0% {
+    height: 4px;
+    background: #38bdf8;
+  }
+  50% {
+    background: #818cf8;
+  }
+  100% {
+    height: 19px;
+    background: #ec4899;
+  }
+}
+
+.kikat-header-btn {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #cbd5e1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  font-size: 0.88rem !important;
+  transition: all 0.2s ease !important;
+  padding: 0 !important;
+}
+
+.kikat-header-btn:hover {
+  background: rgba(56, 189, 248, 0.22) !important;
+  color: #ffffff !important;
+  border-color: rgba(56, 189, 248, 0.45) !important;
+}
+
+.kikat-header-btn.muted {
+  color: #f87171 !important;
+  background: rgba(239, 68, 68, 0.18) !important;
+  border-color: rgba(239, 68, 68, 0.35) !important;
+}
+
+/* Quick Question Chips */
+.kikat-chips-container {
+  padding: 0.65rem 0.9rem !important;
+  background: rgba(15, 23, 42, 0.65) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  display: flex !important;
+  gap: 0.45rem !important;
+  overflow-x: auto !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  flex-shrink: 0 !important;
+}
+
+.kikat-chips-container::-webkit-scrollbar {
+  display: none !important;
+}
+
+.kikat-chip {
+  flex-shrink: 0 !important;
+  font-size: 0.74rem !important;
+  font-weight: 600 !important;
+  font-family: inherit !important;
+  padding: 0.38rem 0.8rem !important;
+  border-radius: 999px !important;
+  background: rgba(30, 41, 59, 0.8) !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+  color: #93c5fd !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+}
+
+.kikat-chip:hover {
+  background: rgba(56, 189, 248, 0.25) !important;
+  color: #ffffff !important;
+  border-color: #38bdf8 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Messages Body */
+.kikat-body {
+  flex: 1 1 auto !important;
+  padding: 1rem !important;
+  overflow-y: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.85rem !important;
+  scroll-behavior: smooth !important;
+}
+
+.kikat-body::-webkit-scrollbar {
+  width: 5px !important;
+}
+
+.kikat-body::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.kikat-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-radius: 4px !important;
+}
+
+.kikat-message-row {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 0.65rem !important;
+  max-width: 90% !important;
+  animation: kikat-msg-pop 0.25s ease forwards !important;
+}
+
+@keyframes kikat-msg-pop {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.kikat-message-row.user {
+  margin-left: auto !important;
+  flex-direction: row-reverse !important;
+}
+
+.kikat-msg-avatar {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #06b6d4, #a855f7) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.85rem !important;
+  color: #ffffff !important;
+  flex-shrink: 0 !important;
+  margin-top: 2px !important;
+}
+
+.kikat-bubble {
+  padding: 0.8rem 1rem !important;
+  border-radius: 18px !important;
+  font-size: 0.86rem !important;
+  line-height: 1.52 !important;
+  word-break: break-word !important;
+  position: relative !important;
+}
+
+.kikat-message-row.bot .kikat-bubble {
+  background: rgba(30, 41, 59, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  color: #e2e8f0 !important;
+  border-top-left-radius: 4px !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28) !important;
+}
+
+.kikat-message-row.user .kikat-bubble {
+  background: linear-gradient(135deg, #0284c7 0%, #7c3aed 100%) !important;
+  color: #ffffff !important;
+  border-top-right-radius: 4px !important;
+  box-shadow: 0 4px 18px rgba(2, 132, 199, 0.35) !important;
+}
+
+.kikat-bubble strong {
+  color: #38bdf8 !important;
+  font-weight: 700 !important;
+}
+
+.kikat-message-row.user .kikat-bubble strong {
+  color: #ffffff !important;
+}
+
+.kikat-bubble a {
+  color: #38bdf8 !important;
+  text-decoration: underline !important;
+  font-weight: 600 !important;
+}
+
+.kikat-msg-footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-top: 0.55rem !important;
+  padding-top: 0.4rem !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  font-size: 0.72rem !important;
+  color: #94a3b8 !important;
+}
+
+.kikat-replay-btn {
+  background: none !important;
+  border: none !important;
+  color: #38bdf8 !important;
+  font-size: 0.74rem !important;
+  font-family: inherit !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+  padding: 0.18rem 0.45rem !important;
+  border-radius: 6px !important;
+  transition: all 0.2s ease !important;
+}
+
+.kikat-replay-btn:hover {
+  background: rgba(56, 189, 248, 0.18) !important;
+  color: #ffffff !important;
+}
+
+/* Typing Indicator */
+.kikat-typing-dots {
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  padding: 0.4rem 0.5rem !important;
+}
+
+.kikat-typing-dot {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: #38bdf8 !important;
+  animation: kikat-typing-blink 1.2s infinite ease-in-out !important;
+}
+
+.kikat-typing-dot:nth-child(2) {
+  animation-delay: 0.2s !important;
+}
+.kikat-typing-dot:nth-child(3) {
+  animation-delay: 0.4s !important;
+}
+
+@keyframes kikat-typing-blink {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.3;
+  }
+  40% {
+    transform: scale(1.15);
+    opacity: 1;
+    background: #ec4899;
+  }
+}
+
+/* Input Bar */
+.kikat-footer {
+  padding: 0.8rem 0.95rem !important;
+  background: rgba(15, 23, 42, 0.98) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  flex-shrink: 0 !important;
+}
+
+.kikat-input-form {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  background: rgba(30, 41, 59, 0.75) !important;
+  border: 1px solid rgba(56, 189, 248, 0.28) !important;
+  border-radius: 999px !important;
+  padding: 0.3rem 0.4rem 0.3rem 0.95rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.kikat-input-form:focus-within {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.35) !important;
+}
+
+.kikat-input {
+  flex: 1 !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  color: #ffffff !important;
+  font-size: 0.86rem !important;
+  font-family: inherit !important;
+  padding: 0.3rem 0 !important;
+}
+
+.kikat-input::placeholder {
+  color: #64748b !important;
+  font-size: 0.82rem !important;
+}
+
+.kikat-btn-icon {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  border: none !important;
+  background: transparent !important;
+  color: #94a3b8 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  font-size: 0.95rem !important;
+  transition: all 0.2s ease !important;
+  padding: 0 !important;
+}
+
+.kikat-btn-icon:hover {
+  color: #38bdf8 !important;
+  background: rgba(56, 189, 248, 0.16) !important;
+}
+
+.kikat-mic-btn.listening {
+  color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.22) !important;
+  animation: kikat-mic-glow 1s infinite alternate !important;
+}
+
+@keyframes kikat-mic-glow {
+  from {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  to {
+    box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+  }
+}
+
+.kikat-send-btn {
+  background: linear-gradient(135deg, #0284c7, #8b5cf6) !important;
+  color: #ffffff !important;
+}
+
+.kikat-send-btn:hover {
+  background: linear-gradient(135deg, #38bdf8, #a855f7) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  #kikat-widget {
+    right: 12px !important;
+    left: 12px !important;
+    width: auto !important;
+    max-width: none !important;
+    bottom: 86px !important;
+    height: calc(100vh - 105px) !important;
+    max-height: 560px !important;
+    border-radius: 20px !important;
+  }
+  #kikat-launcher {
+    bottom: 18px !important;
+    right: 18px !important;
+    width: 56px !important;
+    height: 56px !important;
+  }
+  .kikat-launcher-tooltip {
+    display: none !important;
+  }
+}
+`;
+
+    const style = document.createElement("style");
+    style.id = "kikat-agent-styles";
+    style.textContent = css;
+    (document.head || document.documentElement).appendChild(style);
+  }
+
+  // Inject styles immediately
+  injectSelfContainedStyles();
 
   // Agent State
   const state = {
@@ -35,7 +684,7 @@
   };
 
   /* ==========================================================================
-     Knowledge Base
+     2. Comprehensive Knowledge Base about Suman Krishna
      ========================================================================== */
   const knowledgeBase = [
     // 1. Identity & Overview
@@ -53,22 +702,22 @@
       </ul>`
     },
 
-    // 2. CTG Faculty App (Flutter)
+    // 2. CTG Faculty App (Flutter & Dart)
     {
       intent: "ctg_faculty_app",
-      keywords: ["ctg faculty", "faculty app", "kra", "kpi", "ct group", "flutter app", "appraisal app", "ctgroup"],
+      keywords: ["ctg faculty", "faculty app", "kra", "kpi", "ct group", "flutter app", "appraisal app", "ctgroup", "flutter"],
       spoken: "The CTG Faculty App is an institutional digital performance management system engineered using Flutter and Dart with Material 3 UI for CT Group of Institutions. It evaluates faculty, heads of department, and heads of institutes across a one thousand mark framework with three-tier role-based access control and automated Excel and PDF reports.",
       response: `<strong>CTG Faculty App: KRA &amp; KPI Performance Management System</strong><br><br>
-      An institutional cross-platform application engineered with <strong>Flutter &amp; Dart</strong> for <strong>CT Group of Institutions</strong>:<br>
+      An institutional cross-platform mobile application engineered with <strong>Flutter &amp; Dart</strong> for <strong>CT Group of Institutions</strong>:<br>
       <ul style="margin: 0.5rem 0 0.5rem 1.2rem; padding: 0;">
         <li><strong>Tech Stack:</strong> Flutter, Dart, Material 3, Provider State Management, SQLite, REST API, SheetJS Excel/PDF Export.</li>
         <li><strong>1,000-Mark Framework:</strong> Evaluates teaching efficacy, research papers, patents, student feedback, and departmental leadership.</li>
         <li><strong>3-Tier RBAC:</strong> Dedicated portals for Faculty self-appraisal, HOD review, and HOI executive sanction.</li>
-        <li><strong>Codebase:</strong> <a href="https://github.com/krishnaaidev/CTGroup-KRA-KPI" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+        <li><strong>Repository:</strong> <a href="https://github.com/krishnaaidev/CTGroup-KRA-KPI" target="_blank" rel="noopener noreferrer">krishnaaidev/CTGroup-KRA-KPI</a></li>
       </ul>`
     },
 
-    // 3. AIHire
+    // 3. AIHire Capstone Project
     {
       intent: "aihire",
       keywords: ["aihire", "ai hire", "capstone", "interview platform", "candidate evaluation", "interview bot", "resume screener"],
@@ -84,26 +733,26 @@
       </ul>`
     },
 
-    // 4. RedRob Test Score
+    // 4. RedRob Standardized Test Score
     {
       intent: "redrob_score",
       keywords: ["redrob", "763", "red rob", "test score", "assessment score", "technical assessment", "aptitude score"],
       spoken: "Suman achieved a standardized score of 763 out of 1000 on the RedRob Online Technical Assessment, demonstrating top-tier cognitive reasoning, algorithmic coding, and software engineering problem-solving.",
-      response: `<strong>RedRob Technical Assessment</strong><br><br>
-      <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0;">
-        <span style="font-size: 1.4rem; font-weight: 800; color: #10b981;">763 / 1000</span>
-        <span style="font-size: 0.75rem; background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 0.2rem 0.5rem; border-radius: 999px; font-weight: 700;">Distinction Benchmark</span>
+      response: `<strong>RedRob Technical Assessment Benchmark</strong><br><br>
+      <div style="display: flex; align-items: center; gap: 0.6rem; margin: 0.5rem 0;">
+        <span style="font-size: 1.5rem; font-weight: 800; color: #10b981;">763 / 1000</span>
+        <span style="font-size: 0.76rem; background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 0.25rem 0.6rem; border-radius: 999px; font-weight: 700; border: 1px solid rgba(16, 185, 129, 0.35);">Distinction Tier</span>
       </div>
-      This standardized industry test rigorously evaluates algorithmic problem-solving, data structures, quantitative aptitude, and cognitive analytical skills.`
+      This standardized assessment rigorously measures algorithmic problem-solving, cognitive agility, data structures, quantitative aptitude, and core software engineering competence.`
     },
 
-    // 5. Certifications (NASSCOM Gold)
+    // 5. Certifications (NASSCOM FutureSkills Prime Gold)
     {
       intent: "certifications",
       keywords: ["certificate", "certifications", "nasscom", "gold", "futureskills", "aws cloud", "gen ai 101", "adobe", "prompt engineering", "dataops"],
       spoken: "Suman holds seven NASSCOM FutureSkills Prime Gold Category Certifications, approved by the Government of India. These include a 100 percent perfect score in AWS Cloud Practitioner, 100 percent in Gen AI 101, 98 percent in Adobe Generative AI, 96 percent in Prompt Engineering, and 93 percent in Deep Learning and NLP.",
       response: `<strong>7x NASSCOM FutureSkills Prime Gold Certifications</strong> (Govt. of India Approved):<br>
-      <ul style="margin: 0.5rem 0 0.5rem 1.2rem; padding: 0; font-size: 0.82rem;">
+      <ul style="margin: 0.5rem 0 0.5rem 1.2rem; padding: 0; font-size: 0.83rem;">
         <li>🥇 <strong>AWS Cloud Practitioner Essentials:</strong> 100% Perfect Score</li>
         <li>🥇 <strong>Gen AI 101:</strong> 100% Perfect Score</li>
         <li>🥇 <strong>Adobe Creativity &amp; GenAI:</strong> 98.00% Score</li>
@@ -115,13 +764,13 @@
       <a href="certifications.html" style="font-weight: 700;">View all Certificate PDFs &rarr;</a>`
     },
 
-    // 6. Depression Detection
+    // 6. Multimodal Depression Detection System
     {
       intent: "depression_detection",
       keywords: ["depression", "mental health", "multimodal depression", "daic-woz", "psychiatric", "wav2vec", "bert"],
       spoken: "The Multimodal Depression Detection System is a clinician-inspired deep learning research project. It combines BERT for language analysis, Wav2Vec 2.0 for vocal speech audio, and ResNet-LSTM for facial landmarks on clinical datasets.",
       response: `<strong>Multimodal Depression Detection System</strong><br><br>
-      A psychiatric screening pipeline combining tri-modal late fusion:<br>
+      A clinical psychiatric screening pipeline combining tri-modal late fusion:<br>
       <ul style="margin: 0.5rem 0 0.5rem 1.2rem; padding: 0;">
         <li><strong>Text:</strong> BERT transformer embeddings analyzing sentiment and linguistic cues.</li>
         <li><strong>Audio:</strong> Wav2Vec 2.0 extracting speech tone, pause cadence, and acoustic stress.</li>
@@ -130,7 +779,7 @@
       </ul>`
     },
 
-    // 7. Plant Disease Recognition
+    // 7. Plant Disease Recognition System
     {
       intent: "plant_disease",
       keywords: ["plant", "crop", "disease", "plantvillage", "leaf", "agriculture", "cnn project"],
@@ -143,12 +792,12 @@
       </ul>`
     },
 
-    // 8. Other Projects
+    // 8. Other Projects & Complete Portfolio
     {
       intent: "other_projects",
       keywords: ["superstore", "power bi", "career guidance", "air pollution", "robo car", "jarvis", "projects list", "all projects"],
       spoken: "In addition to AIHire and the CTG Faculty App, Suman has built a Superstore Sales and Profit Business Intelligence dashboard for EduTech Solutions, an Air Pollution AQI Forecaster, a Career Guidance AI, an autonomous obstacle avoidance Robo Car, and JARVIS voice assistant.",
-      response: `<strong>Other Featured Projects by Suman:</strong><br>
+      response: `<strong>Other Featured Systems by Suman:</strong><br>
       <ul style="margin: 0.5rem 0 0.5rem 1.2rem; padding: 0;">
         <li><strong>Superstore Analytics BI:</strong> 4-page interactive Power BI dashboard with automated Python EDA for EduTech Solutions.</li>
         <li><strong>Air Pollution &amp; AQI Forecaster:</strong> Time-series forecasting for PM2.5 concentrations.</li>
@@ -172,7 +821,7 @@
       <a href="experience.html" style="font-weight: 700;">View Complete Career Timeline &rarr;</a>`
     },
 
-    // 10. Google Ambassador & GDG
+    // 10. Google Ambassador & GDG Roles
     {
       intent: "google_roles",
       keywords: ["google", "ambassador", "gdg", "google developer groups", "community", "leadership", "mentoring", "united fest"],
@@ -215,7 +864,7 @@
       Suman approaches software architecture much like chess: thinking multiple moves ahead, evaluating defensive positions, and calculating strategic trade-offs.`
     },
 
-    // 13. Education
+    // 13. Education & Academic Background
     {
       intent: "education",
       keywords: ["education", "college", "university", "btech", "b.tech", "cgpa", "ct institute", "gpa", "school", "degree"],
@@ -246,7 +895,7 @@
     // 15. Contact & Hiring
     {
       intent: "contact",
-      keywords: ["contact", "hire", "email", "phone", "reach", "hire him", "whatsapp", "call", "collaborate", "get in touch"],
+      keywords: ["contact", "hire", "email", "phone", "reach", "hire him", "whatsapp", "call", "collaborate", "get in touch", "number", "location"],
       spoken: "You can contact Suman by email at krishna.techx.31@gmail.com, or his institutional email suman2301275@ctiemt.ctgroup.in, or by phone at +91 96081 10425. He is open to Machine Learning, Data Science, and Software Engineering roles.",
       response: `<strong>Get in Touch with Suman Krishna:</strong><br><br>
       📧 <strong>Primary Email:</strong> <a href="mailto:krishna.techx.31@gmail.com">krishna.techx.31@gmail.com</a><br>
@@ -265,10 +914,10 @@
       spoken: "You can view Suman's ATS-friendly web resume right on this portfolio, or download the full PDF resume directly.",
       response: `<strong>Suman Krishna's Resume:</strong><br><br>
       📄 Suman's comprehensive resume includes all academic milestones, the Flutter CTG Faculty App, AIHire, 7 NASSCOM Gold Certifications, and RedRob assessment score.<br><br>
-      <a href="resume.html" class="btn btn-primary btn-sm" style="display: inline-flex; margin-right: 0.5rem;">
+      <a href="resume.html" class="btn btn-primary btn-sm" style="display: inline-flex; margin-right: 0.5rem; text-decoration: none;">
         <i class="fa-regular fa-file-lines"></i> View Resume Page
       </a>
-      <a href="assets/docs/Suman_Krishna_Resume.pdf" target="_blank" class="btn btn-secondary btn-sm" style="display: inline-flex;">
+      <a href="assets/docs/Suman_Krishna_Resume.pdf" target="_blank" class="btn btn-secondary btn-sm" style="display: inline-flex; text-decoration: none;">
         <i class="fa-regular fa-file-pdf"></i> Download PDF
       </a>`
     },
@@ -291,7 +940,23 @@
       You can type any question or tap the microphone to talk with me!`
     },
 
-    // 18. Greetings
+    // 18. Why Hire Suman?
+    {
+      intent: "why_hire",
+      keywords: ["why hire", "should i hire", "strengths", "value", "hire suman", "why should we hire"],
+      spoken: "You should hire Suman because he bridges production AI systems with real-world mobile and web engineering. He built AIHire with fine-tuned LLMs, engineered an institutional Flutter app for thousands of users, achieved a 763 score on RedRob, holds seven NASSCOM Gold Certifications, and actively leads developer communities as a Google Student Ambassador.",
+      response: `<strong>Why Hire Suman Krishna?</strong><br><br>
+      <ul style="margin: 0.5rem 0 0.5rem 1.2rem; padding: 0;">
+        <li>🚀 <strong>Proven Production Engineering:</strong> Shipped <strong>AIHire</strong> (multimodal recruitment AI) and the <strong>CTG Faculty App</strong> (Flutter &amp; Dart for CT Group).</li>
+        <li>📊 <strong>Top-Tier Aptitude:</strong> Scored <strong>763 / 1000</strong> on the standardized RedRob online assessment.</li>
+        <li>🥇 <strong>Govt. Certified Excellence:</strong> <strong>7x NASSCOM Gold Certifications</strong> with 100% in AWS Cloud and GenAI 101.</li>
+        <li>👥 <strong>Leadership &amp; Mentorship:</strong> Official <strong>Google Student Ambassador</strong> and core <strong>GDG Member</strong> mentoring 500+ students.</li>
+        <li>⚡ <strong>Cross-Functional Versatility:</strong> Deep learning, Flutter cross-platform apps, full-stack backends, and executive analytics.</li>
+      </ul>
+      <a href="contact.html" style="font-weight: 700;">Schedule an Interview &rarr;</a>`
+    },
+
+    // 19. Greetings
     {
       intent: "greeting",
       keywords: ["hello", "hi", "hey", "good morning", "good evening", "good afternoon", "namaste", "howdy", "sup", "what's up"],
@@ -306,7 +971,7 @@
       </div>`
     },
 
-    // 19. Gratitude & Pleasantries
+    // 20. Gratitude & Pleasantries
     {
       intent: "gratitude",
       keywords: ["thank you", "thanks", "awesome", "great", "cool", "helpful", "good job", "love it"],
@@ -325,14 +990,14 @@
       <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('Who is Suman Krishna?')">📌 Who is Suman Krishna?</button>
       <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('Tell me about the CTG Faculty App')">📱 CTG Faculty App (Flutter &amp; Dart)</button>
       <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('Tell me about AIHire')">🤖 AIHire Autonomous Interview Platform</button>
-      <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('What is Suman\'s RedRob score?')">🎯 RedRob Test Score (763 / 1000)</button>
+      <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('What is Suman\\'s RedRob score?')">🎯 RedRob Test Score (763 / 1000)</button>
       <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('What certifications does Suman hold?')">🥇 7x NASSCOM Gold Certifications</button>
       <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('How can I contact Suman?')">📬 Contact &amp; Hiring Information</button>
     </div>`
   };
 
   /* ==========================================================================
-     Query Matching Engine
+     3. Query Matching Engine
      ========================================================================== */
   function findBestMatch(userText) {
     const clean = userText.toLowerCase().trim();
@@ -374,7 +1039,7 @@
   }
 
   /* ==========================================================================
-     Speech Synthesis (Girl Voice)
+     4. Speech Synthesis (Girl Voice)
      ========================================================================== */
   function initSpeechSynthesis() {
     if (!("speechSynthesis" in window)) {
@@ -386,7 +1051,6 @@
       const voices = window.speechSynthesis.getVoices();
       if (!voices || voices.length === 0) return;
 
-      // Priority list of female English voices across macOS, Windows, Chrome, iOS, Android
       const preferredNames = [
         "Google UK English Female",
         "Microsoft Zira",
@@ -397,8 +1061,8 @@
         "Tessa",
         "Fiona",
         "Veena",
-        "Google US English",
-        "Microsoft Jenny"
+        "Microsoft Jenny",
+        "Google US English"
       ];
 
       for (const name of preferredNames) {
@@ -456,7 +1120,7 @@
       utterance.voice = state.selectedVoice;
     }
 
-    // Tune voice parameters for a friendly, youthful, articulate girl voice
+    // Friendly, articulate, youthful girl voice parameters
     utterance.pitch = 1.15;
     utterance.rate = 1.02;
     utterance.volume = 1.0;
@@ -500,7 +1164,7 @@
   }
 
   /* ==========================================================================
-     Speech Recognition (Voice Input / Mic)
+     5. Speech Recognition (Mic Input)
      ========================================================================== */
   function initSpeechRecognition() {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -546,7 +1210,7 @@
     }
 
     if (!state.recognition) {
-      alert("Voice typing is best supported in Chrome, Edge, and Safari. You can type your question right here!");
+      alert("Voice input is best supported in Chrome, Edge, and Safari. You can also type your question right here!");
       return;
     }
 
@@ -572,12 +1236,13 @@
   }
 
   /* ==========================================================================
-     UI DOM Injection & Management
+     6. UI DOM Creation & Attachment
      ========================================================================== */
   function injectKikatWidget() {
+    // If elements already exist, do not re-create
     if (document.getElementById("kikat-launcher")) return;
 
-    // Launcher Button
+    // Launcher Button (Floating bottom right)
     const launcher = document.createElement("button");
     launcher.id = "kikat-launcher";
     launcher.className = "kikat-launcher";
@@ -590,11 +1255,11 @@
       <span class="kikat-launcher-badge"></span>
       <div class="kikat-launcher-tooltip">
         <i class="fa-solid fa-volume-high" style="color: #38bdf8;"></i>
-        <span>Ask Kikat (AI Voice Agent)</span>
+        <span>Ask Kikat (Girl Voice AI)</span>
       </div>
     `;
 
-    // Widget Window
+    // Widget Window (Floating right above launcher)
     const widget = document.createElement("div");
     widget.id = "kikat-widget";
     widget.className = "kikat-widget";
@@ -617,9 +1282,9 @@
           <div>
             <div class="kikat-header-title">
               <span>Kikat</span>
-              <span class="kikat-voice-badge"><i class="fa-solid fa-headphones"></i> Girl Voice</span>
+              <span class="kikat-voice-badge"><i class="fa-solid fa-headphones"></i> Girl Voice AI</span>
             </div>
-            <div class="kikat-header-subtitle">Suman's AI Companion &amp; Voice Guide</div>
+            <div class="kikat-header-subtitle">Suman Krishna's AI Guide</div>
           </div>
         </div>
 
@@ -646,14 +1311,15 @@
 
       <!-- Quick Chips Bar -->
       <div class="kikat-chips-container" id="kikat-chips">
-        <button class="kikat-chip" data-q="Who is Suman?">Who is Suman?</button>
-        <button class="kikat-chip" data-q="Tell me about AIHire">AIHire Project</button>
-        <button class="kikat-chip" data-q="Tell me about CTG Faculty App">CTG Faculty App (Flutter)</button>
-        <button class="kikat-chip" data-q="What is his RedRob score?">RedRob: 763/1000</button>
-        <button class="kikat-chip" data-q="What certifications does Suman hold?">7x NASSCOM Gold</button>
-        <button class="kikat-chip" data-q="Tell me about his photography">Photography (@bruh.vision)</button>
-        <button class="kikat-chip" data-q="What is Suman's chess rating?">Chess: 750+</button>
-        <button class="kikat-chip" data-q="How can I contact Suman?">Contact &amp; Hire</button>
+        <button class="kikat-chip" data-q="Who is Suman?">📌 Who is Suman?</button>
+        <button class="kikat-chip" data-q="Tell me about CTG Faculty App">📱 CTG Faculty App (Flutter)</button>
+        <button class="kikat-chip" data-q="Tell me about AIHire">🤖 AIHire Capstone</button>
+        <button class="kikat-chip" data-q="What is his RedRob score?">🎯 RedRob: 763/1000</button>
+        <button class="kikat-chip" data-q="What certifications does Suman hold?">🥇 7x NASSCOM Gold</button>
+        <button class="kikat-chip" data-q="Tell me about his photography">📸 Photography (@bruh.vision)</button>
+        <button class="kikat-chip" data-q="What is Suman's chess rating?">♟️ Chess: 750+</button>
+        <button class="kikat-chip" data-q="Why should we hire Suman?">🚀 Why Hire Suman?</button>
+        <button class="kikat-chip" data-q="How can I contact Suman?">📬 Contact &amp; Hire</button>
       </div>
 
       <!-- Message History Container -->
@@ -663,11 +1329,11 @@
           <div class="kikat-msg-avatar"><i class="fa-solid fa-sparkles"></i></div>
           <div class="kikat-bubble">
             👋 Hi! I'm <strong>Kikat</strong>, Suman Krishna's AI voice agent!<br><br>
-            I'm here to answer any questions you have about Suman's software systems, <strong>AIHire</strong>, the <strong>CTG Faculty App (Flutter)</strong>, his <strong>763 RedRob score</strong>, NASSCOM Gold Certifications, or photography.<br><br>
+            I'm here to answer any questions you have about Suman's software systems, <strong>AIHire</strong>, the <strong>CTG Faculty App (Flutter &amp; Dart)</strong>, his <strong>763 RedRob score</strong>, 7x NASSCOM Gold Certifications, or photography.<br><br>
             <em>Type a question below or tap the microphone to talk with me!</em>
             <div class="kikat-msg-footer">
               <span>Kikat AI Guide</span>
-              <button class="kikat-replay-btn" onclick="window.KikatAgent.speak('Hi! I am Kikat, Suman Krishna\'s personal AI agent. Feel free to ask me anything about his projects, experience, skills, or achievements!')">
+              <button class="kikat-replay-btn" onclick="window.KikatAgent.speak('Hi! I am Kikat, Suman Krishna\\'s personal AI agent. Feel free to ask me anything about his projects, experience, skills, or achievements!')">
                 <i class="fa-solid fa-volume-high"></i> Listen
               </button>
             </div>
@@ -776,7 +1442,7 @@
   }
 
   /* ==========================================================================
-     Message Handling & Rendering
+     7. Message Handling & Rendering
      ========================================================================== */
   function handleUserSubmit(userQuestion) {
     if (!userQuestion || !userQuestion.trim()) return;
@@ -795,7 +1461,7 @@
       const match = findBestMatch(userQuestion);
       appendBotMessage(match.response, match.spoken);
       speakText(match.spoken);
-    }, 450);
+    }, 420);
   }
 
   function appendUserMessage(text) {
@@ -873,7 +1539,7 @@
   }
 
   /* ==========================================================================
-     Public API
+     8. Public API
      ========================================================================== */
   window.KikatAgent = {
     open: openWidget,
@@ -888,9 +1554,10 @@
   };
 
   /* ==========================================================================
-     Bootstrapping
+     9. Bootstrapping
      ========================================================================== */
   function boot() {
+    injectSelfContainedStyles();
     injectKikatWidget();
     initSpeechSynthesis();
   }
