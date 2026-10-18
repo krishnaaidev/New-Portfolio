@@ -2588,26 +2588,44 @@ textarea.form-control {
    ========================================================================== */
 .photo-gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   margin-top: 2rem;
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .photo-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .photo-gallery-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .photo-card {
   position: relative;
+  width: 100%;
+  height: 280px;
   border-radius: var(--border-radius-md);
   overflow: hidden;
-  height: 280px;
   background: #090e18;
   border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-sm);
+  cursor: pointer;
   transition: all var(--transition-normal);
 }
 
 .photo-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
   transition: transform 0.5s ease;
 }
 
@@ -2624,51 +2642,20 @@ textarea.form-control {
 .photo-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(7, 9, 14, 0.85) 100%);
+  background: linear-gradient(180deg, transparent 35%, rgba(7, 9, 14, 0.9) 100%);
   display: flex;
   align-items: flex-end;
   padding: 1.25rem;
-  opacity: 0.9;
+  opacity: 0.95;
   transition: opacity var(--transition-fast);
+  pointer-events: none;
 }
 
 .photo-info {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   width: 100%;
-}
-
-.photo-credit {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #f8fafc;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.photo-link-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.85rem;
-  transition: all var(--transition-fast);
-}
-
-.photo-link-btn:hover {
-  background: var(--accent-cyan);
-  color: #07090e;
-}
-
-.photo-card {
-  cursor: pointer;
 }
 
 .photo-tag-badge {
@@ -2687,6 +2674,27 @@ textarea.form-control {
   color: #ffffff;
   margin: 0;
   line-height: 1.2;
+}
+
+.photo-link-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+  pointer-events: auto;
+  flex-shrink: 0;
+}
+
+.photo-link-btn:hover {
+  background: var(--accent-cyan);
+  color: #07090e;
 }
 
 /* Photo Lightbox Modal */
