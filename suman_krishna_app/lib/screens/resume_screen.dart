@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../data/portfolio_data.dart';
 import '../theme/app_theme.dart';
 import '../utils/responsive.dart';
+import '../utils/url_helper.dart';
 
 class ResumeScreen extends StatelessWidget {
   const ResumeScreen({super.key});
 
-  Future<void> _launchEmail() async {
-    final uri = Uri.parse("mailto:${PortfolioData.emailInstitutional}?subject=Opportunity%20Discussion%20-%20Suman%20Krishna");
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
-    }
-  }
+  static const String resumePdfUrl =
+      "https://github.com/krishnaaidev/New-Portfolio/raw/main/assets/docs/Suman_Krishna_Resume.pdf";
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +20,12 @@ class ResumeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header with Download Action
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // Header with Actions
+              Wrap(
+                alignment: WrapAlignment.spaceBetween,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 16,
+                runSpacing: 16,
                 children: [
                   const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,23 +46,45 @@ class ResumeScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  ElevatedButton.icon(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppTheme.primary,
-                      foregroundColor: AppTheme.background,
-                      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                    ),
-                    onPressed: _launchEmail,
-                    icon: const Icon(Icons.send, size: 16),
-                    label: const Text("Request Resume PDF", style: TextStyle(fontWeight: FontWeight.bold)),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ElevatedButton.icon(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppTheme.primary,
+                          foregroundColor: AppTheme.background,
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                        ),
+                        onPressed: () => UrlHelper.launchURL(context, resumePdfUrl),
+                        icon: const Icon(Icons.picture_as_pdf, size: 16),
+                        label: const Text("View PDF", style: TextStyle(fontWeight: FontWeight.bold)),
+                      ),
+                      const SizedBox(width: 10),
+                      OutlinedButton.icon(
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: AppTheme.primary,
+                          side: const BorderSide(color: AppTheme.primary),
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                        ),
+                        onPressed: () => UrlHelper.launchEmail(
+                          context,
+                          email: PortfolioData.emailInstitutional,
+                          subject: "Opportunity Discussion - Suman Krishna",
+                          body: "Hi Suman, I would like to request an updated copy of your resume.",
+                        ),
+                        icon: const Icon(Icons.mail_outline, size: 16),
+                        label: const Text("Email Resume", style: TextStyle(fontWeight: FontWeight.bold)),
+                      ),
+                    ],
                   ),
                 ],
               ),
               const SizedBox(height: 32),
 
               // Education Section
-              _buildSectionTitle("Education", Icons.school),
+              _buildSectionTitle("Formal Education & Academic Foundation", Icons.school),
               const SizedBox(height: 12),
               _buildEducationCard(),
               const SizedBox(height: 32),
@@ -119,44 +140,73 @@ class ResumeScreen extends StatelessWidget {
   }
 
   Widget _buildEducationCard() {
-    return Container(
-      padding: const EdgeInsets.all(22),
-      decoration: BoxDecoration(
-        color: AppTheme.surfaceCard,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppTheme.border),
-      ),
-      child: const Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CircleAvatar(
-            backgroundColor: Color(0xFF1E293B),
-            child: Icon(Icons.school, color: AppTheme.primary, size: 20),
+    return Column(
+      children: PortfolioData.educationList.map((edu) {
+        final isBTech = edu.degree.toLowerCase().contains("b.tech");
+        return Container(
+          margin: const EdgeInsets.only(bottom: 12),
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: AppTheme.surfaceCard,
+            borderRadius: BorderRadius.circular(18),
+            border: Border.all(color: isBTech ? AppTheme.primary.withValues(alpha: 0.35) : AppTheme.border),
           ),
-          SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Bachelor of Technology — Computer Science & Engineering",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: Colors.white),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CircleAvatar(
+                backgroundColor: AppTheme.surfaceLight,
+                child: Icon(
+                  isBTech ? Icons.school : Icons.account_balance,
+                  color: isBTech ? AppTheme.primary : AppTheme.secondary,
+                  size: 20,
                 ),
-                SizedBox(height: 4),
-                Text(
-                  "CT Institute of Engineering, Management & Technology (CTIEMT), Jalandhar, Punjab",
-                  style: TextStyle(fontSize: 13, color: AppTheme.primary, fontWeight: FontWeight.w600),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            edu.degree,
+                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: Colors.white),
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                          decoration: BoxDecoration(
+                            color: AppTheme.emerald.withValues(alpha: 0.15),
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: AppTheme.emerald.withValues(alpha: 0.3)),
+                          ),
+                          child: Text(
+                            edu.score,
+                            style: const TextStyle(fontSize: 11.5, fontWeight: FontWeight.bold, color: AppTheme.emerald),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      edu.institution,
+                      style: const TextStyle(fontSize: 13.5, color: AppTheme.primary, fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      "${edu.boardOrAffiliation} • ${edu.location} (${edu.period})",
+                      style: const TextStyle(fontSize: 12, color: AppTheme.textSecondary),
+                    ),
+                  ],
                 ),
-                SizedBox(height: 6),
-                Text(
-                  "2023 – 2027 • Current Cumulative CGPA: 8.0 / 10.0",
-                  style: TextStyle(fontSize: 12.5, color: AppTheme.textSecondary),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      }).toList(),
     );
   }
 

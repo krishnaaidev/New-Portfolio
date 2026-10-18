@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../data/portfolio_data.dart';
 import '../theme/app_theme.dart';
 import '../utils/responsive.dart';
+import '../utils/url_helper.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
 
-  Future<void> _launchUrl(String url) async {
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
+  void _launchUrl(BuildContext context, String url) {
+    UrlHelper.launchURL(context, url);
   }
 
   void _showImageDialog(BuildContext context, String assetPath) {
@@ -85,6 +82,24 @@ class AboutScreen extends StatelessWidget {
                     ),
               const SizedBox(height: 36),
 
+              // Formal Education & Academic Foundation Section
+              const Text(
+                "Formal Education & Academic Foundation",
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w800,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 6),
+              const Text(
+                "Undergraduate engineering curriculum, verified GPA, and secondary school achievements.",
+                style: TextStyle(fontSize: 13.5, color: AppTheme.textSecondary),
+              ),
+              const SizedBox(height: 18),
+              _buildEducationSection(context),
+              const SizedBox(height: 36),
+
               // Extracurricular Highlights (Chess + Photography)
               const Text(
                 "Beyond Code: Creative & Strategic Pursuits",
@@ -121,7 +136,7 @@ class AboutScreen extends StatelessWidget {
                     ],
                   ),
                   TextButton.icon(
-                    onPressed: () => _launchUrl(PortfolioData.instagramPhoto),
+                    onPressed: () => _launchUrl(context, PortfolioData.instagramPhoto),
                     icon: const FaIcon(FontAwesomeIcons.instagram, size: 14, color: Color(0xFFE1306C)),
                     label: const Text("@bruh.vision", style: TextStyle(color: Color(0xFFE1306C), fontWeight: FontWeight.bold)),
                   ),
@@ -323,7 +338,7 @@ class AboutScreen extends StatelessWidget {
         // Instagram Card
         Expanded(
           child: InkWell(
-            onTap: () => _launchUrl(PortfolioData.instagramPhoto),
+            onTap: () => _launchUrl(context, PortfolioData.instagramPhoto),
             borderRadius: BorderRadius.circular(20),
             child: Container(
               padding: const EdgeInsets.all(20),
@@ -402,7 +417,7 @@ class AboutScreen extends StatelessWidget {
         const SizedBox(height: 16),
         // For More Visit Handle Banner
         InkWell(
-          onTap: () => _launchUrl(PortfolioData.instagramPhoto),
+          onTap: () => _launchUrl(context, PortfolioData.instagramPhoto),
           borderRadius: BorderRadius.circular(18),
           child: Container(
             width: double.infinity,
@@ -437,6 +452,132 @@ class AboutScreen extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildEducationSection(BuildContext context) {
+    return Column(
+      children: PortfolioData.educationList.map((edu) {
+        final isBTech = edu.degree.toLowerCase().contains("b.tech");
+        final accentColor = isBTech ? AppTheme.primary : AppTheme.secondary;
+
+        return Container(
+          margin: const EdgeInsets.only(bottom: 16),
+          padding: const EdgeInsets.all(22),
+          decoration: BoxDecoration(
+            color: AppTheme.surfaceCard,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: isBTech ? AppTheme.primary.withValues(alpha: 0.4) : AppTheme.border,
+              width: isBTech ? 1.5 : 1,
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: 44,
+                    height: 44,
+                    decoration: BoxDecoration(
+                      color: accentColor.withValues(alpha: 0.15),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Center(
+                      child: Icon(
+                        isBTech ? Icons.school : Icons.account_balance,
+                        color: accentColor,
+                        size: 22,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 14),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                edu.degree,
+                                style: const TextStyle(
+                                  fontSize: 16.5,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                              decoration: BoxDecoration(
+                                color: AppTheme.emerald.withValues(alpha: 0.15),
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(color: AppTheme.emerald.withValues(alpha: 0.35)),
+                              ),
+                              child: Text(
+                                edu.score,
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppTheme.emerald,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          edu.institution,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: accentColor,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          "${edu.boardOrAffiliation} • ${edu.location} (${edu.period})",
+                          style: const TextStyle(fontSize: 12, color: AppTheme.textSecondary),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 14),
+              Text(
+                edu.description,
+                style: const TextStyle(fontSize: 13, height: 1.5, color: AppTheme.textPrimary),
+              ),
+              if (edu.highlights.isNotEmpty) ...[
+                const SizedBox(height: 12),
+                ...edu.highlights.map(
+                  (h) => Padding(
+                    padding: const EdgeInsets.only(bottom: 6),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Icon(Icons.check_circle_outline, size: 14, color: AppTheme.primary),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            h,
+                            style: const TextStyle(fontSize: 12.5, color: AppTheme.textSecondary),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ],
+          ),
+        );
+      }).toList(),
     );
   }
 }

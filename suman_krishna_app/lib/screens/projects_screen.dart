@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../data/portfolio_data.dart';
 import '../theme/app_theme.dart';
 import '../utils/responsive.dart';
+import '../utils/url_helper.dart';
 
 class ProjectsScreen extends StatefulWidget {
   const ProjectsScreen({super.key});
@@ -23,13 +23,6 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
     "bi": "Data Analytics & BI",
     "iot": "Robotics & IoT",
   };
-
-  Future<void> _launchUrl(String url) async {
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
-  }
 
   void _showProjectModal(BuildContext context, ProjectItem project) {
     showDialog(
@@ -224,7 +217,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
                           foregroundColor: AppTheme.background,
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
                         ),
-                        onPressed: () => _launchUrl(project.github),
+                        onPressed: () => UrlHelper.launchURL(context, project.github),
                         icon: const FaIcon(FontAwesomeIcons.github, size: 16),
                         label: const Text("View Code Repository", style: TextStyle(fontWeight: FontWeight.bold)),
                       ),
@@ -449,7 +442,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
                 const SizedBox(width: 8),
                 IconButton.filledTonal(
                   icon: const FaIcon(FontAwesomeIcons.github, size: 16),
-                  onPressed: () => _launchUrl(project.github),
+                  onPressed: () => UrlHelper.launchURL(context, project.github),
                 ),
               ],
             ],

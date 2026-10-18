@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../data/portfolio_data.dart';
 import '../theme/app_theme.dart';
+import '../utils/url_helper.dart';
 import 'kitkat_assistant_sheet.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -15,11 +15,8 @@ class AppDrawer extends StatelessWidget {
     required this.onTabSelected,
   });
 
-  Future<void> _launchUrl(String url) async {
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
+  void _launchUrl(BuildContext context, String url) {
+    UrlHelper.launchURL(context, url);
   }
 
   @override
@@ -204,22 +201,22 @@ class AppDrawer extends StatelessWidget {
                   IconButton(
                     icon: const FaIcon(FontAwesomeIcons.linkedin, size: 18, color: Color(0xFF0A66C2)),
                     tooltip: "LinkedIn",
-                    onPressed: () => _launchUrl(PortfolioData.linkedin),
+                    onPressed: () => _launchUrl(context, PortfolioData.linkedin),
                   ),
                   IconButton(
                     icon: const FaIcon(FontAwesomeIcons.github, size: 18, color: Colors.white),
                     tooltip: "GitHub",
-                    onPressed: () => _launchUrl(PortfolioData.github),
+                    onPressed: () => _launchUrl(context, PortfolioData.github),
                   ),
                   IconButton(
                     icon: const FaIcon(FontAwesomeIcons.instagram, size: 18, color: Color(0xFFE1306C)),
                     tooltip: "Photography (@bruh.vision)",
-                    onPressed: () => _launchUrl(PortfolioData.instagramPhoto),
+                    onPressed: () => _launchUrl(context, PortfolioData.instagramPhoto),
                   ),
                   IconButton(
                     icon: const FaIcon(FontAwesomeIcons.globe, size: 18, color: AppTheme.primary),
                     tooltip: "Blog",
-                    onPressed: () => _launchUrl(PortfolioData.blog),
+                    onPressed: () => _launchUrl(context, PortfolioData.blog),
                   ),
                 ],
               ),

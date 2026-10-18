@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../data/portfolio_data.dart';
 import '../theme/app_theme.dart';
 import '../utils/responsive.dart';
+import '../utils/url_helper.dart';
 import '../widgets/kitkat_assistant_sheet.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,11 +11,8 @@ class HomeScreen extends StatelessWidget {
 
   const HomeScreen({super.key, required this.onNavigate});
 
-  Future<void> _launchUrl(String url) async {
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
+  void _launchUrl(BuildContext context, String url) {
+    UrlHelper.launchURL(context, url);
   }
 
   @override
@@ -288,16 +285,16 @@ class HomeScreen extends StatelessWidget {
             ),
             IconButton.filledTonal(
               icon: const FaIcon(FontAwesomeIcons.linkedin, size: 18),
-              onPressed: () => _launchUrl(PortfolioData.linkedin),
+              onPressed: () => _launchUrl(context, PortfolioData.linkedin),
             ),
             IconButton.filledTonal(
               icon: const FaIcon(FontAwesomeIcons.github, size: 18),
-              onPressed: () => _launchUrl(PortfolioData.github),
+              onPressed: () => _launchUrl(context, PortfolioData.github),
             ),
             IconButton.filledTonal(
               icon: const FaIcon(FontAwesomeIcons.instagram, size: 18, color: Color(0xFFE1306C)),
               tooltip: "@bruh.vision",
-              onPressed: () => _launchUrl(PortfolioData.instagramPhoto),
+              onPressed: () => _launchUrl(context, PortfolioData.instagramPhoto),
             ),
           ],
         ),
@@ -437,7 +434,7 @@ class HomeScreen extends StatelessWidget {
                 IconButton(
                   icon: const FaIcon(FontAwesomeIcons.github, size: 18, color: Colors.white),
                   tooltip: "View GitHub Repo",
-                  onPressed: () => _launchUrl(github),
+                  onPressed: () => _launchUrl(context, github),
                 ),
             ],
           ),

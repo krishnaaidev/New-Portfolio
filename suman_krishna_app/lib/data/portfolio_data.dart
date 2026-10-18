@@ -72,6 +72,28 @@ class ExperienceItem {
   });
 }
 
+class EducationItem {
+  final String degree;
+  final String institution;
+  final String boardOrAffiliation;
+  final String period;
+  final String score;
+  final String location;
+  final String description;
+  final List<String> highlights;
+
+  const EducationItem({
+    required this.degree,
+    required this.institution,
+    required this.boardOrAffiliation,
+    required this.period,
+    required this.score,
+    required this.location,
+    required this.description,
+    required this.highlights,
+  });
+}
+
 class PortfolioData {
   static const String name = "Suman Krishna";
   static const String role = "Machine Learning & Flutter Engineer";
@@ -81,15 +103,61 @@ class PortfolioData {
   static const String redRobScore = "763 / 1000";
   static const String chessRating = "750+";
 
-  // Contact Information
-  static const String emailInstitutional = "suman2301275@ctiemt.ctgroup.in";
+  // Contact Information (Verified from Official Resume & Portfolio)
+  static const String emailInstitutional = "suman2301275.stu@ctgroup.in";
   static const String emailPersonal = "krishna.techx.31@gmail.com";
-  static const String phone = "+91 9798442880";
+  static const String phone = "+91-96081-10425";
+  static const String location = "Jalandhar, Punjab (Campus) • Samastipur, Bihar (Hometown)";
   static const String github = "https://github.com/krishnaaidev";
   static const String linkedin = "https://linkedin.com/in/suman-krishna-7a17a6275";
   static const String instagramPhoto = "https://instagram.com/bruh.vision";
   static const String instagramPersonal = "https://instagram.com/krishna.ai.dev";
   static const String blog = "https://blogsitesk.netlify.app";
+
+  // Formal Education Details
+  static const List<EducationItem> educationList = [
+    EducationItem(
+      degree: "B.Tech in Computer Science & Engineering",
+      institution: "CT Institute of Engineering Management and Technology (CTIEMT)",
+      boardOrAffiliation: "CT Group of Institutions • I.K. Gujral PTU",
+      period: "2023 – Present (Expected: 2027)",
+      score: "8.0 / 10.0 CGPA",
+      location: "Jalandhar, Punjab",
+      description: "Specialized in Artificial Intelligence, Machine Learning, Deep Learning (NLP, Computer Vision), and cross-platform mobile engineering with Flutter & Dart.",
+      highlights: [
+        "Google Student Ambassador (Sep 2025 – Present) representing Google on campus.",
+        "Core Member of Google Developer Groups (GDG) Jalandhar chapter (Sep 2026 – Present).",
+        "Technical Support Coordinator at Byteverse 1.0 Hackathon (250+ participants).",
+        "Head Coordinator for 15-Day Robotics Workshop & Wings of Innovation Robo Race.",
+      ],
+    ),
+    EducationItem(
+      degree: "Class XII (Senior Secondary) — Science",
+      institution: "S.M.R.C.K College",
+      boardOrAffiliation: "Bihar School Examination Board (BSEB)",
+      period: "2020 – 2022",
+      score: "First Division",
+      location: "Samastipur, Bihar",
+      description: "Rigorous curriculum with core foundation in Mathematics, Physics, Chemistry, and Computer Science.",
+      highlights: [
+        "Strong foundation in analytical mathematics, statistics, and logic.",
+        "Active participant in state-level quiz and science competitions.",
+      ],
+    ),
+    EducationItem(
+      degree: "Class X (Secondary School Examination)",
+      institution: "St. Paul Secondary School",
+      boardOrAffiliation: "Central Board of Secondary Education (CBSE)",
+      period: "2020",
+      score: "First Division",
+      location: "Samastipur, Bihar",
+      description: "Secondary schooling foundation with academic distinction across Science and Mathematics.",
+      highlights: [
+        "1st Position in Photography & Visual Storytelling.",
+        "Member of School Chess Team and Science Exhibition Council.",
+      ],
+    ),
+  ];
 
   // Bio
   static const String summary =

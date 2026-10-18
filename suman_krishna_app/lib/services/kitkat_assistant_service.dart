@@ -127,8 +127,8 @@ class KitkatAssistantService {
     }
 
     // 7. Education & CGPA
-    if (RegExp(r"\b(education|cgpa|college|university|ctiemt|degree|b\.tech|gpa|marks)\b").hasMatch(clean)) {
-      return "Suman is pursuing his Bachelor of Technology in Computer Science & Engineering (2023–2027) at CT Institute of Engineering, Management & Technology (CTIEMT), Jalandhar, Punjab, holding a cumulative CGPA of 8.0 out of 10.0.";
+    if (RegExp(r"\b(education|cgpa|college|university|ctiemt|degree|b\.tech|gpa|marks|school|schooling|10th|12th|bseb|cbse)\b").hasMatch(clean)) {
+      return "Suman is pursuing his B.Tech in Computer Science & Engineering (2023–2027) at CT Institute of Engineering Management and Technology (CTIEMT), Jalandhar, Punjab with an 8.0 CGPA. Prior to this, he completed Class XII (BSEB) at S.M.R.C.K College, Samastipur, Bihar (2020–2022), and Class X (CBSE) at St. Paul Secondary School, Samastipur, Bihar (2020), with academic distinction.";
     }
 
     // 8. Work Experience & Internships
@@ -152,8 +152,8 @@ class KitkatAssistantService {
     }
 
     // 12. Contact & Hire
-    if (RegExp(r"\b(contact|email|phone|hire|call|reach|message|portfolio|linkedin|github)\b").hasMatch(clean)) {
-      return "You can contact Suman directly via his institutional email at suman2301275@ctiemt.ctgroup.in, personal email at krishna.techx.31@gmail.com, or phone at +91 9798442880. You can also explore his code on GitHub at krishnaaidev and connect on LinkedIn.";
+    if (RegExp(r"\b(contact|email|phone|hire|call|reach|message|portfolio|linkedin|github|whatsapp)\b").hasMatch(clean)) {
+      return "You can contact Suman directly via his institutional email at suman2301275.stu@ctgroup.in, primary email at krishna.techx.31@gmail.com, or phone/WhatsApp at +91-96081-10425. You can also explore his code on GitHub at krishnaaidev and connect on LinkedIn.";
     }
 
     // Default Fallback

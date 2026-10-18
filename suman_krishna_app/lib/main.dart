@@ -48,6 +48,32 @@ class _MainPortfolioScaffoldState extends State<MainPortfolioScaffold> {
     });
   }
 
+  int _getBottomNavIndex() {
+    switch (_currentTab) {
+      case 0:
+        return 0; // Home
+      case 1:
+      case 2:
+        return 1; // About / Experience
+      case 3:
+      case 4:
+        return 2; // Projects / Certs
+      case 5:
+        return 3; // Resume
+      case 6:
+        return 4; // Contact
+      default:
+        return 0;
+    }
+  }
+
+  void _onBottomNavTapped(int index) {
+    const tabMap = [0, 1, 3, 5, 6];
+    if (index >= 0 && index < tabMap.length) {
+      _navigateToTab(tabMap[index]);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final isDesktop = Responsive.isDesktop(context);
@@ -114,10 +140,8 @@ class _MainPortfolioScaffoldState extends State<MainPortfolioScaffold> {
               child: NavigationBar(
                 backgroundColor: Colors.transparent,
                 indicatorColor: AppTheme.primary.withValues(alpha: 0.2),
-                selectedIndex: _currentTab > 4 ? 0 : _currentTab,
-                onDestinationSelected: (idx) {
-                  _navigateToTab(idx);
-                },
+                selectedIndex: _getBottomNavIndex(),
+                onDestinationSelected: _onBottomNavTapped,
                 destinations: const [
                   NavigationDestination(
                     icon: Icon(Icons.home_outlined),
@@ -130,19 +154,19 @@ class _MainPortfolioScaffoldState extends State<MainPortfolioScaffold> {
                     label: "About",
                   ),
                   NavigationDestination(
-                    icon: Icon(Icons.work_outline),
-                    selectedIcon: Icon(Icons.work, color: AppTheme.primary),
-                    label: "Experience",
-                  ),
-                  NavigationDestination(
                     icon: Icon(Icons.code_outlined),
                     selectedIcon: Icon(Icons.code, color: AppTheme.primary),
                     label: "Projects",
                   ),
                   NavigationDestination(
-                    icon: Icon(Icons.workspace_premium_outlined),
-                    selectedIcon: Icon(Icons.workspace_premium, color: AppTheme.primary),
-                    label: "Certs",
+                    icon: Icon(Icons.description_outlined),
+                    selectedIcon: Icon(Icons.description, color: AppTheme.primary),
+                    label: "Resume",
+                  ),
+                  NavigationDestination(
+                    icon: Icon(Icons.mail_outline),
+                    selectedIcon: Icon(Icons.mail, color: AppTheme.primary),
+                    label: "Contact",
                   ),
                 ],
               ),

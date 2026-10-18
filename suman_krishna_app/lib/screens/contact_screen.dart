@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../data/portfolio_data.dart';
 import '../theme/app_theme.dart';
 import '../utils/responsive.dart';
+import '../utils/url_helper.dart';
 
 class ContactScreen extends StatefulWidget {
   const ContactScreen({super.key});
@@ -28,25 +28,22 @@ class _ContactScreenState extends State<ContactScreen> {
     super.dispose();
   }
 
-  Future<void> _launchUrl(String url) async {
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
-  }
-
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
-      // Launch mailto
-      final mailto = Uri.encodeFull(
-        "mailto:${PortfolioData.emailInstitutional}?subject=${_subjectCtrl.text}&body=From: ${_nameCtrl.text} (${_emailCtrl.text})\n\n${_messageCtrl.text}",
+      UrlHelper.launchEmail(
+        context,
+        email: PortfolioData.emailInstitutional,
+        subject: _subjectCtrl.text.trim().isNotEmpty
+            ? _subjectCtrl.text.trim()
+            : "Collaboration / Opportunity - Suman Krishna",
+        body: "From: ${_nameCtrl.text.trim()} (${_emailCtrl.text.trim()})\n\n${_messageCtrl.text.trim()}",
       );
-      _launchUrl(mailto);
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           backgroundColor: AppTheme.emerald,
-          content: Text("Opening email client to send your message to Suman Krishna!"),
+          content: Text("Opening email client to send message to Suman Krishna!"),
+          behavior: SnackBarBehavior.floating,
         ),
       );
     }
@@ -127,7 +124,7 @@ class _ContactScreenState extends State<ContactScreen> {
               controller: _nameCtrl,
               style: const TextStyle(color: Colors.white, fontSize: 14),
               decoration: _inputDecoration("Your Name", Icons.person_outline),
-              validator: (v) => v == null || v.isEmpty ? "Please enter your name" : null,
+              validator: (v) => v == null || v.trim().isEmpty ? "Please enter your name" : null,
             ),
             const SizedBox(height: 16),
             TextFormField(
@@ -141,7 +138,7 @@ class _ContactScreenState extends State<ContactScreen> {
               controller: _subjectCtrl,
               style: const TextStyle(color: Colors.white, fontSize: 14),
               decoration: _inputDecoration("Subject / Purpose", Icons.subject),
-              validator: (v) => v == null || v.isEmpty ? "Please enter a subject" : null,
+              validator: (v) => v == null || v.trim().isEmpty ? "Please enter a subject" : null,
             ),
             const SizedBox(height: 16),
             TextFormField(
@@ -149,7 +146,7 @@ class _ContactScreenState extends State<ContactScreen> {
               maxLines: 4,
               style: const TextStyle(color: Colors.white, fontSize: 14),
               decoration: _inputDecoration("Message", Icons.message_outlined),
-              validator: (v) => v == null || v.isEmpty ? "Please enter your message" : null,
+              validator: (v) => v == null || v.trim().isEmpty ? "Please enter your message" : null,
             ),
             const SizedBox(height: 22),
             SizedBox(
@@ -217,49 +214,72 @@ class _ContactScreenState extends State<ContactScreen> {
             icon: const Icon(Icons.mail_outline, color: AppTheme.primary, size: 16),
             label: "Institutional Email",
             value: PortfolioData.emailInstitutional,
-            onTap: () => _launchUrl("mailto:${PortfolioData.emailInstitutional}"),
+            copyValue: PortfolioData.emailInstitutional,
+            onTap: () => UrlHelper.launchEmail(context, email: PortfolioData.emailInstitutional),
           ),
           const Divider(color: AppTheme.border, height: 24),
           _contactItem(
             icon: const Icon(Icons.alternate_email, color: AppTheme.primary, size: 16),
-            label: "Personal Email",
+            label: "Primary Email",
             value: PortfolioData.emailPersonal,
-            onTap: () => _launchUrl("mailto:${PortfolioData.emailPersonal}"),
+            copyValue: PortfolioData.emailPersonal,
+            onTap: () => UrlHelper.launchEmail(context, email: PortfolioData.emailPersonal),
           ),
           const Divider(color: AppTheme.border, height: 24),
           _contactItem(
-            icon: const Icon(Icons.phone_outlined, color: AppTheme.primary, size: 16),
+            icon: const Icon(Icons.phone_outlined, color: AppTheme.emerald, size: 16),
             label: "Telephone / WhatsApp",
             value: PortfolioData.phone,
-            onTap: () => _launchUrl("tel:${PortfolioData.phone}"),
+            copyValue: PortfolioData.phone,
+            onTap: () => UrlHelper.launchPhone(context, PortfolioData.phone),
+          ),
+          const Divider(color: AppTheme.border, height: 24),
+          _contactItem(
+            icon: const Icon(Icons.location_on_outlined, color: AppTheme.amber, size: 16),
+            label: "Location",
+            value: PortfolioData.location,
+            copyValue: PortfolioData.location,
+            onTap: () => UrlHelper.copyToClipboard(context, PortfolioData.location, "Location"),
           ),
           const Divider(color: AppTheme.border, height: 24),
           _contactItem(
             icon: const FaIcon(FontAwesomeIcons.linkedin, color: Color(0xFF0A66C2), size: 16),
             label: "LinkedIn Professional",
             value: "in/suman-krishna-7a17a6275",
-            onTap: () => _launchUrl(PortfolioData.linkedin),
+            copyValue: PortfolioData.linkedin,
+            onTap: () => UrlHelper.launchURL(context, PortfolioData.linkedin),
           ),
           const Divider(color: AppTheme.border, height: 24),
           _contactItem(
             icon: const FaIcon(FontAwesomeIcons.github, color: Colors.white, size: 16),
             label: "GitHub Code Repository",
             value: "github.com/krishnaaidev",
-            onTap: () => _launchUrl(PortfolioData.github),
+            copyValue: PortfolioData.github,
+            onTap: () => UrlHelper.launchURL(context, PortfolioData.github),
           ),
           const Divider(color: AppTheme.border, height: 24),
           _contactItem(
             icon: const FaIcon(FontAwesomeIcons.instagram, color: Color(0xFFE1306C), size: 16),
             label: "Instagram Photography",
             value: "@bruh.vision",
-            onTap: () => _launchUrl(PortfolioData.instagramPhoto),
+            copyValue: PortfolioData.instagramPhoto,
+            onTap: () => UrlHelper.launchURL(context, PortfolioData.instagramPhoto),
           ),
           const Divider(color: AppTheme.border, height: 24),
           _contactItem(
             icon: const FaIcon(FontAwesomeIcons.instagram, color: Color(0xFFA855F7), size: 16),
             label: "Instagram Personal",
             value: "@krishna.ai.dev",
-            onTap: () => _launchUrl(PortfolioData.instagramPersonal),
+            copyValue: PortfolioData.instagramPersonal,
+            onTap: () => UrlHelper.launchURL(context, PortfolioData.instagramPersonal),
+          ),
+          const Divider(color: AppTheme.border, height: 24),
+          _contactItem(
+            icon: const FaIcon(FontAwesomeIcons.globe, color: AppTheme.primary, size: 16),
+            label: "Technical Blog",
+            value: "blogsitesk.netlify.app",
+            copyValue: PortfolioData.blog,
+            onTap: () => UrlHelper.launchURL(context, PortfolioData.blog),
           ),
         ],
       ),
@@ -271,38 +291,49 @@ class _ContactScreenState extends State<ContactScreen> {
     required String label,
     required String value,
     required VoidCallback onTap,
+    String? copyValue,
   }) {
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(10),
-      child: Row(
-        children: [
-          Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              color: AppTheme.primary.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(12),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+        child: Row(
+          children: [
+            Container(
+              width: 38,
+              height: 38,
+              decoration: BoxDecoration(
+                color: AppTheme.primary.withValues(alpha: 0.12),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Center(child: icon),
             ),
-            child: Center(child: icon),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(label, style: const TextStyle(fontSize: 11, color: AppTheme.textSecondary)),
-                const SizedBox(height: 2),
-                Text(
-                  value,
-                  style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Colors.white),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(label, style: const TextStyle(fontSize: 11, color: AppTheme.textSecondary)),
+                  const SizedBox(height: 2),
+                  Text(
+                    value,
+                    style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color: Colors.white),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
             ),
-          ),
-          const Icon(Icons.arrow_outward, size: 14, color: AppTheme.textMuted),
-        ],
+            if (copyValue != null)
+              IconButton(
+                icon: const Icon(Icons.copy, size: 16, color: AppTheme.textMuted),
+                tooltip: "Copy $label",
+                onPressed: () => UrlHelper.copyToClipboard(context, copyValue, label),
+              )
+            else
+              const Icon(Icons.arrow_outward, size: 14, color: AppTheme.textMuted),
+          ],
+        ),
       ),
     );
   }
