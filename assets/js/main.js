@@ -42,8 +42,9 @@ function initTypingEffect() {
     "Machine Learning Engineer",
     "Data Science Engineer",
     "Google Student Ambassador",
+    "Google Developer Groups Member",
     "Deep Learning & NLP Specialist",
-    "Computer Vision & BI Builder"
+    "Prompt & Generative AI Builder"
   ];
 
   let roleIndex = 0;

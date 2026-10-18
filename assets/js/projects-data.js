@@ -1,16 +1,70 @@
 /**
  * Suman Krishna Portfolio - Projects Data
- * Machine Learning, Computer Vision, Data Analytics, Deep Learning, Robotics
+ * Machine Learning, Computer Vision, Data Analytics, Deep Learning, Full-Stack & Robotics
  */
 
 const projectsData = [
+  {
+    id: "aihire",
+    title: "AIHire: Autonomous AI Interview & Candidate Evaluation Platform",
+    category: "ml",
+    categoryLabel: "LLMs, NLP & AI Interview",
+    featured: true,
+    badge: "B.Tech Capstone",
+    status: "Academic Capstone (2026)",
+    date: "2026 — B.Tech Capstone Project",
+    image: "assets/images/projects/aihire.svg",
+    shortDesc: "End-to-end recruitment decision-support system fusing Large Language Models (LLMs), NLP, speech processing, and automated resume screening for autonomous candidate evaluation.",
+    fullDesc: "AIHire is a next-generation recruitment decision-support platform engineered as a B.Tech Capstone Project at CT Institute of Engineering, Management and Technology. It autonomously conducts and scores technical interviews using fine-tuned LLMs, real-time speech-to-text processing, sentiment and confidence tracking, and algorithmic resume-to-job matching.",
+    highlights: [
+      "Engineered an autonomous AI interviewer that dynamically generates context-aware follow-up technical questions based on candidate responses.",
+      "Integrated real-time audio speech-to-text and NLP emotion/confidence scoring pipelines.",
+      "Built an automated resume screener parsing PDF/DOCX resumes against multi-attribute job descriptions to generate instant fit scores.",
+      "Architected clean microservices using Next.js, FastAPI, Docker containers, and cloud deployment pipelines."
+    ],
+    tags: ["LLMs", "FastAPI", "Next.js", "Python", "Speech-to-Text", "NLP", "Docker", "Resume Screener"],
+    metrics: [
+      { label: "Evaluation Latency", value: "< 350ms streaming" },
+      { label: "Resume Parsing Match", value: "95%+ Accuracy" },
+      { label: "Deployment", value: "Docker + Render" }
+    ],
+    github: "https://github.com/krishnaaidev/aihire2",
+    demo: "#"
+  },
+  {
+    id: "kra-app",
+    title: "CT Group KRA & KPI Performance Management System",
+    category: "bi",
+    categoryLabel: "Enterprise Web & Analytics",
+    featured: true,
+    badge: "Institutional System",
+    status: "Deployed & Active",
+    date: "2026 — CT Group of Institutions",
+    image: "assets/images/projects/kra-app.svg",
+    shortDesc: "Enterprise institutional performance appraisal platform managing and evaluating faculty, HODs, and HOIs across a rigorous 1,000-mark academic & administrative framework.",
+    fullDesc: "A secure, multi-tier institutional digital governance application built for CT Group of Institutions. It digitizes the end-to-end appraisal workflow across 1,000 quantifiable metrics spanning teaching efficacy, research publications, patents, student feedback, and departmental leadership.",
+    highlights: [
+      "Implemented a 3-tier Role-Based Access Control (RBAC) governance hierarchy: Faculty self-appraisal, HOD departmental review, and HOI executive sanction.",
+      "Engineered a dynamic 1,000-Mark scoring calculation engine with real-time validation, evidence attachments, and audit trails.",
+      "Built one-click automated Excel (SheetJS) report generation for institutional accreditation and annual faculty reviews.",
+      "Developed using Next.js 14 App Router, TypeScript, Tailwind CSS, Better-SQLite3, and JWT session authentication."
+    ],
+    tags: ["Next.js 14", "TypeScript", "Tailwind CSS", "Better-SQLite3", "RBAC", "SheetJS", "Data Analytics"],
+    metrics: [
+      { label: "Framework Scale", value: "1,000 Marks" },
+      { label: "Role Hierarchy", value: "Faculty / HOD / HOI" },
+      { label: "Reports Generated", value: "Instant XLSX" }
+    ],
+    github: "https://github.com/krishnaaidev/CTGroup-KRA-KPI",
+    demo: "#"
+  },
   {
     id: "multimodal-depression",
     title: "Multimodal Depression Detection System",
     category: "ml",
     categoryLabel: "Deep Learning & NLP",
     featured: true,
-    badge: "Flagship Project",
+    badge: "Flagship Research",
     status: "Active Research & Development",
     date: "May 2026 – Present",
     image: "assets/images/projects/multimodal-depression.svg",
@@ -55,7 +109,7 @@ const projectsData = [
       { label: "Data Volume", value: "50,000+ Records" },
       { label: "Loss Reduction", value: "Identified Key SKUs" }
     ],
-    github: "https://github.com/krishnaaidev",
+    github: "https://github.com/krishnaaidev/superstore-powerbi-dashboard",
     demo: "https://sumankrishnaportfolio.netlify.app"
   },
   {
