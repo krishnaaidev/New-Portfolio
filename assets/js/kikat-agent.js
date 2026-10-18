@@ -743,7 +743,7 @@
       response: `<strong>Suman Krishna</strong> is a final-year Computer Science undergraduate at <strong>CT Institute of Engineering, Management &amp; Technology (CTIEMT)</strong>, Jalandhar, Punjab (CGPA: <strong>8.0 / 10.0</strong>).<br><br>
       He serves as an official <strong>Google Student Ambassador</strong> (since Sep 2025) and core <strong>Google Developer Groups (GDG) Member</strong> (since Sep 2026). Key highlights:
       <ul style="margin: 0.5rem 0 0.5rem 1.2rem; padding: 0;">
-        <li>📱 <strong>CT Group KRA &amp; KPI System:</strong> I made this app with Flutter &amp; Dart</li>
+        <li>📱 <strong>CT Group KRA &amp; KPI System:</strong> Institutional appraisal platform built with Flutter &amp; Dart</li>
         <li>🎯 <strong>RedRob Assessment Score:</strong> 763 / 1000 (Distinction Benchmark)</li>
         <li>🥇 <strong>7x NASSCOM Gold Certifications:</strong> 100% in AWS Cloud &amp; GenAI 101</li>
         <li>🤖 <strong>Autonomous Recruitment AI:</strong> AIHire (B.Tech Capstone Project)</li>
@@ -751,7 +751,7 @@
       </ul>`
     },
 
-    // 3. CT Group KRA & KPI Performance Management System (Made with Flutter)
+    // 3. CT Group KRA & KPI Performance Management System
     {
       intent: "ctg_faculty_app",
       triggers: [
@@ -768,9 +768,9 @@
         { phrase: "mobile app", weight: 6 },
         { phrase: "performance management", weight: 9 }
       ],
-      spoken: "I made this app — CT Group KRA and KPI Performance Management System with Flutter and Dart for CT Group of Institutions. It evaluates faculty, heads of department, and heads of institutes across a one thousand mark framework with three-tier role-based access control and automated Excel and PDF reports.",
-      response: `<strong>CT Group KRA &amp; KPI Performance Management System (Made with Flutter)</strong><br><br>
-      I made this institutional cross-platform application using <strong>Flutter &amp; Dart</strong> for <strong>CT Group of Institutions</strong>:<br>
+      spoken: "CT Group KRA and KPI Performance Management System is a cross-platform institutional appraisal application engineered with Flutter and Dart for CT Group of Institutions. It evaluates faculty, heads of department, and heads of institutes across a one thousand mark framework with three-tier role-based access control and automated Excel and PDF reports.",
+      response: `<strong>CT Group KRA &amp; KPI Performance Management System</strong><br><br>
+      A cross-platform institutional appraisal platform engineered with <strong>Flutter &amp; Dart</strong> for <strong>CT Group of Institutions</strong>:<br>
       <ul style="margin: 0.5rem 0 0.5rem 1.2rem; padding: 0;">
         <li><strong>Tech Stack:</strong> Flutter, Dart, Material 3, Provider State Management, SQLite, REST API, SheetJS Excel &amp; PDF Export.</li>
         <li><strong>1,000-Mark Framework:</strong> Evaluates teaching efficacy, research publications, patents, student feedback, and departmental leadership.</li>
@@ -901,7 +901,7 @@
       spoken: "Suman has built eight impactful systems: The CT Group KRA and KPI Performance Management System built with Flutter, AIHire for autonomous AI interviews, the Multimodal Depression Detection model, the Superstore Power BI Dashboard, the Plant Disease CNN classifier, the Air Pollution Health Risk model, Career Guidance AI, and a dual wired and Bluetooth Robo Car.",
       response: `<strong>Suman Krishna's Key Technical Projects:</strong><br>
       <ul style="margin: 0.5rem 0 0.5rem 1.2rem; padding: 0;">
-        <li>📱 <strong>CT Group KRA &amp; KPI Performance Management System:</strong> I made this app with Flutter &amp; Dart for CT Group.</li>
+        <li>📱 <strong>CT Group KRA &amp; KPI Performance Management System:</strong> Cross-platform appraisal system engineered with Flutter &amp; Dart for CT Group.</li>
         <li>🤖 <strong>AIHire:</strong> Autonomous AI recruitment &amp; candidate evaluation platform (B.Tech Capstone).</li>
         <li>🧠 <strong>Multimodal Depression Detection:</strong> Tri-modal late fusion (BERT, Wav2Vec 2.0, ResNet-LSTM) on USC DAIC-WOZ.</li>
         <li>📊 <strong>Superstore Sales &amp; Profit BI:</strong> 4-page Power BI dashboard with automated Python EDA for EduTech Solutions.</li>
@@ -1255,68 +1255,114 @@
   }
 
   /* ==========================================================================
-     4. Speech Synthesis — Natural Indian Accent Female Voice
+     4. Speech Synthesis — Strictly Natural Female Voice (Indian Accent First)
      ========================================================================== */
+  function isMaleVoice(v) {
+    if (!v || !v.name) return false;
+    const n = v.name.toLowerCase();
+    // 1. Explicit male tokens
+    if (/\b(male|man|boy|guy|mr|sir)\b/i.test(n)) return true;
+    // 2. Known male voice identifiers across macOS, Windows, Chrome, iOS, Android
+    const knownMaleNames = [
+      "rishi", "david", "mark", "george", "daniel", "alex", "fred", "oliver",
+      "thomas", "lee", "ravi", "hemant", "ajay", "tarik", "prabhat", "sean",
+      "guy", "victor", "bruce", "ralph", "tom", "junior", "albert", "zarvox",
+      "trinoids", "deranged", "bad news", "bahh", "bells", "boing", "bubbles",
+      "cellos", "good news", "hysterical", "pipe organ", "whisper"
+    ];
+    return knownMaleNames.some(m => n.includes(m));
+  }
+
+  function isExplicitFemaleVoice(v) {
+    if (!v || !v.name) return false;
+    if (isMaleVoice(v)) return false;
+    const n = v.name.toLowerCase();
+    const femaleKeywords = [
+      "female", "woman", "girl", "lady",
+      "veena", "neerja", "heera", "swara", "kavya", "kalpana", "lekha",
+      "samantha", "victoria", "karen", "zira", "jenny", "aria", "moira",
+      "tessa", "fiona", "serena", "stephanie", "susan", "hazel"
+    ];
+    return femaleKeywords.some(k => n.includes(k));
+  }
+
   function initSpeechSynthesis() {
     if (!("speechSynthesis" in window)) {
       console.warn("Kikat: Web Speech Synthesis not supported in this browser.");
       return;
     }
 
-    function selectBestIndianVoice() {
+    function selectBestFemaleVoice() {
       const voices = window.speechSynthesis.getVoices();
       if (!voices || voices.length === 0) return;
 
-      // Priority list: Natural Indian English / Hindi Voices across macOS, Windows, Android & Chrome
-      const preferredIndianNames = [
-        // macOS built-in Indian voices
-        "Veena",
-        "Heera",
-        "Rishi",
-        // Google Indian voices (Chrome / Android)
-        "Google English (India)",
-        "Google हिन्दी",
-        // Windows Edge / Chrome Indian voices
-        "Microsoft Neerja Online (Natural) - English (India)",
-        "Microsoft Heera Online (Natural) - English (India)",
-        "Microsoft Swara Online (Natural) - Hindi (India)",
-        "Microsoft Neerja",
-        "Microsoft Heera"
+      // Filter out ANY voice that is male or matches male blacklist
+      const nonMaleVoices = voices.filter(v => !isMaleVoice(v));
+
+      // 1. Priority: Specific Indian Female Voices (Veena on macOS, Neerja/Heera/Swara on Windows/Edge/Chrome)
+      const preferredIndianFemaleNames = [
+        "veena",
+        "microsoft neerja",
+        "neerja",
+        "microsoft heera",
+        "heera",
+        "microsoft swara",
+        "swara",
+        "google हिन्दी",
+        "kavya",
+        "kalpana",
+        "lekha"
       ];
 
-      for (const name of preferredIndianNames) {
-        const found = voices.find(v => v.name.toLowerCase().includes(name.toLowerCase()));
+      for (const name of preferredIndianFemaleNames) {
+        const found = nonMaleVoices.find(v => v.name.toLowerCase().includes(name));
         if (found) {
           state.selectedVoice = found;
           return;
         }
       }
 
-      // 2. Any en-IN or hi-IN voice
-      const anyIndianLang = voices.find(v =>
-        v.lang === "en-IN" || v.lang === "hi-IN" ||
-        v.lang.startsWith("en-IN") || v.lang.startsWith("hi-IN")
+      // 2. Any en-IN or hi-IN voice that is verified NOT male
+      const indianNonMale = nonMaleVoices.find(v => {
+        const lang = (v.lang || "").toLowerCase();
+        const isIndianLang = lang === "en-in" || lang === "hi-in" || lang.startsWith("en-in") || lang.startsWith("hi-in");
+        return isIndianLang && !isMaleVoice(v);
+      });
+      if (indianNonMale) {
+        state.selectedVoice = indianNonMale;
+        return;
+      }
+
+      // 3. Indian keyword in name/lang as long as NOT male
+      const anyIndianFemale = nonMaleVoices.find(v =>
+        (/india|indian|hindi/i.test(v.name) || /in/i.test(v.lang)) && !isMaleVoice(v)
       );
-      if (anyIndianLang) {
-        state.selectedVoice = anyIndianLang;
+      if (anyIndianFemale) {
+        state.selectedVoice = anyIndianFemale;
         return;
       }
 
-      // 3. Fallback: Search for 'india' in name or language
-      const anyIndia = voices.find(v => /india|indian|hindi/i.test(v.name) || /in/i.test(v.lang));
-      if (anyIndia) {
-        state.selectedVoice = anyIndia;
+      // 4. Natural female English fallback (Samantha on macOS, Jenny/Zira on Windows, Google UK/US Female)
+      const femaleEnglish = nonMaleVoices.find(v => isExplicitFemaleVoice(v) && (v.lang || "").toLowerCase().startsWith("en"));
+      if (femaleEnglish) {
+        state.selectedVoice = femaleEnglish;
         return;
       }
 
-      // 4. Natural female English fallback if no Indian voice pack is installed
-      const femaleFallback = voices.find(v => /female|woman|samantha|victoria|karen|zira/i.test(v.name) && v.lang.startsWith("en"));
-      state.selectedVoice = femaleFallback || voices[0];
+      // 5. Any verified female voice
+      const anyFemale = nonMaleVoices.find(v => isExplicitFemaleVoice(v));
+      if (anyFemale) {
+        state.selectedVoice = anyFemale;
+        return;
+      }
+
+      // 6. Safe fallback: first non-male voice, otherwise null (never speak with a male voice!)
+      state.selectedVoice = nonMaleVoices[0] || null;
     }
 
-    selectBestIndianVoice();
+    selectBestFemaleVoice();
     if (window.speechSynthesis.onvoiceschanged !== undefined) {
-      window.speechSynthesis.onvoiceschanged = selectBestIndianVoice;
+      window.speechSynthesis.onvoiceschanged = selectBestFemaleVoice;
     }
   }
 
@@ -1353,12 +1399,12 @@
         utterance.voice = state.selectedVoice;
       }
 
-      // TUNED FOR NATURAL INDIAN ENGLISH FEMALE VOICE:
-      // Pitch: 1.02 (natural, clear, elegant Indian accent)
-      // Rate: 0.98 (clear, articulate, natural conversational pace)
+      // TUNED FOR NATURAL FEMALE VOICE (INDIAN ACCENT):
+      // Pitch: 1.06 (pleasant, clear, natural female pitch)
+      // Rate: 0.96 (clear, articulate, natural conversational pace)
       // Volume: 1.0
-      utterance.pitch = 1.02;
-      utterance.rate = 0.98;
+      utterance.pitch = 1.06;
+      utterance.rate = 0.96;
       utterance.volume = 1.0;
 
       utterance.onstart = () => {
