@@ -1,2414 +1,929 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suman Krishna | Machine Learning Engineer & Google Student Ambassador</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Code+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            /* Modern Professional Theme */
-            --bg-primary: #0a192f;
-            --bg-secondary: #112240;
-            --bg-tertiary: #1a2d53;
-            --accent-primary: #64ffda;
-            --accent-secondary: #57cbff;
-            --accent-tertiary: #9d7aff;
-            --text-primary: #e6f1ff;
-            --text-secondary: #a8b2d1;
-            --text-tertiary: #8892b0;
-            --card-bg: rgba(17, 34, 64, 0.7);
-            --border-color: rgba(100, 255, 218, 0.1);
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.15);
-            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-primary);
-            background: var(--bg-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: var(--bg-secondary);
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent-primary);
-            border-radius: 5px;
-        }
-        
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(10, 25, 47, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-        
-        .logo {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--accent-primary);
-            text-decoration: none;
-            font-family: 'Source Code Pro', monospace;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-        
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            font-family: 'Source Code Pro', monospace;
-            padding: 8px 0;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-primary);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--accent-primary);
-        }
-        
-        .nav-links a:hover::before,
-        .nav-links a.active::before {
-            width: 100%;
-        }
-        
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--accent-primary);
-            font-size: 24px;
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 120px 0 80px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Profile Photo */
-        .profile-photo-container {
-            position: relative;
-            width: 220px;
-            height: 220px;
-            margin: 0 auto 40px;
-        }
-        
-        .profile-photo {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent-primary);
-            box-shadow: 0 0 30px rgba(100, 255, 218, 0.3);
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .profile-photo-glow {
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
-            z-index: -1;
-            filter: blur(10px);
-            opacity: 0.3;
-            animation: float 3s ease-in-out infinite reverse;
-        }
-        
-        /* Floating Badge Animation */
-        .hero-badge {
-            display: inline-block;
-            background: rgba(100, 255, 218, 0.1);
-            color: var(--accent-primary);
-            padding: 8px 20px;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 30px;
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            animation: float 3s ease-in-out infinite;
-            position: relative;
-            z-index: 2;
-            backdrop-filter: blur(10px);
-        }
-        
-        @keyframes float {
-            0%, 100% { 
-                transform: translateY(0); 
-            }
-            50% { 
-                transform: translateY(-10px); 
-            }
-        }
-        
-        .hero-title {
-            font-size: 56px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
-        
-        .hero-title span {
-            color: var(--accent-primary);
-        }
-        
-        .hero-subtitle {
-            font-size: 32px;
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-            font-weight: 600;
-            min-height: 40px;
-        }
-        
-        .typed-text {
-            color: var(--accent-primary);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .typed-text::after {
-            content: '|';
-            position: absolute;
-            right: -8px;
-            color: var(--accent-primary);
-            animation: blink 1s infinite;
-        }
-        
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-        
-        .hero-description {
-            font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
-        }
-        
-        .hero-cta {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        /* Buttons */
-        .btn {
-            padding: 14px 32px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 15px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-            font-family: 'Source Code Pro', monospace;
-        }
-        
-        .btn-primary {
-            background: var(--accent-primary);
-            color: #0a192f;
-            border: 1px solid var(--accent-primary);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--accent-primary);
-            border: 1px solid var(--accent-primary);
-        }
-        
-        .btn-secondary:hover {
-            background: rgba(100, 255, 218, 0.1);
-            transform: translateY(-3px);
-        }
-        
-        /* Section Styles */
-        section {
-            padding: 100px 0;
-            position: relative;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-badge {
-            display: inline-block;
-            color: var(--accent-primary);
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 16px;
-            font-family: 'Source Code Pro', monospace;
-            letter-spacing: 1px;
-        }
-        
-        .section-title {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 20px;
-        }
-        
-        .section-subtitle {
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 18px;
-        }
-        
-        /* About Section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
-        }
-        
-        .about-intro h3 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: var(--text-primary);
-        }
-        
-        .about-intro p {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-        
-        .about-highlight {
-            background: rgba(100, 255, 218, 0.05);
-            border-left: 3px solid var(--accent-primary);
-            padding: 24px;
-            margin: 30px 0;
-        }
-        
-        .about-highlight p {
-            color: var(--accent-primary);
-            font-weight: 500;
-            margin: 0;
-            font-size: 18px;
-        }
-        
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-top: 40px;
-        }
-        
-        .about-stat-item {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 24px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .about-stat-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-primary);
-        }
-        
-        .about-stat-number {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--accent-primary);
-            display: block;
-            margin-bottom: 8px;
-            font-family: 'Source Code Pro', monospace;
-        }
-        
-        .about-stat-label {
-            color: var(--text-secondary);
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-family: 'Source Code Pro', monospace;
-        }
-        
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .skill-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 32px;
-            transition: all 0.3s ease;
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-primary);
-        }
-        
-        .skill-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        
-        .skill-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 8px;
-            background: rgba(100, 255, 218, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-primary);
-            font-size: 20px;
-        }
-        
-        .skill-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-        
-        .skill-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .skill-tag {
-            background: rgba(100, 255, 218, 0.05);
-            color: var(--accent-primary);
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-size: 14px;
-            font-family: 'Source Code Pro', monospace;
-            border: 1px solid rgba(100, 255, 218, 0.1);
-        }
-        
-        /* Education Section */
-        .education-section {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 60px;
-        }
-        
-        .education-main {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .education-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .education-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(100, 255, 218, 0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-primary);
-            font-size: 24px;
-        }
-        
-        .education-title h3 {
-            font-size: 24px;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-        
-        .education-title p {
-            color: var(--accent-primary);
-            font-weight: 500;
-        }
-        
-        .education-details {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .detail-item h4 {
-            color: var(--text-secondary);
-            font-size: 14px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-family: 'Source Code Pro', monospace;
-        }
-        
-        .highlight-list {
-            list-style: none;
-        }
-        
-        .highlight-list li {
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-            padding-left: 24px;
-            position: relative;
-        }
-        
-        .highlight-list li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--accent-primary);
-        }
-        
-        .cert-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 20px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            margin-bottom: 16px;
-            transition: all 0.3s ease;
-        }
-        
-        .cert-item:hover {
-            transform: translateX(5px);
-            border-color: var(--accent-primary);
-        }
-        
-        .cert-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(100, 255, 218, 0.1);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-primary);
-            font-size: 18px;
-        }
-        
-        /* Experience Section */
-        .experience-timeline {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .exp-item {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 32px;
-            margin-bottom: 24px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .exp-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-primary);
-        }
-        
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-        
-        .exp-title {
-            font-size: 22px;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-        
-        .exp-company {
-            color: var(--accent-primary);
-            font-weight: 500;
-        }
-        
-        .exp-date {
-            color: var(--text-tertiary);
-            font-size: 14px;
-            background: rgba(100, 255, 218, 0.05);
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-family: 'Source Code Pro', monospace;
-        }
-        
-        .exp-highlights {
-            list-style: none;
-        }
-        
-        .exp-highlights li {
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-            padding-left: 24px;
-            position: relative;
-        }
-        
-        .exp-highlights li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--accent-primary);
-        }
-        
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        
-        .project-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-primary);
-        }
-        
-        .project-image {
-            height: 200px;
-            background: var(--bg-tertiary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-primary);
-            font-size: 48px;
-        }
-        
-        .project-content {
-            padding: 32px;
-        }
-        
-        .project-id {
-            color: var(--accent-primary);
-            font-size: 14px;
-            margin-bottom: 12px;
-            font-family: 'Source Code Pro', monospace;
-        }
-        
-        .project-title {
-            font-size: 22px;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-        }
-        
-        .project-description {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-        
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 24px;
-        }
-        
-        .tech-tag {
-            background: rgba(100, 255, 218, 0.05);
-            color: var(--accent-primary);
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 13px;
-            font-family: 'Source Code Pro', monospace;
-        }
-        
-        .project-links {
-            display: flex;
-            gap: 12px;
-        }
-        
-        .project-link {
-            flex: 1;
-            text-align: center;
-            padding: 12px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 14px;
-            font-family: 'Source Code Pro', monospace;
-            transition: all 0.3s ease;
-        }
-        
-        .project-link-primary {
-            background: var(--accent-primary);
-            color: var(--bg-primary);
-        }
-        
-        .project-link-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(100, 255, 218, 0.3);
-        }
-        
-        .project-link-secondary {
-            background: transparent;
-            color: var(--accent-primary);
-            border: 1px solid var(--accent-primary);
-        }
-        
-        .project-link-secondary:hover {
-            background: rgba(100, 255, 218, 0.1);
-        }
-        
-        /* Articles Section */
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .article-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .article-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-primary);
-        }
-        
-        .article-image {
-            height: 160px;
-            background: var(--bg-tertiary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-primary);
-            font-size: 40px;
-        }
-        
-        .article-content {
-            padding: 24px;
-        }
-        
-        .article-meta {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 16px;
-            color: var(--text-tertiary);
-            font-size: 14px;
-        }
-        
-        .article-category {
-            color: var(--accent-primary);
-            font-weight: 500;
-        }
-        
-        .article-title {
-            font-size: 20px;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-            line-height: 1.4;
-        }
-        
-        .article-excerpt {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        
-        .article-link {
-            color: var(--accent-primary);
-            text-decoration: none;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Source Code Pro', monospace;
-        }
-        
-        /* Hobbies Section */
-        .hobbies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 24px;
-        }
-        
-        .hobby-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 32px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .hobby-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-primary);
-        }
-        
-        .hobby-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(100, 255, 218, 0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-primary);
-            font-size: 24px;
-            margin: 0 auto 20px;
-        }
-        
-        .hobby-title {
-            font-size: 18px;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-        }
-        
-        .hobby-description {
-            color: var(--text-secondary);
-            font-size: 15px;
-            line-height: 1.6;
-        }
-        
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-        
-        .contact-card {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 24px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .contact-card:hover {
-            transform: translateX(5px);
-            border-color: var(--accent-primary);
-        }
-        
-        .contact-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(100, 255, 218, 0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-primary);
-            font-size: 20px;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 16px;
-            margin-top: 40px;
-        }
-        
-        .social-link {
-            width: 48px;
-            height: 48px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            background: var(--accent-primary);
-            color: var(--bg-primary);
-            transform: translateY(-3px);
-        }
-        
-        .contact-form {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 40px;
-        }
-        
-        .form-group {
-            margin-bottom: 24px;
-        }
-        
-        .form-label {
-            display: block;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 14px 16px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.1);
-        }
-        
-        textarea.form-control {
-            min-height: 120px;
-            resize: vertical;
-        }
-        
-        /* Footer */
-        .footer {
-            background: var(--bg-secondary);
-            padding: 60px 0 40px;
-            border-top: 1px solid var(--border-color);
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-description {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin: 20px 0;
-            max-width: 400px;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: var(--accent-primary);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-tertiary);
-            font-size: 14px;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .about-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .hero-title {
-                font-size: 48px;
-            }
-            
-            .hero-subtitle {
-                font-size: 28px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-toggle {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background: var(--bg-primary);
-                flex-direction: column;
-                padding: 24px;
-                gap: 20px;
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-                border-top: 1px solid var(--border-color);
-            }
-            
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-            
-            .hero-title {
-                font-size: 40px;
-            }
-            
-            .hero-subtitle {
-                font-size: 24px;
-            }
-            
-            .profile-photo-container {
-                width: 180px;
-                height: 180px;
-            }
-            
-            .section-title {
-                font-size: 32px;
-            }
-            
-            .projects-grid,
-            .articles-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .education-details {
-                grid-template-columns: 1fr;
-            }
-            
-            .education-section {
-                padding: 40px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 32px;
-            }
-            
-            .hero-subtitle {
-                font-size: 20px;
-            }
-            
-            .profile-photo-container {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .hero-cta {
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .about-stats {
-                grid-template-columns: 1fr;
-            }
-            
-            .education-section {
-                padding: 24px;
-            }
-            
-            .contact-form {
-                padding: 24px;
-            }
-            
-            .hobbies-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Loading Screen */
-        .loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-primary);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-        
-        .loading.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        .loader {
-            width: 50px;
-            height: 50px;
-            border: 3px solid transparent;
-            border-top-color: var(--accent-primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* Back to Top */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--accent-primary);
-            color: var(--bg-primary);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-            z-index: 100;
-        }
-        
-        .back-to-top.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .back-to-top:hover {
-            transform: translateY(-5px);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Suman Krishna — Machine Learning & Data Science Engineer, Google Student Ambassador. Building intelligent multimodal AI systems, deep learning pipelines, and data analytics dashboards.">
+  <meta name="keywords" content="Suman Krishna, Machine Learning Engineer, Data Science, AI Portfolio, Google Student Ambassador, Deep Learning, Computer Vision, Power BI, Python">
+  <meta name="author" content="Suman Krishna">
+  <meta property="og:title" content="Suman Krishna | ML & Data Science Engineer">
+  <meta property="og:description" content="Explore end-to-end Machine Learning pipelines, Computer Vision architectures, and Data Analytics dashboards by Suman Krishna.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sumankrishnaportfolio.netlify.app">
+  <meta property="og:image" content="assets/images/profile.jpg">
+  
+  <title>Suman Krishna | Machine Learning & Data Science Engineer</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading" id="loading">
-        <div class="loader"></div>
-        <p style="color: var(--accent-primary); font-family: 'Source Code Pro', monospace;">Loading...</p>
+
+  <!-- Top Scroll Progress Bar -->
+  <div id="scroll-progress"></div>
+
+  <!-- ==========================================================================
+       Navigation Bar
+       ========================================================================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="nav-brand" aria-label="Suman Krishna Home">
+        <div class="nav-logo-box">SK</div>
+        <span class="brand-text">Suman Krishna</span>
+      </a>
+
+      <!-- Desktop & Mobile Nav Menu -->
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#achievements" class="nav-link">Honors</a></li>
+          <li><a href="#articles" class="nav-link">Articles</a></li>
+          <li><a href="#hobbies" class="nav-link">Beyond Code</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <!-- Light/Dark Mode Switch -->
+          <button class="btn-icon-toggle" id="theme-toggle" aria-label="Toggle light or dark theme" title="Toggle Theme">
+            <i class="fa-solid fa-sun"></i>
+          </button>
+          
+          <!-- View/Download Resume -->
+          <button class="btn btn-primary btn-sm open-resume-modal">
+            <i class="fa-regular fa-file-lines"></i>
+            <span>Resume</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
+  </header>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-container">
-                <a href="#home" class="logo">SUMAN KRISHNA</a>
-                
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#articles">Articles</a></li>
-                    <li><a href="#hobbies">Hobbies</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                
-                <button class="mobile-toggle" id="mobileToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
+  <main>
+    <!-- ==========================================================================
+         Hero Section
+         ========================================================================== -->
+    <section class="hero-section" id="home">
+      <!-- Neural Constellation Canvas -->
+      <canvas id="hero-canvas"></canvas>
+      <div class="hero-radial-glow"></div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="container">
-            <div class="hero-content">
-                <!-- Profile Photo Added Here -->
-                <div class="profile-photo-container">
-                    <div class="profile-photo-glow"></div>
-                    <img src="pp.jpeg" 
-                         alt="Suman Krishna - Final Year Undergraduate" 
-                         class="profile-photo">
-                </div>
-                
-                <div class="hero-badge">
-                    <i class="fab fa-google"></i> Google Student Ambassador 2025
-                </div>
-                <h1 class="hero-title">
-                    SUMAN <span>KRISHNA</span>
-                </h1>
-                <h2 class="hero-subtitle">
-                    > <span class="typed-text" id="typed-text"></span>
-                </h2>
-                <p class="hero-description">
-                    Building intelligent systems that bridge AI innovation with real-world impact. 
-                    Passionate about Machine Learning, Mobile Development, and creating scalable 
-                    solutions that transform industries and improve lives.
-                </p>
-                <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary">
-                        <i class="fas fa-code"></i>
-                        View Projects
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <i class="fas fa-envelope"></i>
-                        Get in Touch
-                    </a>
-                </div>
+      <div class="container hero-grid">
+        <!-- Hero Text Content -->
+        <div class="hero-content">
+          <div class="hero-status-pill">
+            <span class="pulse-dot"></span>
+            <span>Google Student Ambassador • Open to ML & Data Science Roles</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm <span class="text-gradient">Suman Krishna</span>
+          </h1>
+
+          <div class="hero-subtitle-box">
+            <span class="typing-prefix">> I build as a</span>
+            <span class="typing-text" id="typing-role"></span>
+          </div>
+
+          <p class="hero-description">
+            Final-year Computer Science undergraduate passionate about bridging cutting-edge AI research with tangible real-world solutions. Hands-on expertise in end-to-end Machine Learning pipelines, multimodal deep learning (NLP & Computer Vision), and executive Power BI analytics.
+          </p>
+
+          <div class="hero-ctas">
+            <a href="#projects" class="btn btn-primary">
+              <i class="fa-solid fa-code-fork"></i>
+              <span>Explore Projects</span>
+            </a>
+            <button class="btn btn-secondary open-resume-modal">
+              <i class="fa-regular fa-file-pdf"></i>
+              <span>View Resume</span>
+            </button>
+            <a href="#contact" class="btn btn-outline">
+              <i class="fa-regular fa-envelope"></i>
+              <span>Get in Touch</span>
+            </a>
+          </div>
+
+          <!-- Quick Metrics Bar -->
+          <div class="hero-stats-grid">
+            <div class="stat-item">
+              <span class="stat-number" data-target="500" data-suffix="+">0</span>
+              <span class="stat-label">Students Mentored</span>
             </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="96.7" data-suffix="%" data-decimals="1">0%</span>
+              <span class="stat-label">Max Model Accuracy</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="7" data-suffix="+">0</span>
+              <span class="stat-label">AI / Data Projects</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="1600" data-suffix="+">0</span>
+              <span class="stat-label">Chess.com Rating</span>
+            </div>
+          </div>
         </div>
+
+        <!-- Hero Visual / Photo Card -->
+        <div class="hero-visual">
+          <div class="avatar-frame tilt-card">
+            <div class="avatar-inner">
+              <img src="assets/images/profile.jpg" alt="Suman Krishna" class="avatar-img" width="320" height="380">
+            </div>
+
+            <!-- Floating Tech Badges -->
+            <div class="floating-badge badge-top-left">
+              <i class="fa-brands fa-google"></i>
+              <span>Google Ambassador</span>
+            </div>
+
+            <div class="floating-badge badge-mid-right">
+              <i class="fa-solid fa-brain"></i>
+              <span>PyTorch &amp; TF</span>
+            </div>
+
+            <div class="floating-badge badge-bottom-right">
+              <i class="fa-solid fa-chart-line"></i>
+              <span>Power BI &amp; SQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">About Me</div>
-                <h2 class="section-title">My Journey & Philosophy</h2>
-                <p class="section-subtitle">From curiosity to creating intelligent solutions that make a difference</p>
-            </div>
-            
-            <div class="about-grid">
-                <div class="about-intro">
-                    <h3>Building the Future with Intelligent Systems</h3>
-                    <p>I'm Suman Krishna, a passionate <strong>Machine Learning Engineer</strong> , <strong>Data Science Engineer</strong> and <strong>Google Student Ambassador</strong> currently pursuing Computer Science Engineering. My journey in technology started with a simple curiosity about how machines can learn and make intelligent decisions.</p>
-                    
-                    <div class="about-highlight">
-                        <p>I believe in the transformative power of AI to revolutionize industries and improve human lives through innovative technological solutions.</p>
-                    </div>
-                    
-                    <p>Through hands-on experience in machine learning, mobile development, and scalable architecture, I've created solutions that impact agriculture, education, and healthcare. Each project represents a step toward making technology more accessible and beneficial for everyone.</p>
-                    
-                    <div class="about-stats">
-                        <!-- <div class="about-stat-item">
-                            <span class="about-stat-number" data-count="10">0</span>
-                            <span class="about-stat-label">Research Papers</span>
-                        </div> -->
-                        <div class="about-stat-item">
-                            <span class="about-stat-number" data-count="25">0</span>
-                            <span class="about-stat-label">Tech Workshops, Seminars & Webinars Attend</span>
-                        </div>
-                        <div class="about-stat-item">
-                            <span class="about-stat-number" data-count="3">0</span>
-                            <span class="about-stat-label">Years Experience</span>
-                        </div>
-                        <div class="about-stat-item">
-                            <span class="about-stat-number" data-count="98">0</span>
-                            <span class="about-stat-label">Client Satisfaction</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="about-intro">
-                    <h3>My Core Philosophy</h3>
-                    <div style="margin-bottom: 30px;">
-                        <h4 style="font-size: 18px; margin-bottom: 16px; color: var(--accent-primary);">
-                            <i class="fas fa-star" style="margin-right: 10px;"></i>
-                            Current Focus Areas
-                        </h4>
-                        <div class="skill-items">
-                            <span class="skill-tag">Machine Learning</span>
-                            <span class="skill-tag">Deep Learning Research</span>
-                            <span class="skill-tag">Mobile AI Applications</span>
-                            <span class="skill-tag">Developer Communities</span>
-                            <span class="skill-tag">Scalable Architecture</span>
-                            <span class="skill-tag">Computer Vision</span>
-                            <span class="skill-tag">Natural Language Processing</span>
-                        </div>
-                    </div>
-                    
-                    <div style="background: var(--card-bg); padding: 24px; border-radius: 8px; border: 1px solid var(--border-color);">
-                        <h4 style="font-size: 18px; margin-bottom: 16px; color: var(--accent-primary);">
-                            <i class="fas fa-bolt" style="margin-right: 10px;"></i>
-                            Quick Facts
-                        </h4>
-                        <ul style="list-style: none; color: var(--text-secondary);">
-                            <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
-                                <i class="fas fa-check" style="color: var(--accent-primary); position: absolute; left: 0;"></i>
-                                Built AI systems that help farmers increase crop yield
-                            </li>
-                            <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
-                                <i class="fas fa-check" style="color: var(--accent-primary); position: absolute; left: 0;"></i>
-                                Mentored 500+ students in AI and Google technologies
-                            </li>
-                            <li style="margin-bottom: 12px; padding-left: 24px; position: relative;">
-                                <i class="fas fa-check" style="color: var(--accent-primary); position: absolute; left: 0;"></i>
-                                Always learning 2+ new technologies simultaneously
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <!-- ==========================================================================
+         About Section
+         ========================================================================== -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="fa-regular fa-user"></i> About Me</div>
+          <h2 class="section-title">Driven by Curiosity, <span class="text-gradient">Powered by Data</span></h2>
+          <p class="section-subtitle">Bridging mathematical rigor with scalable software engineering to solve challenging real-world problems.</p>
         </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Technical Expertise</div>
-                <h2 class="section-title">Skills & Technologies</h2>
-                <p class="section-subtitle">Comprehensive expertise across modern technologies and frameworks</p>
-            </div>
-            
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon">
-                            <i class="fas fa-laptop-code"></i>
-                        </div>
-                        <div class="skill-title">Frontend Development</div>
-                    </div>
-                    <div class="skill-items">
-                        <span class="skill-tag">HTML5/CSS3</span>
-                        <span class="skill-tag">JavaScript (ES6+)</span>
-                        <span class="skill-tag">Responsive Design</span>
-                        <span class="skill-tag">UI/UX Principles</span>
-                        
-                    </div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <div class="skill-title">Backend & Databases</div>
-                    </div>
-                    <div class="skill-items">
-                        <span class="skill-tag">MERN Stack</span>
-                        <span class="skill-tag">Python/Flask</span>
-                        <span class="skill-tag">REST APIs</span>
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">Firebase</span>
-                        
-                    </div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <div class="skill-title">AI/ML & Data Science</div>
-                    </div>
-                    <div class="skill-items">
-                        <span class="skill-tag">Machine Learning</span>
-                        <span class="skill-tag">Deep Learning</span>
-                        <span class="skill-tag">TensorFlow</span>
-                        <span class="skill-tag">PyTorch</span>
-                        <span class="skill-tag">Computer Vision</span>
-                        <span class="skill-tag">NLP</span>
-                        <span class="skill-tag">OpenCV</span>
-                        <span class="skill-tag">Pandas/NumPy</span>
-                        <span class="skill-tag">Scikit-learn</span>
-                    </div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <div class="skill-title">Mobile Development</div>
-                    </div>
-                    <div class="skill-items">
-                        <span class="skill-tag">Kotlin</span>
-                        <span class="skill-tag">Flutter/Dart</span>
-                        <span class="skill-tag">UI/UX Design</span>
-                        <span class="skill-tag">Firebase Auth</span>
-                        
-                    </div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <div class="skill-title">Tools & Platforms</div>
-                    </div>
-                    <div class="skill-items">
-                        <span class="skill-tag">Git/GitHub</span>
-                        <span class="skill-tag">Tableau</span>
-                        <span class="skill-tag">Power BI</span>
-                        <span class="skill-tag">VS Code</span>
-                        <span class="skill-tag">Android Studio</span>
-                        <span class="skill-tag">Google Colab</span>
-                        
-                    </div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="skill-title">Soft Skills</div>
-                    </div>
-                    <div class="skill-items">
-                        <span class="skill-tag">Problem Solving</span>
-                        <span class="skill-tag">Team Leadership</span>
-                        <span class="skill-tag">Communication</span>
-                        <span class="skill-tag">Project Management</span>
-                        <span class="skill-tag">Mentoring</span>
-                        <span class="skill-tag">Public Speaking</span>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <div class="about-grid">
+          <div class="about-narrative">
+            <p class="about-p">
+              My engineering journey began with an innate fascination for how computational algorithms learn from raw information to make high-stakes, intelligent decisions. Today, I specialize in <strong>Machine Learning, Deep Learning architectures (NLP, Computer Vision), and Data Analytics pipelines</strong> that transform unorganized data into strategic, actionable outcomes.
+            </p>
+            <p class="about-p">
+              As a <strong>Google Student Ambassador</strong>, I regularly organize hands-on technical sessions, cloud workshops, and hackathons—having mentored <strong>500+ students</strong> across AI adoption, Google Cloud tools, and software fundamentals. I believe that true technology leadership combines technical mastery with clear communication and community empowerment.
+            </p>
 
-    <!-- Education Section -->
-    <section id="education" class="education-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Education</div>
-                <h2 class="section-title">Academic Journey</h2>
-                <p class="section-subtitle">Formal education and specialized training in computer science</p>
+            <div class="about-highlight-box">
+              <div class="about-highlight-title">
+                <i class="fa-solid fa-lightbulb"></i>
+                <span>Engineering Philosophy</span>
+              </div>
+              <p class="about-highlight-desc">
+                "Code is only as valuable as the real-world impact it unlocks. Whether training multimodal psychiatric diagnostic models, optimizing commercial supply chain profitability, or building automated crop disease detectors, I design systems with end-users, ethical rigor, and measurable outcomes at the core."
+              </p>
             </div>
-            
-            <div class="education-main">
-                <div class="education-header">
-                    <div class="education-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <div class="education-title">
-                        <h3>Bachelor of Technology</h3>
-                        <p>Computer Science & Engineering</p>
-                    </div>
-                </div>
-                
-                <div class="education-details">
-                    <div class="detail-item">
-                        <h4>Institution</h4>
-                        <p>CT Institute of Engineering, Management & Technology</p>
-                    </div>
-                    <div class="detail-item">
-                        <h4>Duration</h4>
-                        <p>2023 - 2027</p>
-                    </div>
-                    <div class="detail-item">
-                        <h4>Current CGPA</h4>
-                        <p>6.8/10.0</p>
-                    </div>
-                </div>
-                
-                <div class="education-highlights">
-                    <h4 style="font-size: 18px; margin-bottom: 16px; color: var(--text-primary);">Academic Highlights</h4>
-                    <ul class="highlight-list">
-                        <li>Google Student Ambassador (2025-Present)</li>
-                        <li>Active participant in coding competitions and hackathons</li>
-                        <li>Member of Byteverse 1.0 Hackathon</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div style="margin-top: 40px;">
-                <h4 style="font-size: 22px; margin-bottom: 24px; color: var(--text-primary);">
-                    <i class="fas fa-award" style="color: var(--accent-primary); margin-right: 10px;"></i>
-                    Certifications & Training
-                </h4>
-                <div class="cert-list">
-                    <div class="cert-item">
-                        <div class="cert-icon">
-                            <i class="fab fa-google"></i>
-                        </div>
-                        <div class="cert-details">
-                            <h4 style="color: var(--text-primary); margin-bottom: 4px;">Google Student Ambassador</h4>
-                            <p style="color: var(--text-secondary);">Google • 2025-Present</p>
-                        </div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div class="cert-details">
-                            <h4 style="color: var(--text-primary); margin-bottom: 4px;">Machine Learning Certification</h4>
-                            <p style="color: var(--text-secondary);">Averixis Solutions • 2025</p>
-                        </div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-icon">
-                            <i class="fab fa-android"></i>
-                        </div>
-                        <div class="cert-details">
-                            <h4 style="color: var(--text-primary); margin-bottom: 4px;">Android Development Certification</h4>
-                            <p style="color: var(--text-secondary);">Pregrad • 2024</p>
-                        </div>
-                    </div>
-                    <div class="cert-item">
-                        <div class="cert-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="cert-details">
-                            <h4 style="color: var(--text-primary); margin-bottom: 4px;">Data Science Specialization</h4>
-                            <p style="color: var(--text-secondary);">In Progress</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+          </div>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Experience</div>
-                <h2 class="section-title">Professional Journey</h2>
-                <p class="section-subtitle">Hands-on experience in building innovative solutions</p>
-            </div>
-            
-            <div class="experience-timeline">
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div>
-                            <h3 class="exp-title">Google Student Ambassador</h3>
-                            <p class="exp-company">Google</p>
-                        </div>
-                        <span class="exp-date">Sep 2025 - Present</span>
-                    </div>
-                    <ul class="exp-highlights">
-                        <li>Lead technical community initiatives and organize developer workshops on campus</li>
-                        <li>Mentor 200+ students in Google Cloud and AI technologies adoption</li>
-                        <li>Promote Google developer tools and foster innovation through events and hackathons</li>
-                        <li>Build and grow developer ecosystem through technical sessions and community building</li>
-                    </ul>
+          <!-- Academic & Education Side Cards -->
+          <div class="about-cards-wrap">
+            <!-- B.Tech Card -->
+            <div class="info-card">
+              <div class="info-card-header">
+                <div class="info-card-icon">
+                  <i class="fa-solid fa-graduation-cap"></i>
                 </div>
-
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div>
-                            <h3 class="exp-title">Data Analytics Intern</h3>
-                            <p class="exp-company">EduTech Solutions</p>
-                        </div>
-                        <span class="exp-date">April 2026 - June 2026</span>
-                    </div>
-                    <ul class="exp-highlights">
-                        <li>Responsible for building interactive dashboards in Power BI and Excel for sales, segmentation, and SaaS KPIs</li>
-                        <li>Conducting A/B tests and time‑series analysis using Python and SQL to optimize marketing and engagement</li>
-                        <li>Managing end‑to‑end data pipelines and predictive modeling; and extracting, cleaning, and analyzing student performance and business data to deliver actionable insights and completion reports to stakeholders</li>
-                    </ul>
-                </div>
-                
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div>
-                            <h3 class="exp-title">Machine Learning Intern</h3>
-                            <p class="exp-company">Averixis Solutions Pvt. Ltd.</p>
-                        </div>
-                        <span class="exp-date">Jul 2025 - Sep 2025</span>
-                    </div>
-                    <ul class="exp-highlights">
-                        <li>Developed production-grade ML pipelines and optimized TensorFlow models for client projects</li>
-                        <li>Achieved 94% accuracy in computer vision tasks for real-world applications</li>
-                        <li>Implemented CI/CD pipelines for efficient ML systems deployment</li>
-                        <li>Collaborated on real-world data projects and model optimization techniques</li>
-                    </ul>
-                </div>
-                
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div>
-                            <h3 class="exp-title">Machine Learning Trainee</h3>
-                            <p class="exp-company">Averixis Solutions Pvt. Ltd.</p>
-                        </div>
-                        <span class="exp-date">Jun 2025 - Jul 2025</span>
-                    </div>
-                    <ul class="exp-highlights">
-                        <li>Engineered data preprocessing systems for efficient ML model training</li>
-                        <li>Implemented automated testing frameworks for machine learning models</li>
-                        <li>Reduced model inference time by 40% through optimization techniques</li>
-                        <li>Gained practical experience with advanced ML algorithms and frameworks</li>
-                    </ul>
-                </div>
-                
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Portfolio</div>
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">Innovative solutions showcasing technical expertise</p>
-            </div>
-            
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-id">Project 01</div>
-                        <h3 class="project-title">Plant Disease Recognition System</h3>
-                        <p class="project-description">
-                            AI-powered web application that detects plant diseases from leaf images using deep learning models. 
-                            Helps farmers with early diagnosis and prevention, achieving 96.7% accuracy.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Flask</span>
-                            <span class="tech-tag">CNN</span>
-                            <span class="tech-tag">OpenCV</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/krishnaaidev/Plant-Disease-Recognition-System" class="project-link project-link-primary" target="_blank">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <!-- <a href="#" class="project-link project-link-secondary">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a> -->
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-id">Project 02</div>
-                        <h3 class="project-title">Career Guidance & Job Recommendation System</h3>
-                        <p class="project-description">
-                            An Machine Learning based system that analyzes a user’s skills, and performance.
-                            It provides personalized career guidance and job role recommendations.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Machine Learning</span>
-                            <span class="tech-tag">Google Colab</span>
-                            <span class="tech-tag">NumPy</span>
-                            <span class="tech-tag">Pandas</span>
-                            <span class="tech-tag">Scikit-learn</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/krishnaaidev/Career-Guidance" class="project-link project-link-primary">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="https://career-guidance-pixel2predict.onrender.com" class="project-link project-link-secondary">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-id">Project 03</div>
-                        <h3 class="project-title">J.A.R.V.I.S AI Assistant</h3>
-                        <p class="project-description">
-                            Voice-controlled AI assistant with natural language processing capabilities for task automation, 
-                            information retrieval, and intelligent conversations using advanced NLP techniques.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">NLP</span>
-                            <span class="tech-tag">SpeechRecognition</span>
-                            <span class="tech-tag">OpenAI API</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link project-link-primary">
-                                <i class="fab fa-progress"></i> On Progress
-                            </a>
-                            <!-- <a href="#" class="project-link project-link-secondary">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a> -->
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 4 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-id">Project 04</div>
-                        <h3 class="project-title">Air Pollution & Health Risk Analysis</h3>
-                        <p class="project-description">
-                            ML-based system that analyzes air pollution data to predict health risks.
-                            Helps enable early warnings and data-driven public health decisions.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Flask</span>
-                            <span class="tech-tag">NumPy</span>
-                            <span class="tech-tag">Google Colab</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/krishnaaidev/Air-Pollution-Health-Risk-Analysis" class="project-link project-link-primary">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                             <a href="#" class="project-link project-link-secondary">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a> 
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 5 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-id">Project 05</div>
-                        <h3 class="project-title">Multimodal Depression Detector System</h3>
-                        <p class="project-description">
-                            Conceptualizing a multimodal depression detection system that will fuse text (BERT), speech (Wav2Vec2), and facial expression (ResNet-LSTM) cues. 
-                            Currently in the data acquisition phase: the DAIC-WOZ clinical dataset (transcripts, audio, video) has been secured and preprocessed for training. 
-                            Architected a late-fusion model and designed a complete pipeline for real‑time analysis, including a FastAPI backend, WebSocket live tracking, 
-                            and a Chrome extension for passive monitoring during calls. This project targets robust, clinician‑inspired mental health screening, combining 
-                            multiple data streams to improve detection accuracy. Next steps include model training, integration, and deployment as a full‑stack web application.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Machine Learning</span>
-                            <span class="tech-tag">MERN Stack</span>
-                            <span class="tech-tag">APIs</span>
-                        </div>
-                       <!--  <div class="project-links">
-                            <a href="#" class="project-link project-link-primary">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                             <a href="#" class="project-link project-link-secondary">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a> 
-                        </div> -->
-                    </div>
-                </div>
-                
-                <!-- Project 6 -->
-                <!-- <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-id">Project 06</div>
-                        <h3 class="project-title">Expense Tracker with Analytics</h3>
-                        <p class="project-description">
-                            Mobile app for expense tracking with visual analytics, budgeting tools, and financial insights 
-                            using beautiful charts and real-time data synchronization.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Android</span>
-                            <span class="tech-tag">Kotlin</span>
-                            <span class="tech-tag">Room Database</span>
-                            <span class="tech-tag">MPAndroidChart</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link project-link-primary">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                            <a href="#" class="project-link project-link-secondary">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a> 
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Articles Section -->
-    <section id="articles" class="articles-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Insights</div>
-                <h2 class="section-title">Technical Articles</h2>
-                <p class="section-subtitle">Sharing knowledge and insights about AI and software development</p>
-            </div>
-            
-            <div class="articles-grid">
-                <!-- Article 1 -->
-                <div class="article-card">
-                    <div class="article-image">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <div class="article-content">
-                        <div class="article-meta">
-                            <span class="article-category">AI/ML</span>
-                            <span>JULY 2025</span>
-                            <span>8 MIN READ</span>
-                        </div>
-                        <h3 class="article-title">Building CNN Models for Plant Disease Detection</h3>
-                        <p class="article-excerpt">
-                            A comprehensive guide to building convolutional neural networks for image classification 
-                            tasks in agriculture.
-                        </p>
-                        <a href="https://blogsitesk.netlify.app/?article=1" class="article-link" target="_blank">
-                            Read Full Article <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Article 2 -->
-                <div class="article-card">
-                    <div class="article-image">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="article-content">
-                        <div class="article-meta">
-                            <span class="article-category">AI/ML</span>
-                            <span>JANUARY 2026</span>
-                            <span>7 MIN READ</span>
-                        </div>
-                        <h3 class="article-title">Career Guidance & Job Recommendation System</h3>
-                        <p class="article-excerpt">
-                            An Machine Learning based system that analyzes a user’s skills, and performance. 
-                            It provides personalized career guidance and job role recommendations.
-                        </p>
-                        <a href="https://blogsitesk.netlify.app/?article=2" class="article-link" target="_blank">
-                            Read Full Article <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Article 3 -->
-                <div class="article-card">
-                    <div class="article-image">
-                        <i class="fas fa-microphone-alt"></i>
-                    </div>
-                    <div class="article-content">
-                        <div class="article-meta">
-                            <span class="article-category">AI SOLUTIONS</span>
-                            <span>MAY 2025</span>
-                            <span>9 MIN READ</span>
-                        </div>
-                        <h3 class="article-title">J.A.R.V.I.S. AI: Building Intelligent Personal Assistant Systems</h3>
-                        <p class="article-excerpt">
-                            J.A.R.V.I.S. (Just A Rather Very Intelligent System) AI represents the next generation of personal assistants, 
-                            moving beyond simple voice commands to true contextual understanding and proactive assistance.
-                        </p>
-                        <a href="https://blogsitesk.netlify.app/?article=3" class="article-link" target="_blank">
-                            Read Full Article <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Article 4 -->
-                <div class="article-card">
-                   
-                        <a href="https://blogsitesk.netlify.app" class="article-link" target="_blank">
-                            Click here for more articles <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Hobbies Section -->
-    <section id="hobbies" class="hobbies-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Passions</div>
-                <h2 class="section-title">Hobbies & Interests</h2>
-                <p class="section-subtitle">Creative pursuits and personal interests beyond coding</p>
-            </div>
-            
-            <div class="hobbies-grid">
-                <div class="hobby-card">
-                    <div class="hobby-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3 class="hobby-title">Story Writing</h3>
-                    <p class="hobby-description">
-                        Creating fictional worlds and characters through creative writing. 
-                        Exploring different genres and narrative techniques, from sci-fi to fantasy.
-                    </p>
-                </div>
-                
-                <div class="hobby-card">
-                    <div class="hobby-icon">
-                        <i class="fas fa-chess"></i>
-                    </div>
-                    <h3 class="hobby-title">Chess Strategy</h3>
-                    <p class="hobby-description">
-                        Competitive chess playing with focus on strategic planning, opening theory, 
-                        and endgame techniques. Rating: 1600+ on chess.com.
-                    </p>
-                </div>
-                
-                <div class="hobby-card">
-                    <div class="hobby-icon">
-                        <i class="fas fa-camera"></i>
-                    </div>
-                    <h3 class="hobby-title">Photography</h3>
-                    <p class="hobby-description">
-                        Capturing moments through landscape, portrait, and street photography. 
-                        Expertise in editing and post-processing techniques.
-                    </p>
-                </div>
-                
-                <div class="hobby-card">
-                    <div class="hobby-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3 class="hobby-title">Videography</h3>
-                    <p class="hobby-description">
-                        Creating cinematic videos, short films, and documentaries. 
-                        Expertise in shooting, editing, color grading, and visual storytelling.
-                    </p>
-                </div>
-                
-                <div class="hobby-card">
-                    <div class="hobby-icon">
-                        <i class="fas fa-film"></i>
-                    </div>
-                    <h3 class="hobby-title">Film Making</h3>
-                    <p class="hobby-description">
-                        Scriptwriting, directing, and producing short films. 
-                        Exploring storytelling through visual media and cinematic techniques.
-                    </p>
-                </div>
-                
-                <div class="hobby-card">
-                    <div class="hobby-icon">
-                        <i class="fas fa-plane"></i>
-                    </div>
-                    <h3 class="hobby-title">Travel Exploration</h3>
-                    <p class="hobby-description">
-                        Exploring new cultures, landscapes, and cuisines. 
-                        Documenting travel experiences through photography and travel writing.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">Get in Touch</div>
-                <h2 class="section-title">Let's Connect</h2>
-                <p class="section-subtitle">Have a project in mind or want to discuss opportunities?</p>
-            </div>
-            
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3 style="color: var(--text-primary); margin-bottom: 4px;">Email</h3>
-                            <p style="color: var(--text-secondary);">krishna.techx.31@gmail.com</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fab fa-linkedin"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3 style="color: var(--text-primary); margin-bottom: 4px;">LinkedIn</h3>
-                            <p style="color: var(--text-secondary);">linkedin.com/in/suman-krishna-7a17a6275</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3 style="color: var(--text-primary); margin-bottom: 4px;">GitHub</h3>
-                            <p style="color: var(--text-secondary);">github.com/pixel2predict</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3 style="color: var(--text-primary); margin-bottom: 4px;">Location</h3>
-                            <p style="color: var(--text-secondary);">Jalandhar, Punjab (College)</p>
-                            <p style="color: var(--text-secondary);">Samastipur, Bihar (Hometown)</p>
-                        </div>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="https://linkedin.com/in/suman-krishna-7a17a6275" class="social-link" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/krishnaaidev" class="social-link" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://twitter.com/krishna_techx" class="social-link" target="_blank">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://instagram.com/krishna.ai.dev" class="social-link" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="mailto:krishna.techx.31@gmail.com" class="social-link">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <form id="contactForm" action="https://formspree.io/f/mnneeedd" method="POST">
-                        <div class="form-group">
-                            <label class="form-label" for="name">Full Name</label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="email">Email Address</label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" class="form-control" placeholder="What is this regarding?" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="message">Message</label>
-                            <textarea id="message" name="message" class="form-control" placeholder="Your message..." rows="6" required></textarea>
-                        </div>
-                        
-                        <input type="hidden" name="_subject" value="New Contact Form Submission from Portfolio">
-                        
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="#home" class="logo">SUMAN KRISHNA</a>
-                    <p class="footer-description">
-                        Machine Learning Engineer, Data Science Engineer and Google Student Ambassador passionate about building 
-                        intelligent systems that solve real-world problems through innovative technology.
-                    </p>
-                </div>
-                
                 <div>
-                    <h4 style="color: var(--text-primary); margin-bottom: 20px;">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#education">Education</a></li>
-                        <li><a href="#experience">Experience</a></li>
-                    </ul>
+                  <h3 class="info-card-title">B.Tech in Computer Science</h3>
+                  <span class="info-card-subtitle">CT Institute of Engineering Management &amp; Tech</span>
                 </div>
-                
+              </div>
+              <div class="info-detail-list">
+                <div class="info-detail-item">
+                  <span class="detail-label">Duration</span>
+                  <span class="detail-value">2023 – 2027 (Final Year)</span>
+                </div>
+                <div class="info-detail-item">
+                  <span class="detail-label">Location</span>
+                  <span class="detail-value">Jalandhar, Punjab</span>
+                </div>
+                <div class="info-detail-item">
+                  <span class="detail-label">Current CGPA</span>
+                  <span class="detail-value">6.8 / 10.0</span>
+                </div>
+                <div class="info-detail-item">
+                  <span class="detail-label">Key Highlights</span>
+                  <span class="detail-value">Google Ambassador, Byteverse Lead</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Certifications & Training -->
+            <div class="info-card">
+              <div class="info-card-header">
+                <div class="info-card-icon purple">
+                  <i class="fa-solid fa-certificate"></i>
+                </div>
                 <div>
-                    <h4 style="color: var(--text-primary); margin-bottom: 20px;">More</h4>
-                    <ul class="footer-links">
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#articles">Articles</a></li>
-                        <li><a href="#hobbies">Hobbies</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
+                  <h3 class="info-card-title">Certifications &amp; Training</h3>
+                  <span class="info-card-subtitle">Continuous Industry Skill Enhancement</span>
                 </div>
+              </div>
+              <div class="info-detail-list">
+                <div class="info-detail-item">
+                  <span class="detail-label">Machine Learning</span>
+                  <span class="detail-value">Averixis Solutions</span>
+                </div>
+                <div class="info-detail-item">
+                  <span class="detail-label">Android App Dev (Kotlin)</span>
+                  <span class="detail-value">Infosys Springboard &amp; Pregrad</span>
+                </div>
+                <div class="info-detail-item">
+                  <span class="detail-label">Python &amp; Data Science</span>
+                  <span class="detail-value">Cambridge Intl. (UniAthena)</span>
+                </div>
+                <div class="info-detail-item">
+                  <span class="detail-label">Deep Learning</span>
+                  <span class="detail-value">CampusX Specialization</span>
+                </div>
+              </div>
             </div>
-            
-            <div class="copyright">
-                <p>© 2025 SUMAN KRISHNA. ALL RIGHTS RESERVED.</p>
-                <p style="margin-top: 8px; font-size: 14px; color: var(--accent-primary);">DESIGNED WITH <i class="fas fa-heart" style="color: #ff4757;"></i> BY SUMAN KRISHNA</p>
+
+            <!-- High School Foundation -->
+            <div class="info-card">
+              <div class="info-card-header">
+                <div class="info-card-icon green">
+                  <i class="fa-solid fa-school"></i>
+                </div>
+                <div>
+                  <h3 class="info-card-title">Schooling Foundation</h3>
+                  <span class="info-card-subtitle">Samastipur, Bihar</span>
+                </div>
+              </div>
+              <div class="info-detail-list">
+                <div class="info-detail-item">
+                  <span class="detail-label">Class XII (BSEB)</span>
+                  <span class="detail-value">S.M.R.C.K College (2020–2022)</span>
+                </div>
+                <div class="info-detail-item">
+                  <span class="detail-label">Class X (CBSE)</span>
+                  <span class="detail-value">St. Paul Secondary School (2020)</span>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <!-- Back to Top Button -->
-    <a href="#home" class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+    <!-- ==========================================================================
+         Experience & Leadership Timeline Section
+         ========================================================================== -->
+    <section class="section experience-section" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="fa-solid fa-briefcase"></i> Track Record</div>
+          <h2 class="section-title">Work Experience &amp; <span class="text-gradient">Campus Leadership</span></h2>
+          <p class="section-subtitle">Real-world engineering, predictive data analytics, and large-scale technical event management.</p>
+        </div>
 
-    <script>
-        // Wait for DOM to load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Hide loading screen
-            setTimeout(() => {
-                document.getElementById('loading').classList.add('hidden');
-            }, 1000);
+        <div class="timeline-container">
+          <div class="timeline-line"></div>
 
-            // Typing Effect for Hero Section
-            const typedTextElement = document.getElementById('typed-text');
-            const texts = ['MACHINE LEARNING ENGINEER', 'AI ENGINEER', 'DATA SCIENCE', 'MERN STACK DEVELOPER', 'GOOGLE STUDENT AMBASSADOR', 'PROBLEM SOLVER', 'TECH INNOVATOR'];
-            let textIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            let typingSpeed = 100;
-            
-            function typeEffect() {
-                const currentText = texts[textIndex];
-                
-                if (isDeleting) {
-                    // Deleting text
-                    typedTextElement.textContent = currentText.substring(0, charIndex - 1);
-                    charIndex--;
-                    typingSpeed = 50;
-                } else {
-                    // Typing text
-                    typedTextElement.textContent = currentText.substring(0, charIndex + 1);
-                    charIndex++;
-                    typingSpeed = 100;
-                }
-                
-                if (!isDeleting && charIndex === currentText.length) {
-                    // Pause at end of word
-                    isDeleting = true;
-                    typingSpeed = 1500; // Pause before deleting
-                } else if (isDeleting && charIndex === 0) {
-                    // Move to next word
-                    isDeleting = false;
-                    textIndex = (textIndex + 1) % texts.length;
-                    typingSpeed = 500; // Pause before typing next word
-                }
-                
-                setTimeout(typeEffect, typingSpeed);
-            }
-            
-            // Start typing effect after a short delay
-            setTimeout(typeEffect, 1000);
+          <!-- Role 1: Google Student Ambassador -->
+          <div class="timeline-item">
+            <div class="timeline-node"><i class="fa-brands fa-google"></i></div>
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <div>
+                  <h3 class="role-title">Google Student Ambassador</h3>
+                  <div class="company-name"><i class="fa-solid fa-building"></i> Google • Campus Technical Lead</div>
+                </div>
+                <span class="period-badge"><i class="fa-regular fa-clock"></i> Sep 2025 – Present</span>
+              </div>
+              <ul class="timeline-bullet-list">
+                <li>Selected to represent Google on campus, spearheading technical developer initiatives, AI awareness workshops, and cloud seminars.</li>
+                <li>Mentored 500+ students in adopting Google Cloud, TensorFlow, and modern developer technologies.</li>
+                <li>Organized developer hackathons and code jams, driving technical engagement across university engineering departments.</li>
+                <li>Acted as primary liaison connecting student developers with official Google developer programs and ecosystem resources.</li>
+              </ul>
+              <div class="timeline-tags">
+                <span class="timeline-tag">Google Cloud</span>
+                <span class="timeline-tag">Tech Community</span>
+                <span class="timeline-tag">AI Workshops</span>
+                <span class="timeline-tag">Mentorship</span>
+              </div>
+            </div>
+          </div>
 
-            // Mobile Navigation Toggle
-            const mobileToggle = document.getElementById('mobileToggle');
-            const navLinks = document.getElementById('navLinks');
-            
-            mobileToggle.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-                
-                // Update icon
-                const icon = mobileToggle.querySelector('i');
-                if (navLinks.classList.contains('active')) {
-                    icon.className = 'fas fa-times';
-                } else {
-                    icon.className = 'fas fa-bars';
-                }
-            });
+          <!-- Role 2: Data Analytics Intern @ EduTech Solutions -->
+          <div class="timeline-item">
+            <div class="timeline-node"><i class="fa-solid fa-chart-pie"></i></div>
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <div>
+                  <h3 class="role-title">Data Analytics Intern</h3>
+                  <div class="company-name"><i class="fa-solid fa-building"></i> EduTech Solutions</div>
+                </div>
+                <span class="period-badge"><i class="fa-regular fa-clock"></i> Apr 2026 – Jun 2026</span>
+              </div>
+              <ul class="timeline-bullet-list">
+                <li>Built interactive, executive-level business dashboards in Power BI and Excel covering sales velocity, customer segmentation, and SaaS KPIs.</li>
+                <li>Conducted rigorous A/B testing and time-series forecasting using Python and SQL to optimize learner engagement and marketing ROI.</li>
+                <li>Engineered automated end-to-end data cleaning pipelines and predictive student performance completion models.</li>
+                <li>Extracted, sanitized, and analyzed student cohort data to deliver actionable completion insights directly to executive stakeholders.</li>
+              </ul>
+              <div class="timeline-tags">
+                <span class="timeline-tag">Power BI</span>
+                <span class="timeline-tag">Python EDA</span>
+                <span class="timeline-tag">SQL</span>
+                <span class="timeline-tag">A/B Testing</span>
+                <span class="timeline-tag">Predictive Analytics</span>
+              </div>
+            </div>
+          </div>
 
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
-                    navLinks.classList.remove('active');
-                    mobileToggle.querySelector('i').className = 'fas fa-bars';
-                }
-            });
+          <!-- Role 3: Machine Learning Intern @ Averixis Solutions -->
+          <div class="timeline-item">
+            <div class="timeline-node"><i class="fa-solid fa-microchip"></i></div>
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <div>
+                  <h3 class="role-title">Machine Learning Intern &amp; Trainee</h3>
+                  <div class="company-name"><i class="fa-solid fa-building"></i> Averixis Solutions Pvt. Ltd.</div>
+                </div>
+                <span class="period-badge"><i class="fa-regular fa-clock"></i> May 2025 – Sep 2025</span>
+              </div>
+              <ul class="timeline-bullet-list">
+                <li>Developed production-grade ML pipelines and evaluated deep neural network architectures using Python, Scikit-learn, and TensorFlow.</li>
+                <li>Achieved ~94% accuracy in computer vision and classification tasks for client deployment benchmarks.</li>
+                <li>Engineered data preprocessing and automated data validation systems, cutting model inference latency by 40% through post-training optimization.</li>
+                <li>Collaborated within a cross-functional engineering team to deploy machine learning microservices into real-world workflows.</li>
+              </ul>
+              <div class="timeline-tags">
+                <span class="timeline-tag">TensorFlow</span>
+                <span class="timeline-tag">Scikit-learn</span>
+                <span class="timeline-tag">Computer Vision</span>
+                <span class="timeline-tag">Model Optimization</span>
+                <span class="timeline-tag">CI/CD</span>
+              </div>
+            </div>
+          </div>
 
-            // Close mobile menu when clicking links
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    mobileToggle.querySelector('i').className = 'fas fa-bars';
-                });
-            });
+          <!-- Role 4: Head Coordinator & Event Director -->
+          <div class="timeline-item">
+            <div class="timeline-node"><i class="fa-solid fa-users-gear"></i></div>
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <div>
+                  <h3 class="role-title">Head Coordinator &amp; Technical Lead</h3>
+                  <div class="company-name"><i class="fa-solid fa-calendar-check"></i> Campus Technical &amp; Cultural Leadership</div>
+                </div>
+                <span class="period-badge"><i class="fa-regular fa-clock"></i> 2025 – 2026</span>
+              </div>
+              <ul class="timeline-bullet-list">
+                <li><strong>United Fest 2025 (Head Coordinator):</strong> Directed state-themed mega cultural fest, managing 10+ departmental coordinators, 50+ volunteers, and 500+ attendees.</li>
+                <li><strong>15-Day Robotics Workshop &amp; Robo Race 2026 (Head Coordinator):</strong> Led 10+ technical volunteers and coordinated hardware labs for 150+ participants.</li>
+                <li><strong>Byteverse 1.0 Hackathon (Technical Support Coordinator):</strong> Led the technical support squad, debugging and unblocking project deployments in real-time for 250+ hackers.</li>
+                <li><strong>Adbhut Aarambh 2025 (Volunteer):</strong> Facilitated seamless campus onboarding and orientation for 3000+ incoming freshman engineering students.</li>
+              </ul>
+              <div class="timeline-tags">
+                <span class="timeline-tag">Event Leadership</span>
+                <span class="timeline-tag">Team Management (50+ staff)</span>
+                <span class="timeline-tag">Hackathon Tech Support</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            // Navbar scroll effect
-            const navbar = document.querySelector('.navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.style.backgroundColor = 'rgba(10, 25, 47, 0.98)';
-                    navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.2)';
-                } else {
-                    navbar.style.backgroundColor = 'rgba(10, 25, 47, 0.95)';
-                    navbar.style.boxShadow = 'none';
-                }
+    <!-- ==========================================================================
+         Projects Showcase Section
+         ========================================================================== -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="fa-solid fa-laptop-code"></i> Portfolio Showcase</div>
+          <h2 class="section-title">Engineered with <span class="text-gradient">Precision &amp; Purpose</span></h2>
+          <p class="section-subtitle">Deep learning architectures, business intelligence suites, and interactive AI web applications.</p>
+        </div>
 
-                // Back to top button
-                const backToTop = document.getElementById('backToTop');
-                if (window.scrollY > 300) {
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.classList.remove('visible');
-                }
+        <!-- Filter Buttons -->
+        <div class="projects-filter-bar">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="ml">Deep Learning &amp; NLP</button>
+          <button class="filter-btn" data-filter="cv">Computer Vision</button>
+          <button class="filter-btn" data-filter="bi">Data Analytics &amp; BI</button>
+          <button class="filter-btn" data-filter="iot">Robotics &amp; IoT</button>
+        </div>
 
-                // Update active nav link
-                updateActiveNavLink();
-                
-                // Animate counting when about section is in view
-                animateOnScroll();
-            });
+        <!-- Dynamic Projects Grid (Rendered via JS from projectsData) -->
+        <div class="projects-grid" id="projects-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
 
-            // Active nav link update
-            function updateActiveNavLink() {
-                const sections = document.querySelectorAll('section');
-                const navLinks = document.querySelectorAll('.nav-links a');
-                
-                let current = '';
-                const scrollPosition = window.scrollY + 100;
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                        current = section.getAttribute('id');
-                    }
-                });
+    <!-- ==========================================================================
+         Skills & Tech Stack Section
+         ========================================================================== -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="fa-solid fa-code"></i> Tech Stack</div>
+          <h2 class="section-title">Tools &amp; <span class="text-gradient">Technologies</span></h2>
+          <p class="section-subtitle">A multidisciplinary stack spanning machine learning theory, modern frameworks, and analytics software.</p>
+        </div>
 
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
+        <div class="skills-grid">
+          <!-- Card 1: Programming Languages -->
+          <div class="skill-category-card tilt-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon">
+                <i class="fa-solid fa-terminal"></i>
+              </div>
+              <div>
+                <h3 class="skill-cat-title">Programming</h3>
+                <span class="info-card-subtitle">Core Languages &amp; Syntax</span>
+              </div>
+            </div>
+            <div class="skill-chips-wrap">
+              <span class="skill-chip"><i class="fa-brands fa-python"></i> Python (Expert)</span>
+              <span class="skill-chip"><i class="fa-solid fa-database"></i> SQL (PostgreSQL, MySQL)</span>
+              <span class="skill-chip"><i class="fa-brands fa-android"></i> Kotlin (Android)</span>
+              <span class="skill-chip"><i class="fa-brands fa-html5"></i> HTML5 / CSS3</span>
+              <span class="skill-chip"><i class="fa-brands fa-js"></i> JavaScript (ES6+)</span>
+              <span class="skill-chip"><i class="fa-solid fa-mobile-screen"></i> Flutter</span>
+              <span class="skill-chip"><i class="fa-solid fa-microchip"></i> Embedded C++</span>
+            </div>
+          </div>
 
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+          <!-- Card 2: Deep Learning & AI -->
+          <div class="skill-category-card tilt-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon purple">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <div>
+                <h3 class="skill-cat-title">Machine &amp; Deep Learning</h3>
+                <span class="info-card-subtitle">Models &amp; Frameworks</span>
+              </div>
+            </div>
+            <div class="skill-chips-wrap">
+              <span class="skill-chip"><i class="fa-solid fa-fire"></i> PyTorch</span>
+              <span class="skill-chip"><i class="fa-solid fa-network-wired"></i> TensorFlow &amp; Keras</span>
+              <span class="skill-chip"><i class="fa-solid fa-cube"></i> Scikit-learn</span>
+              <span class="skill-chip"><i class="fa-solid fa-eye"></i> OpenCV</span>
+              <span class="skill-chip"><i class="fa-solid fa-comment-nodes"></i> BERT &amp; Transformers</span>
+              <span class="skill-chip"><i class="fa-solid fa-wave-square"></i> Wav2Vec 2.0</span>
+              <span class="skill-chip"><i class="fa-solid fa-diagram-project"></i> CNNs &amp; ResNet-LSTM</span>
+              <span class="skill-chip"><i class="fa-solid fa-sliders"></i> Hyperparameter Tuning</span>
+            </div>
+          </div>
 
-            // Counting animation
-            function animateCounting() {
-                const stats = document.querySelectorAll('[data-count]');
-                
-                stats.forEach(stat => {
-                    if (stat.getAttribute('data-animated') === 'true') return;
-                    
-                    const rect = stat.getBoundingClientRect();
-                    const isInView = rect.top >= 0 && rect.bottom <= window.innerHeight;
-                    
-                    if (isInView) {
-                        const target = parseInt(stat.getAttribute('data-count'));
-                        const suffix = stat.textContent.includes('%') ? '%' : '+';
-                        let current = 0;
-                        const duration = 2000;
-                        const increment = target / (duration / 16);
-                        
-                        const timer = setInterval(() => {
-                            current += increment;
-                            if (current >= target) {
-                                current = target;
-                                clearInterval(timer);
-                                stat.setAttribute('data-animated', 'true');
-                            }
-                            stat.textContent = Math.floor(current) + suffix;
-                        }, 16);
-                    }
-                });
-            }
+          <!-- Card 3: Data Analytics & BI -->
+          <div class="skill-category-card tilt-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon emerald">
+                <i class="fa-solid fa-chart-column"></i>
+              </div>
+              <div>
+                <h3 class="skill-cat-title">Analytics &amp; BI</h3>
+                <span class="info-card-subtitle">Insights &amp; Dashboards</span>
+              </div>
+            </div>
+            <div class="skill-chips-wrap">
+              <span class="skill-chip"><i class="fa-solid fa-chart-pie"></i> Power BI</span>
+              <span class="skill-chip"><i class="fa-solid fa-table"></i> Tableau</span>
+              <span class="skill-chip"><i class="fa-solid fa-cubes"></i> Pandas &amp; NumPy</span>
+              <span class="skill-chip"><i class="fa-solid fa-file-excel"></i> Advanced Excel</span>
+              <span class="skill-chip"><i class="fa-solid fa-chart-area"></i> Matplotlib &amp; Seaborn</span>
+              <span class="skill-chip"><i class="fa-solid fa-code-compare"></i> A/B Testing</span>
+              <span class="skill-chip"><i class="fa-solid fa-arrow-trend-up"></i> Time-Series Forecasting</span>
+              <span class="skill-chip"><i class="fa-solid fa-magnifying-glass-chart"></i> Exploratory Data Analysis</span>
+            </div>
+          </div>
 
-            // Scroll animation function
-            function animateOnScroll() {
-                animateCounting();
-            }
+          <!-- Card 4: Tools & Deployment -->
+          <div class="skill-category-card tilt-card">
+            <div class="skill-cat-header">
+              <div class="skill-cat-icon amber">
+                <i class="fa-solid fa-toolbox"></i>
+              </div>
+              <div>
+                <h3 class="skill-cat-title">Tools &amp; Platforms</h3>
+                <span class="info-card-subtitle">Engineering Workflow</span>
+              </div>
+            </div>
+            <div class="skill-chips-wrap">
+              <span class="skill-chip"><i class="fa-brands fa-git-alt"></i> Git &amp; GitHub</span>
+              <span class="skill-chip"><i class="fa-brands fa-google"></i> Google Colab</span>
+              <span class="skill-chip"><i class="fa-solid fa-book-open"></i> Jupyter Lab</span>
+              <span class="skill-chip"><i class="fa-brands fa-linux"></i> Linux &amp; Bash</span>
+              <span class="skill-chip"><i class="fa-solid fa-bolt"></i> FastAPI &amp; Flask</span>
+              <span class="skill-chip"><i class="fa-brands fa-node-js"></i> MERN (Basics)</span>
+              <span class="skill-chip"><i class="fa-solid fa-cloud-arrow-up"></i> Render &amp; Netlify</span>
+              <span class="skill-chip"><i class="fa-solid fa-robot"></i> Arduino IDE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            // Initialize scroll animation
-            animateOnScroll();
+    <!-- ==========================================================================
+         Scholastic Achievements & Honors Section
+         ========================================================================== -->
+    <section class="section achievements-section" id="achievements">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="fa-solid fa-trophy"></i> Recognition</div>
+          <h2 class="section-title">Honors &amp; <span class="text-gradient">Scholastic Milestones</span></h2>
+          <p class="section-subtitle">Competitive awards across computer science, analytical strategy, robotics, and creative arts.</p>
+        </div>
 
-            // Form submission
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    
-                    const submitBtn = this.querySelector('button[type="submit"]');
-                    const originalText = submitBtn.innerHTML;
-                    
-                    // Show loading state
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                    submitBtn.disabled = true;
-                    
-                    try {
-                        const formData = new FormData(this);
-                        const response = await fetch(this.action, {
-                            method: 'POST',
-                            body: formData,
-                            headers: {
-                                'Accept': 'application/json'
-                            }
-                        });
-                        
-                        if (response.ok) {
-                            // Success
-                            submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-                            submitBtn.style.background = 'var(--accent-primary)';
-                            
-                            // Reset form
-                            this.reset();
-                            
-                            // Reset button after delay
-                            setTimeout(() => {
-                                submitBtn.innerHTML = originalText;
-                                submitBtn.disabled = false;
-                                submitBtn.style.background = '';
-                            }, 3000);
-                        } else {
-                            throw new Error('Form submission failed');
-                        }
-                    } catch (error) {
-                        // Error handling
-                        submitBtn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error';
-                        submitBtn.style.background = '#ff4757';
-                        
-                        setTimeout(() => {
-                            submitBtn.innerHTML = originalText;
-                            submitBtn.disabled = false;
-                            submitBtn.style.background = '';
-                        }, 3000);
-                    }
-                });
-            }
+        <div class="achievements-grid">
+          <div class="achievement-card">
+            <span class="achievement-badge-pill"><i class="fa-solid fa-crown"></i> 1st Position</span>
+            <h3 class="achievement-title">Best Photography Award</h3>
+            <p class="achievement-desc">Awarded first prize in college-wide visual arts & cinematography competition for technical composition and storytelling.</p>
+            <div class="achievement-date"><i class="fa-regular fa-calendar"></i> Sept 2023</div>
+          </div>
 
-            // Article links - open in new tab
-            document.querySelectorAll('.article-link').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    // Already has target="_blank" in HTML, but adding confirmation
-                    console.log('Opening article in new tab:', this.href);
-                });
-            });
-        });
-    </script>
+          <div class="achievement-card">
+            <span class="achievement-badge-pill"><i class="fa-solid fa-medal"></i> 2nd Position</span>
+            <h3 class="achievement-title">Quiz Debate Championship</h3>
+            <p class="achievement-desc">Secured runner-up position demonstrating technical mastery, logical rebuttal, and articulate technological discourse.</p>
+            <div class="achievement-date"><i class="fa-regular fa-calendar"></i> Oct 2023</div>
+          </div>
+
+          <div class="achievement-card">
+            <span class="achievement-badge-pill"><i class="fa-solid fa-chess"></i> 2nd Position</span>
+            <h3 class="achievement-title">Chess Tournament — Sports Meet</h3>
+            <p class="achievement-desc">Achieved 2nd place in university sports meet. Active competitive chess player with 1600+ rating on Chess.com.</p>
+            <div class="achievement-date"><i class="fa-regular fa-calendar"></i> Dec 2024</div>
+          </div>
+
+          <div class="achievement-card">
+            <span class="achievement-badge-pill"><i class="fa-solid fa-bug"></i> 3rd Position</span>
+            <h3 class="achievement-title">Debugging Competition</h3>
+            <p class="achievement-desc">Ranked 3rd in intensive multi-language timed code debugging contest testing algorithmic optimization and edge-case resolution.</p>
+            <div class="achievement-date"><i class="fa-regular fa-calendar"></i> 2024</div>
+          </div>
+
+          <div class="achievement-card">
+            <span class="achievement-badge-pill"><i class="fa-solid fa-microphone"></i> Official Anchor</span>
+            <h3 class="achievement-title">Anchoring @ Sci-Tech Fiesta</h3>
+            <p class="achievement-desc">Hosted and anchored the flagship university science & technology symposium before an audience of faculty and 500+ delegates.</p>
+            <div class="achievement-date"><i class="fa-regular fa-calendar"></i> Feb 2026</div>
+          </div>
+
+          <div class="achievement-card">
+            <span class="achievement-badge-pill"><i class="fa-solid fa-robot"></i> National Finalist</span>
+            <h3 class="achievement-title">Robotics Championship (CERI Society)</h3>
+            <p class="achievement-desc">Selected participant in advanced robotics fabrication and autonomous navigation championship by CERI Society.</p>
+            <div class="achievement-date"><i class="fa-regular fa-calendar"></i> Feb 2026</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Articles & Technical Publications Section
+         ========================================================================== -->
+    <section class="section articles-section" id="articles">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="fa-solid fa-newspaper"></i> Written Insights</div>
+          <h2 class="section-title">Technical <span class="text-gradient">Publications &amp; Articles</span></h2>
+          <p class="section-subtitle">Deep dives on machine learning architectures, system design, and AI automation published on my tech blog.</p>
+        </div>
+
+        <div class="articles-grid">
+          <!-- Article 1 -->
+          <article class="article-card">
+            <div class="article-meta">
+              <span class="article-tag">Computer Vision</span>
+              <span><i class="fa-regular fa-clock"></i> 6 min read</span>
+            </div>
+            <h3 class="article-title">Building CNN Models for Plant Disease Detection</h3>
+            <p class="article-summary">
+              A comprehensive technical guide to constructing, training, and tuning convolutional neural networks for agricultural pathology classification on the PlantVillage dataset.
+            </p>
+            <a href="https://blogsitesk.netlify.app/?article=1" target="_blank" rel="noopener noreferrer" class="article-link">
+              <span>Read Full Article</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="article-card">
+            <div class="article-meta">
+              <span class="article-tag">Recommendation Systems</span>
+              <span><i class="fa-regular fa-clock"></i> 5 min read</span>
+            </div>
+            <h3 class="article-title">Career Guidance &amp; Job Recommendation System</h3>
+            <p class="article-summary">
+              Architecting a machine learning-based talent matching engine. Analyzing multi-dimensional skill vectors, predictive scoring, and generating personalized upskilling roadmaps.
+            </p>
+            <a href="https://blogsitesk.netlify.app/?article=2" target="_blank" rel="noopener noreferrer" class="article-link">
+              <span>Read Full Article</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <!-- Article 3 -->
+          <article class="article-card">
+            <div class="article-meta">
+              <span class="article-tag">Natural Language Processing</span>
+              <span><i class="fa-regular fa-clock"></i> 8 min read</span>
+            </div>
+            <h3 class="article-title">J.A.R.V.I.S. AI: Building Intelligent Personal Assistants</h3>
+            <p class="article-summary">
+              Moving past basic keyword scripts to contextual natural language understanding, hands-free speech pipelines, and proactive desktop operating system automation.
+            </p>
+            <a href="https://blogsitesk.netlify.app/?article=3" target="_blank" rel="noopener noreferrer" class="article-link">
+              <span>Read Full Article</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </article>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="https://blogsitesk.netlify.app" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <span>Visit Full Technical Blog</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Beyond Code / Hobbies Section
+         ========================================================================== -->
+    <section class="section hobbies-section" id="hobbies">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="fa-solid fa-palette"></i> Passions</div>
+          <h2 class="section-title">Beyond the <span class="text-gradient">Terminal</span></h2>
+          <p class="section-subtitle">Creative pursuits, strategic challenges, and physical endurance that shape my holistic approach to engineering.</p>
+        </div>
+
+        <div class="hobbies-grid">
+          <div class="hobby-card">
+            <div class="hobby-icon-circle"><i class="fa-solid fa-camera"></i></div>
+            <h3 class="hobby-title">Photography &amp; Cinema</h3>
+            <p class="hobby-desc">1st prize award-winning photographer with an eye for portraiture, street narratives, color grading, and visual storytelling.</p>
+          </div>
+
+          <div class="hobby-card">
+            <div class="hobby-icon-circle"><i class="fa-solid fa-chess-knight"></i></div>
+            <h3 class="hobby-title">Chess Strategy</h3>
+            <p class="hobby-desc">1600+ rated on Chess.com. Applying opening preparation, tactical calculation, and strategic foresight on the board.</p>
+          </div>
+
+          <div class="hobby-card">
+            <div class="hobby-icon-circle"><i class="fa-solid fa-microphone-lines"></i></div>
+            <h3 class="hobby-title">Public Speaking &amp; Anchoring</h3>
+            <p class="hobby-desc">Experienced host and anchor for major university conventions, technical summits, and cultural fests of 500+ attendees.</p>
+          </div>
+
+          <div class="hobby-card">
+            <div class="hobby-icon-circle"><i class="fa-solid fa-person-running"></i></div>
+            <h3 class="hobby-title">Marathons &amp; Athletics</h3>
+            <p class="hobby-desc">Completed multiple long-distance marathons. Cultivating mental resilience, stamina, and consistency.</p>
+          </div>
+
+          <div class="hobby-card">
+            <div class="hobby-icon-circle"><i class="fa-solid fa-pen-nib"></i></div>
+            <h3 class="hobby-title">Storytelling &amp; Film</h3>
+            <p class="hobby-desc">Writing creative fiction, character arcs, and conceptual screenplays exploring speculative futures and human experiences.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Contact Section
+         ========================================================================== -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><i class="fa-regular fa-paper-plane"></i> Let's Connect</div>
+          <h2 class="section-title">Have an Opportunity or <span class="text-gradient">Project in Mind?</span></h2>
+          <p class="section-subtitle">Whether looking for an ML engineer, data science intern, or event speaker, I'd love to hear from you.</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Info Cards -->
+          <div class="contact-info-wrap">
+            <!-- Email -->
+            <div class="contact-item-card">
+              <div class="contact-item-icon">
+                <i class="fa-regular fa-envelope"></i>
+              </div>
+              <div class="contact-item-content">
+                <div class="contact-item-title">Primary Email</div>
+                <a href="mailto:krishna.techx.31@gmail.com" class="contact-item-val">krishna.techx.31@gmail.com</a>
+              </div>
+              <button class="btn btn-secondary btn-sm" id="copy-email-btn" title="Copy Email to Clipboard">
+                <i class="fa-regular fa-copy"></i> Copy
+              </button>
+            </div>
+
+            <!-- Academic Email -->
+            <div class="contact-item-card">
+              <div class="contact-item-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <div class="contact-item-content">
+                <div class="contact-item-title">Institutional Email</div>
+                <a href="mailto:suman2301275.stu@ctgroup.in" class="contact-item-val">suman2301275.stu@ctgroup.in</a>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="contact-item-card">
+              <div class="contact-item-icon">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div class="contact-item-content">
+                <div class="contact-item-title">Phone / WhatsApp</div>
+                <a href="tel:+919608110425" class="contact-item-val">+91-96081-10425</a>
+              </div>
+            </div>
+
+            <!-- Location -->
+            <div class="contact-item-card">
+              <div class="contact-item-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="contact-item-content">
+                <div class="contact-item-title">Location</div>
+                <div class="contact-item-val">Jalandhar, Punjab (Campus) • Samastipur, Bihar (Hometown)</div>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="social-pills-wrap">
+              <a href="https://linkedin.com/in/suman-krishna-7a17a6275" target="_blank" rel="noopener noreferrer" class="social-pill">
+                <i class="fa-brands fa-linkedin"></i>
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://github.com/krishnaaidev" target="_blank" rel="noopener noreferrer" class="social-pill">
+                <i class="fa-brands fa-github"></i>
+                <span>GitHub (krishnaaidev)</span>
+              </a>
+              <a href="https://github.com/pixel2predict" target="_blank" rel="noopener noreferrer" class="social-pill">
+                <i class="fa-brands fa-github-alt"></i>
+                <span>GitHub (pixel2predict)</span>
+              </a>
+              <a href="https://blogsitesk.netlify.app" target="_blank" rel="noopener noreferrer" class="social-pill">
+                <i class="fa-solid fa-blog"></i>
+                <span>Technical Blog</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Contact Interactive Form -->
+          <div class="contact-form-card">
+            <h3 class="contact-form-title">Send a Direct Message</h3>
+            <p class="contact-form-subtitle">Fill in your details below and it will immediately open your preferred mail client with a pre-formatted message.</p>
+
+            <form id="contact-form">
+              <div class="form-group">
+                <label for="form-name" class="form-label">Your Name *</label>
+                <input type="text" id="form-name" class="form-control" placeholder="e.g. Alex Morgan" required>
+              </div>
+
+              <div class="form-group">
+                <label for="form-email" class="form-label">Your Email *</label>
+                <input type="email" id="form-email" class="form-control" placeholder="e.g. alex@company.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="form-subject" class="form-label">Subject</label>
+                <input type="text" id="form-subject" class="form-control" placeholder="e.g. Machine Learning Opportunity / Project Collaboration">
+              </div>
+
+              <div class="form-group">
+                <label for="form-message" class="form-label">Message *</label>
+                <textarea id="form-message" class="form-control" rows="4" placeholder="Hi Suman, I came across your portfolio and would love to discuss..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <i class="fa-regular fa-paper-plane"></i>
+                <span>Send Message</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       Footer
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="nav-brand">
+            <div class="nav-logo-box">SK</div>
+            <span class="brand-text">Suman Krishna</span>
+          </div>
+          <p class="footer-brand-p">
+            Machine Learning Engineer, Data Science Engineer &amp; Google Student Ambassador dedicated to building intelligent, human-centric software.
+          </p>
+        </div>
+
+        <ul class="footer-links">
+          <li><a href="#home" class="footer-link">Home</a></li>
+          <li><a href="#about" class="footer-link">About</a></li>
+          <li><a href="#experience" class="footer-link">Experience</a></li>
+          <li><a href="#projects" class="footer-link">Projects</a></li>
+          <li><a href="#skills" class="footer-link">Skills</a></li>
+          <li><a href="#achievements" class="footer-link">Honors</a></li>
+          <li><a href="#articles" class="footer-link">Articles</a></li>
+          <li><a href="#contact" class="footer-link">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Suman Krishna. All rights reserved.</div>
+        <div>Crafted with precision for AI &amp; Data Science impact.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       Project Details Case Study Modal
+       ========================================================================== -->
+  <div class="modal-overlay" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-text">
+    <div class="modal-backdrop"></div>
+    <div class="modal-window">
+      <button class="modal-close" aria-label="Close project modal">&times;</button>
+      <div id="project-modal-body">
+        <!-- Rendered dynamically from projectsData -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Resume Preview & Download Modal
+       ========================================================================== -->
+  <div class="modal-overlay" id="resume-modal" role="dialog" aria-modal="true" aria-labelledby="resume-title">
+    <div class="modal-backdrop"></div>
+    <div class="modal-window resume-modal-window">
+      <button class="modal-close" aria-label="Close resume modal">&times;</button>
+      <div class="resume-modal-header">
+        <div class="resume-title-wrap">
+          <h3 id="resume-title">Suman Krishna — Curriculum Vitae</h3>
+          <p>B.Tech CSE • Machine Learning &amp; Data Science Engineer</p>
+        </div>
+        <div class="resume-header-actions">
+          <a href="assets/docs/Suman_Krishna_Resume.pdf" download="Suman_Krishna_Resume.pdf" class="btn btn-primary btn-sm">
+            <i class="fa-solid fa-download"></i> Download PDF
+          </a>
+          <a href="assets/docs/Suman_Krishna_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Tab
+          </a>
+        </div>
+      </div>
+      <div class="resume-iframe-wrap">
+        <iframe src="assets/docs/Suman_Krishna_Resume.pdf" class="resume-iframe" title="Suman Krishna Resume PDF"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" aria-label="Scroll back to top" title="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript Modules -->
+  <script src="assets/js/projects-data.js"></script>
+  <script src="assets/js/particles.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

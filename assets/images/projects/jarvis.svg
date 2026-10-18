@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="jarvisBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050a14"/>
+      <stop offset="100%" stop-color="#0d192e"/>
+    </linearGradient>
+    <linearGradient id="arcGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <filter id="arcFilter">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#jarvisBg)"/>
+
+  <!-- Center Arc Reactor / AI Voice Sphere -->
+  <g transform="translate(400, 250)">
+    <!-- Outer concentric rings -->
+    <circle cx="0" cy="0" r="160" fill="none" stroke="#1e293b" stroke-width="1.5" stroke-dasharray="12 10"/>
+    <circle cx="0" cy="0" r="130" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="150 40 80 40" opacity="0.6"/>
+    <circle cx="0" cy="0" r="105" fill="none" stroke="#818cf8" stroke-width="2.5" stroke-dasharray="80 30" filter="url(#arcFilter)"/>
+    <circle cx="0" cy="0" r="80" fill="#0f172a" stroke="#38bdf8" stroke-width="3"/>
+    
+    <!-- Inner Core Core -->
+    <circle cx="0" cy="0" r="50" fill="#0284c7" opacity="0.2"/>
+    <circle cx="0" cy="0" r="30" fill="#38bdf8" filter="url(#arcFilter)"/>
+    
+    <!-- Soundwave lines surrounding -->
+    <g stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round">
+      <line x1="-220" y1="0" x2="-180" y2="0"/>
+      <line x1="-230" y1="-20" x2="-190" y2="-20"/>
+      <line x1="-240" y1="-40" x2="-200" y2="-40"/>
+      <line x1="-230" y1="20" x2="-190" y2="20"/>
+      <line x1="-240" y1="40" x2="-200" y2="40"/>
+
+      <line x1="180" y1="0" x2="220" y2="0"/>
+      <line x1="190" y1="-20" x2="230" y2="-20"/>
+      <line x1="200" y1="-40" x2="240" y2="-40"/>
+      <line x1="190" y1="20" x2="230" y2="20"/>
+      <line x1="200" y1="40" x2="240" y2="40"/>
+    </g>
+
+    <text x="0" y="5" fill="#ffffff" font-family="'Plus Jakarta Sans', system-ui" font-size="14" font-weight="900" text-anchor="middle">J.A.R.V.I.S</text>
+  </g>
+
+  <!-- Capability Badges -->
+  <rect x="50" y="45" width="220" height="75" rx="12" fill="#0f172a" stroke="rgba(255,255,255,0.08)"/>
+  <text x="70" y="75" fill="#38bdf8" font-family="system-ui" font-size="11" font-weight="800">NLP &amp; VOICE RECOGNITION</text>
+  <text x="70" y="100" fill="#ffffff" font-family="system-ui" font-size="16" font-weight="800">Speech-to-Intent Engine</text>
+
+  <rect x="530" y="45" width="220" height="75" rx="12" fill="#0f172a" stroke="rgba(255,255,255,0.08)"/>
+  <text x="550" y="75" fill="#a855f7" font-family="system-ui" font-size="11" font-weight="800">PROACTIVE AUTOMATION</text>
+  <text x="550" y="100" fill="#ffffff" font-family="system-ui" font-size="16" font-weight="800">Contextual Desktop Assistant</text>
+
+  <!-- Bottom Waveform / Dialogue Status -->
+  <g transform="translate(250, 430)">
+    <rect x="-100" y="-20" width="500" height="40" rx="20" fill="#132038" stroke="rgba(56,189,248,0.3)"/>
+    <circle cx="-75" cy="0" r="5" fill="#10b981"/>
+    <text x="-55" y="5" fill="#e2e8f0" font-family="monospace" font-size="12">"System online. Standing by for voice input..."</text>
+  </g>
+</svg>

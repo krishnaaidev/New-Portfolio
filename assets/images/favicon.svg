@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="skGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="22" fill="#0b0f19"/>
+  <rect x="2" y="2" width="96" height="96" rx="20" fill="none" stroke="url(#skGrad)" stroke-width="3" stroke-opacity="0.8"/>
+  <text x="50" y="62" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="900" font-size="38" fill="url(#skGrad)" text-anchor="middle" letter-spacing="-1">SK</text>
+  <circle cx="80" cy="22" r="4" fill="#10b981" />
+</svg>

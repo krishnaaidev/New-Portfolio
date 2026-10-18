@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="biBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a101d"/>
+      <stop offset="100%" stop-color="#141c2e"/>
+    </linearGradient>
+    <linearGradient id="barGrad1" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="barGrad2" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#f43f5e"/>
+    </linearGradient>
+    <linearGradient id="barGrad3" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#biBg)"/>
+  
+  <!-- Dashboard Top Bar -->
+  <rect x="40" y="30" width="720" height="50" rx="10" fill="#1b253b"/>
+  <circle cx="65" cy="55" r="7" fill="#ef4444"/>
+  <circle cx="85" cy="55" r="7" fill="#f59e0b"/>
+  <circle cx="105" cy="55" r="7" fill="#10b981"/>
+  <text x="135" y="60" fill="#f8fafc" font-family="system-ui" font-size="14" font-weight="700">Superstore Sales &amp; Profit Deep Dive — Power BI &amp; Python EDA</text>
+  <rect x="630" y="42" width="110" height="26" rx="6" fill="#0284c7" opacity="0.3"/>
+  <text x="685" y="59" fill="#38bdf8" font-family="system-ui" font-size="11" font-weight="800" text-anchor="middle">LIVE DRILL-DOWN</text>
+
+  <!-- Metric KPI Cards -->
+  <rect x="40" y="95" width="220" height="85" rx="10" fill="#162032" stroke="rgba(255,255,255,0.08)"/>
+  <text x="60" y="125" fill="#94a3b8" font-family="system-ui" font-size="12" font-weight="600">TOTAL REVENUE</text>
+  <text x="60" y="158" fill="#38bdf8" font-family="system-ui" font-size="24" font-weight="900">$2,297,201</text>
+  <text x="210" y="156" fill="#10b981" font-family="system-ui" font-size="12" font-weight="700">+18.4%</text>
+
+  <rect x="290" y="95" width="220" height="85" rx="10" fill="#162032" stroke="rgba(255,255,255,0.08)"/>
+  <text x="310" y="125" fill="#94a3b8" font-family="system-ui" font-size="12" font-weight="600">OVERALL PROFIT</text>
+  <text x="310" y="158" fill="#10b981" font-family="system-ui" font-size="24" font-weight="900">$286,397</text>
+  <text x="460" y="156" fill="#10b981" font-family="system-ui" font-size="12" font-weight="700">12.5% margin</text>
+
+  <rect x="540" y="95" width="220" height="85" rx="10" fill="#162032" stroke="rgba(255,255,255,0.08)"/>
+  <text x="560" y="125" fill="#94a3b8" font-family="system-ui" font-size="12" font-weight="600">DISCOUNT OPTIMIZATION</text>
+  <text x="560" y="158" fill="#f43f5e" font-family="system-ui" font-size="22" font-weight="900">-42% Loss Cut</text>
+  <text x="700" y="156" fill="#f43f5e" font-family="system-ui" font-size="11" font-weight="700">EDA</text>
+
+  <!-- Big Bar Chart Area -->
+  <rect x="40" y="195" width="450" height="260" rx="10" fill="#162032" stroke="rgba(255,255,255,0.08)"/>
+  <text x="65" y="228" fill="#f8fafc" font-family="system-ui" font-size="14" font-weight="700">Category Profit vs Discount Thresholds</text>
+  <g transform="translate(65, 250)">
+    <!-- Axis lines -->
+    <line x1="0" y1="170" x2="400" y2="170" stroke="#334155" stroke-width="1.5"/>
+    <!-- Bars -->
+    <rect x="30" y="40" width="35" height="130" rx="4" fill="url(#barGrad1)"/>
+    <rect x="90" y="20" width="35" height="150" rx="4" fill="url(#barGrad3)"/>
+    <rect x="150" y="70" width="35" height="100" rx="4" fill="url(#barGrad1)"/>
+    <rect x="210" y="110" width="35" height="60" rx="4" fill="url(#barGrad2)"/>
+    <rect x="270" y="30" width="35" height="140" rx="4" fill="url(#barGrad3)"/>
+    <rect x="330" y="85" width="35" height="85" rx="4" fill="url(#barGrad1)"/>
+    <!-- Labels -->
+    <text x="47" y="190" fill="#94a3b8" font-family="system-ui" font-size="10" text-anchor="middle">Tech</text>
+    <text x="107" y="190" fill="#94a3b8" font-family="system-ui" font-size="10" text-anchor="middle">Office</text>
+    <text x="167" y="190" fill="#94a3b8" font-family="system-ui" font-size="10" text-anchor="middle">Furn.</text>
+    <text x="227" y="190" fill="#f87171" font-family="system-ui" font-size="10" text-anchor="middle">Loss SKU</text>
+    <text x="287" y="190" fill="#94a3b8" font-family="system-ui" font-size="10" text-anchor="middle">Retail</text>
+    <text x="347" y="190" fill="#94a3b8" font-family="system-ui" font-size="10" text-anchor="middle">B2B</text>
+  </g>
+
+  <!-- Side Donut & Breakdown Area -->
+  <rect x="510" y="195" width="250" height="260" rx="10" fill="#162032" stroke="rgba(255,255,255,0.08)"/>
+  <text x="530" y="228" fill="#f8fafc" font-family="system-ui" font-size="14" font-weight="700">Regional Distribution</text>
+  
+  <!-- Donut Chart -->
+  <circle cx="635" cy="315" r="55" fill="none" stroke="#1e293b" stroke-width="24"/>
+  <circle cx="635" cy="315" r="55" fill="none" stroke="#38bdf8" stroke-width="24" stroke-dasharray="140 345" stroke-dashoffset="0"/>
+  <circle cx="635" cy="315" r="55" fill="none" stroke="#10b981" stroke-width="24" stroke-dasharray="100 345" stroke-dashoffset="-140"/>
+  <circle cx="635" cy="315" r="55" fill="none" stroke="#f59e0b" stroke-width="24" stroke-dasharray="60 345" stroke-dashoffset="-240"/>
+  <circle cx="635" cy="315" r="55" fill="none" stroke="#f43f5e" stroke-width="24" stroke-dasharray="45 345" stroke-dashoffset="-300"/>
+  
+  <text x="635" y="320" fill="#ffffff" font-family="system-ui" font-size="15" font-weight="900" text-anchor="middle">4 Pages</text>
+  <text x="635" y="335" fill="#94a3b8" font-family="system-ui" font-size="10" text-anchor="middle">Connected</text>
+
+  <!-- Legend -->
+  <circle cx="540" cy="405" r="5" fill="#38bdf8"/><text x="555" y="409" fill="#94a3b8" font-family="system-ui" font-size="11">West (38%)</text>
+  <circle cx="650" cy="405" r="5" fill="#10b981"/><text x="665" y="409" fill="#94a3b8" font-family="system-ui" font-size="11">East (29%)</text>
+  <circle cx="540" cy="425" r="5" fill="#f59e0b"/><text x="555" y="429" fill="#94a3b8" font-family="system-ui" font-size="11">Central (18%)</text>
+  <circle cx="650" cy="425" r="5" fill="#f43f5e"/><text x="665" y="429" fill="#94a3b8" font-family="system-ui" font-size="11">South (15%)</text>
+</svg>
