@@ -2,8 +2,8 @@
  * ============================================================================
  * Kikat AI Voice Agent — Suman Krishna's Portfolio Companion
  * ============================================================================
- * Persona: Kikat (Sweet, Soft & Cute Female Voice AI Assistant)
- * Voice: Natural soft English female voice synthesis via Web Speech API
+ * Persona: Kikat (Professional, Articulate AI Voice Assistant)
+ * Voice: Natural Indian English female voice synthesis via Web Speech API (en-IN)
  * Mic: Speech-to-Text Voice Recognition via Web Speech API
  * Knowledge Base: 100% verified accurate facts from Suman Krishna's resume & credentials
  * Positioning: Floating bottom-right corner before footer (Self-contained CSS)
@@ -687,7 +687,7 @@
   /* ==========================================================================
      2. Comprehensive, 100% Fact-Checked Knowledge Base
      All facts directly verified from Suman Krishna's official resume & credentials.
-     ZERO hallucinations.
+     ZERO hallucinations. Indian Accent Voice Output.
      ========================================================================== */
   const knowledgeBase = [
     // 1. Kikat Herself (Highest priority so "Who are you?" never answers as Suman)
@@ -707,19 +707,19 @@
         { phrase: "about yourself", weight: 7 },
         { phrase: "tell me about yourself", weight: 8 }
       ],
-      spoken: "Hi! I'm Kikat, your sweet and cute AI companion! ✨ I was created with love to guide you through Suman Krishna's portfolio. I can answer any question about Suman's projects, Flutter apps, machine learning systems, 763 RedRob score, certifications, or how to contact him. What would you like to explore?",
-      response: `✨ <strong>Hi! I'm Kikat!</strong><br><br>
+      spoken: "Hello! I am Kikat, Suman Krishna's personal AI voice assistant with an Indian accent. I am here to guide you through Suman's portfolio and tell you all about his projects, Flutter apps, machine learning systems, 763 RedRob score, certifications, and background. What would you like to know?",
+      response: `<strong>Hello! I'm Kikat.</strong><br><br>
       I am Suman Krishna's personal AI voice agent and portfolio companion. I'm here to tell you all about Suman's verified achievements:
       <ul style="margin: 0.5rem 0 0.5rem 1.2rem; padding: 0;">
+        <li>📱 <strong>CT Group KRA &amp; KPI Performance Management System</strong> — Made with Flutter &amp; Dart</li>
         <li>🤖 <strong>AIHire</strong> — Autonomous AI Interview B.Tech Capstone Project</li>
-        <li>📱 <strong>CTG Faculty App</strong> — Flutter &amp; Dart Performance Management System</li>
         <li>🎯 <strong>763 / 1000</strong> on the standardized RedRob Technical Assessment</li>
         <li>🥇 <strong>7x NASSCOM FutureSkills Prime Gold</strong> Certifications (Govt. of India approved)</li>
         <li>🎓 <strong>B.Tech in CSE</strong> at CT Institute (CGPA: <strong>8.0 / 10.0</strong>)</li>
         <li>🌐 <strong>Google Student Ambassador</strong> &amp; <strong>GDG Member</strong></li>
-        <li>📸 Photography &amp; Cinematography on Instagram at <strong>@bruh.vision</strong></li>
+        <li>📸 Photography &amp; Cinematography on Instagram: <strong>@bruh.vision</strong></li>
       </ul>
-      You can type or speak into your mic, and I will happily answer in my soft voice!`
+      You can type or speak into your mic, and I will happily answer in my Indian voice!`
     },
 
     // 2. Identity & Overview of Suman Krishna
@@ -743,15 +743,15 @@
       response: `<strong>Suman Krishna</strong> is a final-year Computer Science undergraduate at <strong>CT Institute of Engineering, Management &amp; Technology (CTIEMT)</strong>, Jalandhar, Punjab (CGPA: <strong>8.0 / 10.0</strong>).<br><br>
       He serves as an official <strong>Google Student Ambassador</strong> (since Sep 2025) and core <strong>Google Developer Groups (GDG) Member</strong> (since Sep 2026). Key highlights:
       <ul style="margin: 0.5rem 0 0.5rem 1.2rem; padding: 0;">
+        <li>📱 <strong>CT Group KRA &amp; KPI System:</strong> I made this app with Flutter &amp; Dart</li>
         <li>🎯 <strong>RedRob Assessment Score:</strong> 763 / 1000 (Distinction Benchmark)</li>
         <li>🥇 <strong>7x NASSCOM Gold Certifications:</strong> 100% in AWS Cloud &amp; GenAI 101</li>
-        <li>📱 <strong>Flutter &amp; Dart Mobile Engineering:</strong> CTG Faculty App for CT Group</li>
         <li>🤖 <strong>Autonomous Recruitment AI:</strong> AIHire (B.Tech Capstone Project)</li>
         <li>💼 <strong>Industry Internships:</strong> EduTech Solutions &amp; Averixis Solutions</li>
       </ul>`
     },
 
-    // 3. CTG Faculty App (Flutter & Dart)
+    // 3. CT Group KRA & KPI Performance Management System (Made with Flutter)
     {
       intent: "ctg_faculty_app",
       triggers: [
@@ -763,13 +763,14 @@
         { phrase: "flutter", weight: 8 },
         { phrase: "flutter app", weight: 10 },
         { phrase: "appraisal app", weight: 9 },
-        { phrase: "ct group", weight: 8 },
+        { phrase: "ct group", weight: 9 },
         { phrase: "ctgroup", weight: 8 },
-        { phrase: "mobile app", weight: 6 }
+        { phrase: "mobile app", weight: 6 },
+        { phrase: "performance management", weight: 9 }
       ],
-      spoken: "Yay! The CTG Faculty App is an institutional digital performance management system engineered by Suman using Flutter and Dart with Material 3 for CT Group of Institutions. It evaluates faculty across a one thousand mark framework with three-tier role-based access control and automated Excel and PDF reports.",
-      response: `<strong>CTG Faculty App: KRA &amp; KPI Performance Management System</strong><br><br>
-      An institutional cross-platform mobile application engineered with <strong>Flutter &amp; Dart</strong> for <strong>CT Group of Institutions</strong>:<br>
+      spoken: "I made this app — CT Group KRA and KPI Performance Management System with Flutter and Dart for CT Group of Institutions. It evaluates faculty, heads of department, and heads of institutes across a one thousand mark framework with three-tier role-based access control and automated Excel and PDF reports.",
+      response: `<strong>CT Group KRA &amp; KPI Performance Management System (Made with Flutter)</strong><br><br>
+      I made this institutional cross-platform application using <strong>Flutter &amp; Dart</strong> for <strong>CT Group of Institutions</strong>:<br>
       <ul style="margin: 0.5rem 0 0.5rem 1.2rem; padding: 0;">
         <li><strong>Tech Stack:</strong> Flutter, Dart, Material 3, Provider State Management, SQLite, REST API, SheetJS Excel &amp; PDF Export.</li>
         <li><strong>1,000-Mark Framework:</strong> Evaluates teaching efficacy, research publications, patents, student feedback, and departmental leadership.</li>
@@ -790,7 +791,7 @@
         { phrase: "candidate evaluation", weight: 8 },
         { phrase: "resume screener", weight: 8 }
       ],
-      spoken: "Aww, I love AIHire! It is Suman's flagship B.Tech Capstone Project. It is an autonomous recruitment platform combining fine-tuned LLMs, real-time speech evaluation, emotion and confidence tracking, and automated resume parsing with over 95 percent precision.",
+      spoken: "AIHire is Suman's flagship B.Tech Capstone Project. It is an autonomous recruitment platform combining fine-tuned LLMs, real-time speech evaluation, emotion and confidence tracking, and automated resume parsing with over 95 percent precision.",
       response: `<strong>AIHire: Autonomous AI Interview &amp; Candidate Evaluation Platform</strong><br><br>
       Suman's flagship <strong>B.Tech Capstone Project (2026)</strong>:<br>
       <ul style="margin: 0.5rem 0 0.5rem 1.2rem; padding: 0;">
@@ -815,7 +816,7 @@
         { phrase: "aptitude score", weight: 7 },
         { phrase: "score", weight: 4 }
       ],
-      spoken: "Woohoo! Suman scored an impressive 763 out of 1000 on the standardized RedRob Online Technical Assessment, demonstrating distinction-tier algorithmic problem solving, cognitive reasoning, and software engineering aptitude.",
+      spoken: "Suman scored 763 out of 1000 on the standardized RedRob Online Technical Assessment, demonstrating distinction-tier algorithmic problem solving, cognitive reasoning, and software engineering aptitude.",
       response: `<strong>RedRob Technical Assessment Benchmark</strong><br><br>
       <div style="display: flex; align-items: center; gap: 0.6rem; margin: 0.5rem 0;">
         <span style="font-size: 1.5rem; font-weight: 800; color: #10b981;">763 / 1000</span>
@@ -897,11 +898,11 @@
         { phrase: "robo car", weight: 8 },
         { phrase: "plant disease", weight: 8 }
       ],
-      spoken: "Suman has built eight impactful systems: AIHire for autonomous AI interviews, the CTG Faculty App in Flutter and Dart, the Multimodal Depression Detection model, the Superstore Power BI Dashboard, the Plant Disease CNN classifier, the Air Pollution Health Risk model, Career Guidance AI, and a dual wired and Bluetooth Robo Car.",
+      spoken: "Suman has built eight impactful systems: The CT Group KRA and KPI Performance Management System built with Flutter, AIHire for autonomous AI interviews, the Multimodal Depression Detection model, the Superstore Power BI Dashboard, the Plant Disease CNN classifier, the Air Pollution Health Risk model, Career Guidance AI, and a dual wired and Bluetooth Robo Car.",
       response: `<strong>Suman Krishna's Key Technical Projects:</strong><br>
       <ul style="margin: 0.5rem 0 0.5rem 1.2rem; padding: 0;">
+        <li>📱 <strong>CT Group KRA &amp; KPI Performance Management System:</strong> I made this app with Flutter &amp; Dart for CT Group.</li>
         <li>🤖 <strong>AIHire:</strong> Autonomous AI recruitment &amp; candidate evaluation platform (B.Tech Capstone).</li>
-        <li>📱 <strong>CTG Faculty App:</strong> Flutter &amp; Dart institutional appraisal system with 1,000-mark framework for CT Group.</li>
         <li>🧠 <strong>Multimodal Depression Detection:</strong> Tri-modal late fusion (BERT, Wav2Vec 2.0, ResNet-LSTM) on USC DAIC-WOZ.</li>
         <li>📊 <strong>Superstore Sales &amp; Profit BI:</strong> 4-page Power BI dashboard with automated Python EDA for EduTech Solutions.</li>
         <li>🌿 <strong>Plant Disease Recognition:</strong> CNN on 54,000+ PlantVillage images (~95% accuracy) with Flask web app.</li>
@@ -975,18 +976,18 @@
         { phrase: "cinematography", weight: 9 },
         { phrase: "gallery", weight: 8 }
       ],
-      spoken: "Suman is a passionate photographer and cinematographer who won first position in Best Photography. You can check out his curated photography on Instagram at bruh.vision, and his personal page at krishna.ai.dev. The portfolio also features an interactive gallery with his best eight photos!",
+      spoken: "Suman is an award-winning photographer and cinematographer who won first position in Best Photography. For more of his photography and cinematography work, you can visit his Instagram handle at bruh.vision, as well as his personal handle at krishna.ai.dev. The portfolio about page also features his photo gallery!",
       response: `<strong>Photography &amp; Cinematography:</strong><br><br>
-      Suman won <strong>1st Position in Best Photography</strong> (Sept 2023). He captures street portraits, macro nature, and architectural aesthetics.<br><br>
+      Suman won <strong>1st Position in Best Photography</strong> (Sept 2023). For more creative visual work, visit his Instagram handle:<br><br>
       <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.6rem;">
-        <a href="https://instagram.com/bruh.vision" target="_blank" rel="noopener noreferrer" class="social-pill" style="font-size: 0.75rem;">
-          <i class="fa-brands fa-instagram" style="color: #e1306c;"></i> @bruh.vision (Photography)
+        <a href="https://instagram.com/bruh.vision" target="_blank" rel="noopener noreferrer" class="social-pill" style="font-size: 0.8rem; padding: 0.4rem 0.8rem; background: rgba(225, 48, 108, 0.15); border: 1px solid rgba(225, 48, 108, 0.4);">
+          <i class="fa-brands fa-instagram" style="color: #e1306c;"></i> <strong>@bruh.vision</strong> (Photography Handle)
         </a>
-        <a href="https://instagram.com/krishna.ai.dev" target="_blank" rel="noopener noreferrer" class="social-pill" style="font-size: 0.75rem;">
-          <i class="fa-brands fa-instagram" style="color: #a855f7;"></i> @krishna.ai.dev (Personal)
+        <a href="https://instagram.com/krishna.ai.dev" target="_blank" rel="noopener noreferrer" class="social-pill" style="font-size: 0.8rem; padding: 0.4rem 0.8rem; background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.4);">
+          <i class="fa-brands fa-instagram" style="color: #a855f7;"></i> <strong>@krishna.ai.dev</strong> (Personal Handle)
         </a>
       </div>
-      <a href="about.html#gallery" style="font-weight: 700;">Open Portfolio Photo Lightbox &rarr;</a>`
+      <a href="about.html#gallery" style="font-weight: 700;">Open Portfolio Photo Gallery &rarr;</a>`
     },
 
     // 12. Chess Rating (750+)
@@ -1102,7 +1103,7 @@
       ],
       spoken: "You can view Suman's ATS-friendly web resume right on this portfolio, or download the full PDF resume directly.",
       response: `<strong>Suman Krishna's Resume:</strong><br><br>
-      📄 Suman's comprehensive resume includes all academic milestones, the Flutter CTG Faculty App, AIHire, 7 NASSCOM Gold Certifications, and RedRob assessment score.<br><br>
+      📄 Suman's comprehensive resume includes all academic milestones, the Flutter CT Group KRA &amp; KPI app, AIHire, 7 NASSCOM Gold Certifications, and RedRob assessment score.<br><br>
       <a href="resume.html" class="btn btn-primary btn-sm" style="display: inline-flex; margin-right: 0.5rem; text-decoration: none;">
         <i class="fa-regular fa-file-lines"></i> View Resume Page
       </a>
@@ -1122,10 +1123,10 @@
         { phrase: "hire suman", weight: 9 },
         { phrase: "why should we hire", weight: 10 }
       ],
-      spoken: "You should hire Suman because he combines production AI engineering with real-world mobile and web development. He built AIHire with fine-tuned LLMs, shipped an institutional Flutter app for thousands of users, scored 763 on RedRob, holds seven NASSCOM Gold Certifications, and actively leads developer communities as a Google Student Ambassador.",
+      spoken: "You should hire Suman because he combines production AI engineering with real-world mobile and web development. He built AIHire with fine-tuned LLMs, shipped the CT Group Performance Management System in Flutter for thousands of users, scored 763 on RedRob, holds seven NASSCOM Gold Certifications, and actively leads developer communities as a Google Student Ambassador.",
       response: `<strong>Why Hire Suman Krishna?</strong><br><br>
       <ul style="margin: 0.5rem 0 0.5rem 1.2rem; padding: 0;">
-        <li>🚀 <strong>Proven Production Engineering:</strong> Shipped <strong>AIHire</strong> (multimodal recruitment AI) and the <strong>CTG Faculty App</strong> (Flutter &amp; Dart for CT Group).</li>
+        <li>🚀 <strong>Proven Production Engineering:</strong> Shipped <strong>AIHire</strong> (recruitment AI) and the <strong>CT Group KRA &amp; KPI System</strong> with Flutter &amp; Dart.</li>
         <li>📊 <strong>Top-Tier Aptitude:</strong> Scored <strong>763 / 1000</strong> on the standardized RedRob online assessment.</li>
         <li>🥇 <strong>Govt. Certified Excellence:</strong> <strong>7x NASSCOM Gold Certifications</strong> with 100% in AWS Cloud and GenAI 101.</li>
         <li>👥 <strong>Leadership &amp; Mentorship:</strong> Official <strong>Google Student Ambassador</strong> and core <strong>GDG Member</strong> mentoring 500+ students.</li>
@@ -1151,13 +1152,13 @@
         { phrase: "kaise ho", weight: 10 },
         { phrase: "kya haal", weight: 10 }
       ],
-      spoken: "Hello there! ✨ I'm Kikat, Suman Krishna's cute AI voice assistant! I'm so happy to chat with you today! What would you like to explore about Suman's projects, Flutter apps, or achievements?",
+      spoken: "Hello! Nice to meet you. I am Kikat, Suman Krishna's AI voice assistant. How can I assist you today with Suman's projects, Flutter apps, or contact details?",
       response: `👋 <strong>Hello! Nice to meet you!</strong><br><br>
-      I'm <strong>Kikat</strong>, Suman's cute AI voice guide. What would you like to explore about Suman today?<br><br>
+      I'm <strong>Kikat</strong>, Suman's AI voice guide. What would you like to explore about Suman today?<br><br>
       <em>Try asking:</em>
       <div style="display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.4rem;">
         <button class="kikat-chip" onclick="window.KikatAgent.ask('Who is Suman?')">📌 Who is Suman?</button>
-        <button class="kikat-chip" onclick="window.KikatAgent.ask('Tell me about CTG Faculty App')">📱 CTG Faculty App (Flutter)</button>
+        <button class="kikat-chip" onclick="window.KikatAgent.ask('Tell me about CT Group KRA & KPI App')">📱 CT Group App (Flutter)</button>
         <button class="kikat-chip" onclick="window.KikatAgent.ask('Tell me about AIHire')">🤖 AIHire Capstone</button>
       </div>`
     },
@@ -1177,8 +1178,8 @@
         { phrase: "shukriya", weight: 10 },
         { phrase: "dhanyawad", weight: 10 }
       ],
-      spoken: "You're so very welcome! 🥰 It's my absolute pleasure to help! Please don't hesitate to reach out to Suman if you'd like to collaborate or discuss an exciting role!",
-      response: `🥰 <strong>You're very welcome!</strong><br><br>
+      spoken: "You're very welcome! It is my pleasure to help. Please feel free to reach out to Suman if you would like to collaborate or discuss an opportunity!",
+      response: `<strong>You're very welcome!</strong><br><br>
       Feel free to ask me anything else, or click below to connect directly with Suman:<br><br>
       <a href="contact.html" style="font-weight: 700;">Reach out via Contact Page &rarr;</a>`
     }
@@ -1186,11 +1187,11 @@
 
   // Fallback response for unhandled questions
   const fallback = {
-    spoken: "I'd love to help you with that! ✨ Suman Krishna is a talented Machine Learning and Flutter engineer, Google Student Ambassador, and GDG member with seven NASSCOM Gold Certifications and a 763 RedRob score. Here are some quick topics you can ask me about!",
+    spoken: "I would be happy to help you with that! Suman Krishna is a Machine Learning and Flutter engineer, Google Student Ambassador, and GDG member with seven NASSCOM Gold Certifications and a 763 RedRob score. Here are some quick topics you can ask me about.",
     response: `I'm happy to tell you all about Suman Krishna! Here are some quick topics you can ask me about:<br><br>
     <div style="display: flex; flex-direction: column; gap: 0.35rem;">
       <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('Who is Suman Krishna?')">📌 Who is Suman Krishna?</button>
-      <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('Tell me about the CTG Faculty App')">📱 CTG Faculty App (Flutter &amp; Dart)</button>
+      <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('Tell me about the CT Group App')">📱 CT Group KRA &amp; KPI App (Flutter)</button>
       <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('Tell me about AIHire')">🤖 AIHire Autonomous Interview Platform</button>
       <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('What is Suman\\'s RedRob score?')">🎯 RedRob Test Score (763 / 1000)</button>
       <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('What certifications does Suman hold?')">🥇 7x NASSCOM Gold Certifications</button>
@@ -1254,7 +1255,7 @@
   }
 
   /* ==========================================================================
-     4. Speech Synthesis — Soft & Cute Girl Voice
+     4. Speech Synthesis — Natural Indian Accent Female Voice
      ========================================================================== */
   function initSpeechSynthesis() {
     if (!("speechSynthesis" in window)) {
@@ -1262,31 +1263,28 @@
       return;
     }
 
-    function selectBestCuteFemaleVoice() {
+    function selectBestIndianVoice() {
       const voices = window.speechSynthesis.getVoices();
       if (!voices || voices.length === 0) return;
 
-      // Priority list: Sweetest, softest, most natural female voices across Mac, Windows, Chrome
-      const preferredNames = [
-        // macOS natural & soft female voices
-        "Samantha",
-        "Victoria",
-        "Karen",
-        "Tessa",
-        "Moira",
-        "Fiona",
-        "Siri",
-        // Chrome & Google soft female voices
-        "Google UK English Female",
-        "Google US English",
-        // Windows Edge/Chrome natural female voices
-        "Microsoft Jenny Online (Natural)",
-        "Microsoft Aria Online (Natural)",
-        "Microsoft Jenny",
-        "Microsoft Zira"
+      // Priority list: Natural Indian English / Hindi Voices across macOS, Windows, Android & Chrome
+      const preferredIndianNames = [
+        // macOS built-in Indian voices
+        "Veena",
+        "Heera",
+        "Rishi",
+        // Google Indian voices (Chrome / Android)
+        "Google English (India)",
+        "Google हिन्दी",
+        // Windows Edge / Chrome Indian voices
+        "Microsoft Neerja Online (Natural) - English (India)",
+        "Microsoft Heera Online (Natural) - English (India)",
+        "Microsoft Swara Online (Natural) - Hindi (India)",
+        "Microsoft Neerja",
+        "Microsoft Heera"
       ];
 
-      for (const name of preferredNames) {
+      for (const name of preferredIndianNames) {
         const found = voices.find(v => v.name.toLowerCase().includes(name.toLowerCase()));
         if (found) {
           state.selectedVoice = found;
@@ -1294,24 +1292,31 @@
         }
       }
 
-      // Regex fallback: look for female indicators in English
-      const regexMatch = voices.find(v =>
-        /female|girl|woman|samantha|victoria|karen|tessa|moira|jenny|aria|zira/i.test(v.name) &&
-        v.lang.startsWith("en")
+      // 2. Any en-IN or hi-IN voice
+      const anyIndianLang = voices.find(v =>
+        v.lang === "en-IN" || v.lang === "hi-IN" ||
+        v.lang.startsWith("en-IN") || v.lang.startsWith("hi-IN")
       );
-      if (regexMatch) {
-        state.selectedVoice = regexMatch;
+      if (anyIndianLang) {
+        state.selectedVoice = anyIndianLang;
         return;
       }
 
-      // Any English voice
-      const anyEnglish = voices.find(v => v.lang.startsWith("en"));
-      state.selectedVoice = anyEnglish || voices[0];
+      // 3. Fallback: Search for 'india' in name or language
+      const anyIndia = voices.find(v => /india|indian|hindi/i.test(v.name) || /in/i.test(v.lang));
+      if (anyIndia) {
+        state.selectedVoice = anyIndia;
+        return;
+      }
+
+      // 4. Natural female English fallback if no Indian voice pack is installed
+      const femaleFallback = voices.find(v => /female|woman|samantha|victoria|karen|zira/i.test(v.name) && v.lang.startsWith("en"));
+      state.selectedVoice = femaleFallback || voices[0];
     }
 
-    selectBestCuteFemaleVoice();
+    selectBestIndianVoice();
     if (window.speechSynthesis.onvoiceschanged !== undefined) {
-      window.speechSynthesis.onvoiceschanged = selectBestCuteFemaleVoice;
+      window.speechSynthesis.onvoiceschanged = selectBestIndianVoice;
     }
   }
 
@@ -1348,13 +1353,13 @@
         utterance.voice = state.selectedVoice;
       }
 
-      // TUNED FOR SOFT & CUTE FEMININE VOICE:
-      // Pitch: 1.24 (bright, youthful, cute & sweet)
-      // Rate: 0.95 (gentle, relaxed, soft cadence)
-      // Volume: 0.92 (warm, smooth)
-      utterance.pitch = 1.24;
-      utterance.rate = 0.95;
-      utterance.volume = 0.92;
+      // TUNED FOR NATURAL INDIAN ENGLISH FEMALE VOICE:
+      // Pitch: 1.02 (natural, clear, elegant Indian accent)
+      // Rate: 0.98 (clear, articulate, natural conversational pace)
+      // Volume: 1.0
+      utterance.pitch = 1.02;
+      utterance.rate = 0.98;
+      utterance.volume = 1.0;
 
       utterance.onstart = () => {
         state.isSpeaking = true;
@@ -1407,7 +1412,7 @@
     const recognition = new SpeechRecognition();
     recognition.continuous = false;
     recognition.interimResults = false;
-    recognition.lang = "en-US";
+    recognition.lang = "en-IN"; // Set Indian English speech recognition
 
     recognition.onstart = () => {
       state.isListening = true;
@@ -1479,7 +1484,7 @@
     launcher.id = "kikat-launcher";
     launcher.className = "kikat-launcher";
     launcher.setAttribute("aria-label", "Open Kikat AI Voice Agent");
-    launcher.title = "Ask Kikat (AI Voice Agent)";
+    launcher.title = "Ask Kikat (Indian Voice AI)";
     launcher.innerHTML = `
       <div class="kikat-launcher-avatar" id="kikat-launcher-icon">
         <i class="fa-solid fa-wand-magic-sparkles"></i>
@@ -1487,7 +1492,7 @@
       <span class="kikat-launcher-badge"></span>
       <div class="kikat-launcher-tooltip">
         <i class="fa-solid fa-volume-high" style="color: #38bdf8;"></i>
-        <span>Ask Kikat (Girl Voice AI)</span>
+        <span>Ask Kikat (Indian Voice AI)</span>
       </div>
     `;
 
@@ -1514,7 +1519,7 @@
           <div>
             <div class="kikat-header-title">
               <span>Kikat</span>
-              <span class="kikat-voice-badge"><i class="fa-solid fa-headphones"></i> Cute Voice AI</span>
+              <span class="kikat-voice-badge"><i class="fa-solid fa-headphones"></i> Indian Voice AI</span>
             </div>
             <div class="kikat-header-subtitle">Suman Krishna's AI Guide</div>
           </div>
@@ -1530,7 +1535,7 @@
           </div>
 
           <!-- Voice Toggle -->
-          <button class="kikat-header-btn ${voiceMutedClass}" id="kikat-voice-toggle" title="Toggle Girl Voice Audio">
+          <button class="kikat-header-btn ${voiceMutedClass}" id="kikat-voice-toggle" title="Toggle Indian Voice Audio">
             <i class="fa-solid ${voiceIcon}"></i>
           </button>
 
@@ -1544,7 +1549,7 @@
       <!-- Quick Chips Bar -->
       <div class="kikat-chips-container" id="kikat-chips">
         <button class="kikat-chip" data-q="Who is Suman?">📌 Who is Suman?</button>
-        <button class="kikat-chip" data-q="Tell me about CTG Faculty App">📱 CTG Faculty App (Flutter)</button>
+        <button class="kikat-chip" data-q="Tell me about CT Group KRA & KPI App">📱 CT Group App (Flutter)</button>
         <button class="kikat-chip" data-q="Tell me about AIHire">🤖 AIHire Capstone</button>
         <button class="kikat-chip" data-q="What is his RedRob score?">🎯 RedRob: 763/1000</button>
         <button class="kikat-chip" data-q="What certifications does Suman hold?">🥇 7x NASSCOM Gold</button>
@@ -1560,12 +1565,12 @@
         <div class="kikat-message-row bot">
           <div class="kikat-msg-avatar"><i class="fa-solid fa-sparkles"></i></div>
           <div class="kikat-bubble">
-            👋 Hi there! I'm <strong>Kikat</strong>, Suman Krishna's cute AI voice agent! ✨<br><br>
-            I'm here to answer any questions you have about Suman's software systems, <strong>AIHire</strong>, the <strong>CTG Faculty App (Flutter &amp; Dart)</strong>, his <strong>763 RedRob score</strong>, 7x NASSCOM Gold Certifications, or photography.<br><br>
+            👋 Hello! I'm <strong>Kikat</strong>, Suman Krishna's AI voice assistant!<br><br>
+            I'm here to answer any questions you have about Suman's software engineering projects, the <strong>CT Group KRA &amp; KPI Performance Management System (Made with Flutter)</strong>, <strong>AIHire</strong>, his <strong>763 RedRob score</strong>, 7x NASSCOM Gold Certifications, or photography.<br><br>
             <em>Type a question below or tap the microphone to talk with me!</em>
             <div class="kikat-msg-footer">
               <span>Kikat AI Guide</span>
-              <button class="kikat-replay-btn" onclick="window.KikatAgent.speak('Hi there! I am Kikat, Suman Krishna\\'s cute AI voice agent! Feel free to ask me anything about his projects, Flutter apps, skills, or achievements!')">
+              <button class="kikat-replay-btn" onclick="window.KikatAgent.speak('Hello! I am Kikat, Suman Krishna\\'s AI voice assistant. Feel free to ask me anything about his projects, the CT Group Flutter app, skills, or achievements!')">
                 <i class="fa-solid fa-volume-high"></i> Listen
               </button>
             </div>
@@ -1602,7 +1607,7 @@
       if (state.isVoiceEnabled) {
         voiceToggleBtn.classList.remove("muted");
         icon.className = "fa-solid fa-volume-high";
-        speakText("Voice enabled! I'm ready to chat with you in my sweet voice.");
+        speakText("Voice enabled! I am ready to assist you.");
       } else {
         voiceToggleBtn.classList.add("muted");
         icon.className = "fa-solid fa-volume-xmark";
@@ -1723,7 +1728,7 @@
       <div class="kikat-bubble">
         ${htmlContent}
         <div class="kikat-msg-footer">
-          <span>Kikat • Cute Voice Agent</span>
+          <span>Kikat • Voice Assistant</span>
           <button class="kikat-replay-btn" onclick="window.KikatAgent.speak('${escapedSpoken}')">
             <i class="fa-solid fa-volume-high"></i> Replay Voice
           </button>
