@@ -29,6 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 9. Audio / Micro-interactions & Tilt Effect (if supported)
   initCardTilt();
+
+  // 10. Photo Gallery Lightbox
+  initPhotoLightbox();
 });
 
 /* ==========================================================================
@@ -607,3 +610,56 @@ function showToast(message, type = "info") {
     setTimeout(() => toast.remove(), 300);
   }, 3600);
 }
+
+/* ==========================================================================
+   10. Photography Gallery Lightbox
+   ========================================================================== */
+function initPhotoLightbox() {
+  const lightbox = document.getElementById("photo-lightbox");
+  if (!lightbox) return;
+
+  const lightboxImg = document.getElementById("lightbox-img");
+  const lightboxTitle = document.getElementById("lightbox-title");
+  const lightboxCategory = document.getElementById("lightbox-category");
+  const closeBtn = document.getElementById("lightbox-close-btn");
+
+  document.querySelectorAll(".photo-card").forEach(card => {
+    card.addEventListener("click", (e) => {
+      // If clicking the direct external link button, don't trigger lightbox
+      if (e.target.closest(".photo-link-btn")) return;
+
+      const src = card.getAttribute("data-src") || card.querySelector("img")?.src;
+      const title = card.getAttribute("data-title") || "Photography by Suman Krishna";
+      const category = card.getAttribute("data-category") || "@bruh.vision";
+
+      if (lightboxImg) lightboxImg.src = src;
+      if (lightboxTitle) lightboxTitle.textContent = title;
+      if (lightboxCategory) lightboxCategory.textContent = category;
+
+      lightbox.classList.add("active");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  const closeLightbox = () => {
+    lightbox.classList.remove("active");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  };
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", closeLightbox);
+  }
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lightbox.classList.contains("active")) {
+      closeLightbox();
+    }
+  });
+}
+
