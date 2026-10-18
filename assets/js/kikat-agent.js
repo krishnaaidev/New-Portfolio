@@ -1,8 +1,8 @@
 /**
  * ============================================================================
- * Kikat AI Voice Agent — Suman Krishna's Portfolio Companion
+ * KITKAT AI Voice Agent — Suman Krishna's Portfolio Companion
  * ============================================================================
- * Persona: Kikat (Professional, Articulate AI Voice Assistant)
+ * Persona: KITKAT (Professional, Articulate AI Voice Assistant)
  * Voice: Natural Indian English female voice synthesis via Web Speech API (en-IN)
  * Mic: Speech-to-Text Voice Recognition via Web Speech API
  * Knowledge Base: 100% verified accurate facts from Suman Krishna's resume & credentials
@@ -690,28 +690,38 @@
      ZERO hallucinations. Indian Accent Voice Output.
      ========================================================================== */
   const knowledgeBase = [
-    // 1. Kikat Herself (Highest priority so "Who are you?" never answers as Suman)
+    // 1. KITKAT Herself (Highest priority so "Who are you?" never answers as Suman)
     {
-      intent: "who_is_kikat",
+      intent: "who_is_kitkat",
       triggers: [
+        { phrase: "kitkat", weight: 10 },
+        { phrase: "who is kitkat", weight: 10 },
+        { phrase: "kitkat kaun hai", weight: 10 },
+        { phrase: "kikat", weight: 8 },
+        { phrase: "who is kikat", weight: 8 },
         { phrase: "who are you", weight: 10 },
         { phrase: "what is your name", weight: 10 },
         { phrase: "your name", weight: 8 },
-        { phrase: "who is kikat", weight: 10 },
-        { phrase: "kikat", weight: 7 },
         { phrase: "are you an ai", weight: 8 },
         { phrase: "are you ai", weight: 8 },
         { phrase: "tum kaun ho", weight: 10 },
         { phrase: "aap kaun ho", weight: 10 },
-        { phrase: "kikat kaun hai", weight: 10 },
-        { phrase: "about yourself", weight: 7 },
-        { phrase: "tell me about yourself", weight: 8 }
+        { phrase: "about yourself", weight: 8 },
+        { phrase: "tell me about yourself", weight: 9 },
+        { phrase: "intro", weight: 9 },
+        { phrase: "give your intro", weight: 10 },
+        { phrase: "introduce yourself", weight: 10 },
+        { phrase: "apna intro do", weight: 10 },
+        { phrase: "apna intro de", weight: 10 },
+        { phrase: "intro de", weight: 10 },
+        { phrase: "apne baare mein batao", weight: 10 },
+        { phrase: "apna parichay do", weight: 10 }
       ],
-      spoken: "Hello! I am Kikat, Suman Krishna's personal AI voice assistant with an Indian accent. I am here to guide you through Suman's portfolio and tell you all about his projects, Flutter apps, machine learning systems, 763 RedRob score, certifications, and background. What would you like to know?",
-      response: `<strong>Hello! I'm Kikat.</strong><br><br>
+      spoken: "Hello! I am Kitkat, Suman Krishna's personal AI voice assistant. I am here to guide you through Suman's portfolio and tell you all about his projects, Flutter applications, machine learning systems, 763 RedRob score, 7x NASSCOM Gold certifications, and background. What would you like to know?",
+      response: `<strong>Hello! I'm KITKAT.</strong><br><br>
       I am Suman Krishna's personal AI voice agent and portfolio companion. I'm here to tell you all about Suman's verified achievements:
       <ul style="margin: 0.5rem 0 0.5rem 1.2rem; padding: 0;">
-        <li>📱 <strong>CT Group KRA &amp; KPI Performance Management System</strong> — Made with Flutter &amp; Dart</li>
+        <li>📱 <strong>CT Group KRA &amp; KPI Performance Management System</strong> — Built with Flutter &amp; Dart</li>
         <li>🤖 <strong>AIHire</strong> — Autonomous AI Interview B.Tech Capstone Project</li>
         <li>🎯 <strong>763 / 1000</strong> on the standardized RedRob Technical Assessment</li>
         <li>🥇 <strong>7x NASSCOM FutureSkills Prime Gold</strong> Certifications (Govt. of India approved)</li>
@@ -719,7 +729,7 @@
         <li>🌐 <strong>Google Student Ambassador</strong> &amp; <strong>GDG Member</strong></li>
         <li>📸 Photography &amp; Cinematography on Instagram: <strong>@bruh.vision</strong></li>
       </ul>
-      You can type or speak into your mic, and I will happily answer in my Indian voice!`
+      You can type or speak into your mic, and I will happily answer in my natural voice!`
     },
 
     // 2. Identity & Overview of Suman Krishna
@@ -1152,14 +1162,14 @@
         { phrase: "kaise ho", weight: 10 },
         { phrase: "kya haal", weight: 10 }
       ],
-      spoken: "Hello! Nice to meet you. I am Kikat, Suman Krishna's AI voice assistant. How can I assist you today with Suman's projects, Flutter apps, or contact details?",
+      spoken: "Hello! Nice to meet you. I am Kitkat, Suman Krishna's AI voice assistant. How can I assist you today with Suman's projects, Flutter apps, or contact details?",
       response: `👋 <strong>Hello! Nice to meet you!</strong><br><br>
-      I'm <strong>Kikat</strong>, Suman's AI voice guide. What would you like to explore about Suman today?<br><br>
+      I'm <strong>KITKAT</strong>, Suman's AI voice guide. What would you like to explore about Suman today?<br><br>
       <em>Try asking:</em>
       <div style="display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.4rem;">
-        <button class="kikat-chip" onclick="window.KikatAgent.ask('Who is Suman?')">📌 Who is Suman?</button>
-        <button class="kikat-chip" onclick="window.KikatAgent.ask('Tell me about CT Group KRA & KPI App')">📱 CT Group App (Flutter)</button>
-        <button class="kikat-chip" onclick="window.KikatAgent.ask('Tell me about AIHire')">🤖 AIHire Capstone</button>
+        <button class="kikat-chip" onclick="window.KitkatAgent.ask('Who is Suman?')">📌 Who is Suman?</button>
+        <button class="kikat-chip" onclick="window.KitkatAgent.ask('Tell me about CT Group KRA & KPI App')">📱 CT Group App (Flutter)</button>
+        <button class="kikat-chip" onclick="window.KitkatAgent.ask('Tell me about AIHire')">🤖 AIHire Capstone</button>
       </div>`
     },
 
@@ -1190,12 +1200,12 @@
     spoken: "I would be happy to help you with that! Suman Krishna is a Machine Learning and Flutter engineer, Google Student Ambassador, and GDG member with seven NASSCOM Gold Certifications and a 763 RedRob score. Here are some quick topics you can ask me about.",
     response: `I'm happy to tell you all about Suman Krishna! Here are some quick topics you can ask me about:<br><br>
     <div style="display: flex; flex-direction: column; gap: 0.35rem;">
-      <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('Who is Suman Krishna?')">📌 Who is Suman Krishna?</button>
-      <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('Tell me about the CT Group App')">📱 CT Group KRA &amp; KPI App (Flutter)</button>
-      <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('Tell me about AIHire')">🤖 AIHire Autonomous Interview Platform</button>
-      <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('What is Suman\\'s RedRob score?')">🎯 RedRob Test Score (763 / 1000)</button>
-      <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('What certifications does Suman hold?')">🥇 7x NASSCOM Gold Certifications</button>
-      <button class="kikat-chip" style="text-align: left;" onclick="window.KikatAgent.ask('How can I contact Suman?')">📬 Contact &amp; Hiring Information</button>
+      <button class="kikat-chip" style="text-align: left;" onclick="window.KitkatAgent.ask('Who is Suman Krishna?')">📌 Who is Suman Krishna?</button>
+      <button class="kikat-chip" style="text-align: left;" onclick="window.KitkatAgent.ask('Tell me about the CT Group App')">📱 CT Group KRA &amp; KPI App (Flutter)</button>
+      <button class="kikat-chip" style="text-align: left;" onclick="window.KitkatAgent.ask('Tell me about AIHire')">🤖 AIHire Autonomous Interview Platform</button>
+      <button class="kikat-chip" style="text-align: left;" onclick="window.KitkatAgent.ask('What is Suman\\'s RedRob score?')">🎯 RedRob Test Score (763 / 1000)</button>
+      <button class="kikat-chip" style="text-align: left;" onclick="window.KitkatAgent.ask('What certifications does Suman hold?')">🥇 7x NASSCOM Gold Certifications</button>
+      <button class="kikat-chip" style="text-align: left;" onclick="window.KitkatAgent.ask('How can I contact Suman?')">📬 Contact &amp; Hiring Information</button>
     </div>`
   };
 
@@ -1211,9 +1221,9 @@
     if (!clean) return fallback;
 
     // 1. Direct High-Priority Routes:
-    // Who is Kikat?
-    if (/\b(who are you|your name|what is your name|who is kikat|are you ai|are you an ai|tum kaun ho|aap kaun ho|kikat kon)\b/.test(clean)) {
-      return knowledgeBase.find(item => item.intent === "who_is_kikat") || fallback;
+    // Who is KITKAT? / Intro Request
+    if (/\b(who are you|your name|what is your name|who is kikat|who is kitkat|kitkat|kikat|are you ai|are you an ai|tum kaun ho|aap kaun ho|kitkat kaun|kikat kon|intro|intro do|intro de|apna intro|introduce yourself|apne baare mein batao)\b/.test(clean)) {
+      return knowledgeBase.find(item => item.intent === "who_is_kitkat" || item.intent === "who_is_kikat") || fallback;
     }
 
     // Who is Suman?
@@ -1378,6 +1388,8 @@
       .replace(/https?:\/\/\S+/g, "link")
       .replace(/&amp;/g, "and")
       .replace(/&rarr;/g, "")
+      .replace(/\bkitkat\b/gi, "Kitkat")
+      .replace(/\bkikat\b/gi, "Kitkat")
       .replace(/[*_#`~✨🥰👋📌📱🤖🎯🥇📸♟️💼🎓📬🚀🧠🌿🫁🧭🚗🏫]/g, "")
       .replace(/763\s*\/\s*1000/g, "763 out of 1000")
       .replace(/8\.0\s*\/\s*10\.0/g, "8.0 out of 10")
@@ -1395,6 +1407,9 @@
     // Micro-delay to avoid Chromium synthesis cancellation freeze bug
     setTimeout(() => {
       const utterance = new SpeechSynthesisUtterance(cleanSpeech);
+      if (!state.selectedVoice) {
+        selectBestFemaleVoice();
+      }
       if (state.selectedVoice) {
         utterance.voice = state.selectedVoice;
       }
@@ -1515,12 +1530,14 @@
     const micBtn = document.getElementById("kikat-mic-btn");
     const input = document.getElementById("kikat-input");
     if (micBtn) micBtn.classList.remove("listening");
-    if (input) input.placeholder = "Ask Kikat anything about Suman...";
+    if (input) input.placeholder = "Ask KITKAT anything about Suman...";
   }
 
   /* ==========================================================================
      6. UI DOM Creation & Attachment
      ========================================================================== */
+  const KITKAT_INTRO_TEXT = "Hello! I am Kitkat, Suman Krishna's AI voice assistant. Feel free to ask me anything about Suman's projects, Flutter apps, machine learning skills, certifications, or experience. How can I help you today?";
+
   function injectKikatWidget() {
     // If elements already exist, do not re-create
     if (document.getElementById("kikat-launcher")) return;
@@ -1529,8 +1546,8 @@
     const launcher = document.createElement("button");
     launcher.id = "kikat-launcher";
     launcher.className = "kikat-launcher";
-    launcher.setAttribute("aria-label", "Open Kikat AI Voice Agent");
-    launcher.title = "Ask Kikat (Indian Voice AI)";
+    launcher.setAttribute("aria-label", "Open KITKAT AI Voice Assistant");
+    launcher.title = "Ask KITKAT (Indian Voice AI)";
     launcher.innerHTML = `
       <div class="kikat-launcher-avatar" id="kikat-launcher-icon">
         <i class="fa-solid fa-wand-magic-sparkles"></i>
@@ -1538,7 +1555,7 @@
       <span class="kikat-launcher-badge"></span>
       <div class="kikat-launcher-tooltip">
         <i class="fa-solid fa-volume-high" style="color: #38bdf8;"></i>
-        <span>Ask Kikat (Indian Voice AI)</span>
+        <span>Ask KITKAT (Indian Voice AI)</span>
       </div>
     `;
 
@@ -1547,7 +1564,7 @@
     widget.id = "kikat-widget";
     widget.className = "kikat-widget";
     widget.setAttribute("role", "dialog");
-    widget.setAttribute("aria-label", "Kikat AI Voice Agent Chat");
+    widget.setAttribute("aria-label", "KITKAT AI Voice Assistant Chat");
 
     const voiceIcon = state.isVoiceEnabled ? "fa-volume-high" : "fa-volume-xmark";
     const voiceMutedClass = state.isVoiceEnabled ? "" : "muted";
@@ -1564,7 +1581,7 @@
           </div>
           <div>
             <div class="kikat-header-title">
-              <span>Kikat</span>
+              <span>KITKAT</span>
               <span class="kikat-voice-badge"><i class="fa-solid fa-headphones"></i> Indian Voice AI</span>
             </div>
             <div class="kikat-header-subtitle">Suman Krishna's AI Guide</div>
@@ -1586,7 +1603,7 @@
           </button>
 
           <!-- Close Button -->
-          <button class="kikat-header-btn" id="kikat-close-btn" title="Close Kikat">
+          <button class="kikat-header-btn" id="kikat-close-btn" title="Close KITKAT">
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
@@ -1611,13 +1628,13 @@
         <div class="kikat-message-row bot">
           <div class="kikat-msg-avatar"><i class="fa-solid fa-sparkles"></i></div>
           <div class="kikat-bubble">
-            👋 Hello! I'm <strong>Kikat</strong>, Suman Krishna's AI voice assistant!<br><br>
-            I'm here to answer any questions you have about Suman's software engineering projects, the <strong>CT Group KRA &amp; KPI Performance Management System (Made with Flutter)</strong>, <strong>AIHire</strong>, his <strong>763 RedRob score</strong>, 7x NASSCOM Gold Certifications, or photography.<br><br>
+            👋 Hello! I'm <strong>KITKAT</strong>, Suman Krishna's AI voice assistant!<br><br>
+            I'm here to answer any questions you have about Suman's software engineering projects, the <strong>CT Group KRA &amp; KPI Performance Management System</strong>, <strong>AIHire</strong>, his <strong>763 RedRob score</strong>, 7x NASSCOM Gold Certifications, or photography.<br><br>
             <em>Type a question below or tap the microphone to talk with me!</em>
             <div class="kikat-msg-footer">
-              <span>Kikat AI Guide</span>
-              <button class="kikat-replay-btn" onclick="window.KikatAgent.speak('Hello! I am Kikat, Suman Krishna\\'s AI voice assistant. Feel free to ask me anything about his projects, the CT Group Flutter app, skills, or achievements!')">
-                <i class="fa-solid fa-volume-high"></i> Listen
+              <span>KITKAT AI Guide</span>
+              <button class="kikat-replay-btn" onclick="window.KitkatAgent.speakIntro()">
+                <i class="fa-solid fa-volume-high"></i> Listen Intro
               </button>
             </div>
           </div>
@@ -1627,8 +1644,8 @@
       <!-- Input Footer -->
       <div class="kikat-footer">
         <form class="kikat-input-form" id="kikat-form">
-          <input type="text" class="kikat-input" id="kikat-input" placeholder="Ask Kikat anything about Suman..." autocomplete="off">
-          <button type="button" class="kikat-btn-icon kikat-mic-btn" id="kikat-mic-btn" title="Speak to Kikat (Microphone)">
+          <input type="text" class="kikat-input" id="kikat-input" placeholder="Ask KITKAT anything about Suman..." autocomplete="off">
+          <button type="button" class="kikat-btn-icon kikat-mic-btn" id="kikat-mic-btn" title="Speak to KITKAT (Microphone)">
             <i class="fa-solid fa-microphone"></i>
           </button>
           <button type="submit" class="kikat-btn-icon kikat-send-btn" id="kikat-send-btn" title="Send Question">
@@ -1642,7 +1659,9 @@
     document.body.appendChild(widget);
 
     // Bind Event Listeners
-    launcher.addEventListener("click", toggleWidget);
+    launcher.addEventListener("click", () => {
+      toggleWidget(true);
+    });
     document.getElementById("kikat-close-btn").addEventListener("click", closeWidget);
 
     const voiceToggleBtn = document.getElementById("kikat-voice-toggle");
@@ -1685,15 +1704,15 @@
     });
   }
 
-  function toggleWidget() {
+  function toggleWidget(userClicked = false) {
     if (state.isOpen) {
       closeWidget();
     } else {
-      openWidget();
+      openWidget(userClicked);
     }
   }
 
-  function openWidget() {
+  function openWidget(shouldSpeakIntro = false) {
     state.isOpen = true;
     const widget = document.getElementById("kikat-widget");
     const launcher = document.getElementById("kikat-launcher");
@@ -1705,6 +1724,11 @@
 
     const input = document.getElementById("kikat-input");
     if (input) input.focus();
+
+    // When the user clicks the assistant launcher, speak KITKAT's intro
+    if (shouldSpeakIntro && state.isVoiceEnabled) {
+      speakText(KITKAT_INTRO_TEXT);
+    }
   }
 
   function closeWidget() {
@@ -1774,8 +1798,8 @@
       <div class="kikat-bubble">
         ${htmlContent}
         <div class="kikat-msg-footer">
-          <span>Kikat • Voice Assistant</span>
-          <button class="kikat-replay-btn" onclick="window.KikatAgent.speak('${escapedSpoken}')">
+          <span>KITKAT • Voice Assistant</span>
+          <button class="kikat-replay-btn" onclick="window.KitkatAgent.speak('${escapedSpoken}')">
             <i class="fa-solid fa-volume-high"></i> Replay Voice
           </button>
         </div>
@@ -1822,19 +1846,28 @@
   }
 
   /* ==========================================================================
-     8. Public API
+     8. Public API (KITKAT)
      ========================================================================== */
-  window.KikatAgent = {
-    open: openWidget,
+  window.KitkatAgent = {
+    open: function(speakIntro = true) {
+      openWidget(speakIntro);
+    },
     close: closeWidget,
-    ask: function (question) {
+    toggle: function() {
+      toggleWidget(true);
+    },
+    ask: function(question) {
       handleUserSubmit(question);
     },
-    speak: function (text) {
+    speak: function(text) {
       speakText(text);
+    },
+    speakIntro: function() {
+      speakText(KITKAT_INTRO_TEXT);
     },
     stop: stopSpeaking
   };
+  window.KikatAgent = window.KitkatAgent;
 
   /* ==========================================================================
      9. Bootstrapping
