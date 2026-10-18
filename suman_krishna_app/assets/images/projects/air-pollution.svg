@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="airBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1520"/>
+      <stop offset="100%" stop-color="#122334"/>
+    </linearGradient>
+    <linearGradient id="curveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#airBg)"/>
+
+  <!-- Health Risk Gauges -->
+  <g transform="translate(60, 50)">
+    <!-- PM2.5 Gauge Card -->
+    <rect x="0" y="0" width="200" height="180" rx="14" fill="#132639" stroke="rgba(255,255,255,0.08)"/>
+    <text x="25" y="35" fill="#38bdf8" font-family="system-ui" font-size="12" font-weight="800">AIRBORNE POLLUTANT</text>
+    <text x="25" y="65" fill="#ffffff" font-family="system-ui" font-size="24" font-weight="900">PM 2.5</text>
+    <text x="25" y="95" fill="#f87171" font-family="system-ui" font-size="28" font-weight="900">182 µg/m³</text>
+    <rect x="25" y="115" width="150" height="8" rx="4" fill="#334155"/>
+    <rect x="25" y="115" width="120" height="8" rx="4" fill="#ef4444"/>
+    <text x="25" y="145" fill="#fca5a5" font-family="system-ui" font-size="12" font-weight="700">Health Alert: High Risk</text>
+    <text x="25" y="162" fill="#94a3b8" font-family="system-ui" font-size="11">Respiratory &amp; Cardio Stress</text>
+  </g>
+
+  <g transform="translate(290, 50)">
+    <!-- Multi-Gas Parameters Card -->
+    <rect x="0" y="0" width="200" height="180" rx="14" fill="#132639" stroke="rgba(255,255,255,0.08)"/>
+    <text x="25" y="35" fill="#38bdf8" font-family="system-ui" font-size="12" font-weight="800">POLLUTION INDEX</text>
+    <text x="25" y="65" fill="#ffffff" font-family="system-ui" font-size="22" font-weight="900">AQI 245</text>
+    <text x="25" y="90" fill="#fbbf24" font-family="system-ui" font-size="13" font-weight="700">Unhealthy Category</text>
+    
+    <g transform="translate(25, 110)">
+      <text x="0" y="12" fill="#94a3b8" font-family="system-ui" font-size="11">NOx: 64 ppb</text>
+      <text x="80" y="12" fill="#94a3b8" font-family="system-ui" font-size="11">SO2: 38 ppb</text>
+      <text x="0" y="32" fill="#94a3b8" font-family="system-ui" font-size="11">CO: 2.4 ppm</text>
+      <text x="80" y="32" fill="#94a3b8" font-family="system-ui" font-size="11">O3: 78 ppb</text>
+    </g>
+  </g>
+
+  <g transform="translate(520, 50)">
+    <!-- Epidemiological Impact Card -->
+    <rect x="0" y="0" width="220" height="180" rx="14" fill="#132639" stroke="rgba(255,255,255,0.08)"/>
+    <text x="20" y="35" fill="#34d399" font-family="system-ui" font-size="12" font-weight="800">EPIDEMIOLOGY MODEL</text>
+    <text x="20" y="65" fill="#ffffff" font-family="system-ui" font-size="20" font-weight="900">Health Impact</text>
+    <text x="20" y="90" fill="#94a3b8" font-family="system-ui" font-size="12">Vulnerable Demographics:</text>
+    <rect x="20" y="105" width="180" height="26" rx="6" fill="#1e3a5f"/>
+    <text x="30" y="122" fill="#7dd3fc" font-family="system-ui" font-size="11" font-weight="700">Elderly &amp; Pediatric Focus</text>
+    <text x="20" y="155" fill="#6ee7b7" font-family="system-ui" font-size="12" font-weight="700">✓ Mitigation Policy Data</text>
+  </g>
+
+  <!-- Big Risk Curve Analysis -->
+  <g transform="translate(60, 255)">
+    <rect x="0" y="0" width="680" height="195" rx="14" fill="#132639" stroke="rgba(255,255,255,0.08)"/>
+    <text x="30" y="35" fill="#ffffff" font-family="system-ui" font-size="15" font-weight="800">Exposure vs Relative Health Risk Probability Curve</text>
+    
+    <!-- Plot area -->
+    <line x1="30" y1="150" x2="650" y2="150" stroke="#334155" stroke-width="1.5"/>
+    <line x1="30" y1="50" x2="30" y2="150" stroke="#334155" stroke-width="1.5"/>
+
+    <path d="M30 145 Q200 140 320 120 T500 80 T640 50" fill="none" stroke="url(#curveGrad)" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- Highlight markers -->
+    <circle cx="320" cy="120" r="6" fill="#f59e0b"/>
+    <text x="320" y="110" fill="#fbbf24" font-family="system-ui" font-size="11" font-weight="700" text-anchor="middle">Moderate Threshold</text>
+
+    <circle cx="580" cy="62" r="6" fill="#ef4444"/>
+    <text x="580" y="52" fill="#fca5a5" font-family="system-ui" font-size="11" font-weight="700" text-anchor="middle">Critical Risk Zone</text>
+  </g>
+</svg>
