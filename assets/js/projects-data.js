@@ -33,27 +33,27 @@ const projectsData = [
   },
   {
     id: "kra-app",
-    title: "CT Group KRA & KPI Performance Management System",
+    title: "CTG Faculty App: KRA & KPI Performance Management App",
     category: "bi",
-    categoryLabel: "Enterprise Web & Analytics",
+    categoryLabel: "Flutter Mobile & Cross-Platform",
     featured: true,
-    badge: "Institutional System",
+    badge: "Institutional Flutter App",
     status: "Deployed & Active",
     date: "2026 — CT Group of Institutions",
     image: "assets/images/projects/kra-app.svg",
-    shortDesc: "Enterprise institutional performance appraisal platform managing and evaluating faculty, HODs, and HOIs across a rigorous 1,000-mark academic & administrative framework.",
-    fullDesc: "A secure, multi-tier institutional digital governance application built for CT Group of Institutions. It digitizes the end-to-end appraisal workflow across 1,000 quantifiable metrics spanning teaching efficacy, research publications, patents, student feedback, and departmental leadership.",
+    shortDesc: "Cross-platform mobile and web application built with Flutter & Dart for CT Group of Institutions, managing 1,000-mark faculty appraisals with 3-tier RBAC and Excel/PDF report generation.",
+    fullDesc: "A secure, multi-tier institutional digital governance application built with Flutter and Dart for CT Group of Institutions. It digitizes the end-to-end appraisal workflow across 1,000 quantifiable metrics spanning teaching efficacy, research publications, patents, student feedback, and departmental leadership with native mobile and web access.",
     highlights: [
+      "Engineered cross-platform mobile and web interface using Flutter & Dart with responsive Material 3 components.",
       "Implemented a 3-tier Role-Based Access Control (RBAC) governance hierarchy: Faculty self-appraisal, HOD departmental review, and HOI executive sanction.",
-      "Engineered a dynamic 1,000-Mark scoring calculation engine with real-time validation, evidence attachments, and audit trails.",
-      "Built one-click automated Excel (SheetJS) report generation for institutional accreditation and annual faculty reviews.",
-      "Developed using Next.js 14 App Router, TypeScript, Tailwind CSS, Better-SQLite3, and JWT session authentication."
+      "Developed a dynamic 1,000-Mark scoring calculation engine with real-time validation, evidence attachments, and audit trails.",
+      "Built one-click automated Excel & PDF report generation for institutional accreditation and annual faculty reviews."
     ],
-    tags: ["Next.js 14", "TypeScript", "Tailwind CSS", "Better-SQLite3", "RBAC", "SheetJS", "Data Analytics"],
+    tags: ["Flutter", "Dart", "Cross-Platform", "Material 3", "State Management", "RBAC", "REST API", "Excel/PDF Export"],
     metrics: [
       { label: "Framework Scale", value: "1,000 Marks" },
-      { label: "Role Hierarchy", value: "Faculty / HOD / HOI" },
-      { label: "Reports Generated", value: "Instant XLSX" }
+      { label: "Core Framework", value: "Flutter & Dart" },
+      { label: "Platforms", value: "Android, iOS & Web" }
     ],
     github: "https://github.com/krishnaaidev/CTGroup-KRA-KPI",
     demo: "#"
