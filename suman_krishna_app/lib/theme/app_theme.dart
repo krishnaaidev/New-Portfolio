@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  // Brand Color Palette — Rose/Coral + Blue (matching web portfolio)
-  static const Color background = Color(0xFF0C0810);   // Deep charcoal-rose
-  static const Color surface = Color(0xFF1A0E16);      // Dark rose-tinted surface
-  static const Color surfaceLight = Color(0xFF2A1520); // Slightly lighter surface
-  static const Color surfaceCard = Color(0xFF1F1018);  // Card background
+  // Brand Color Palette — Hacker Theme (Terminal Green on Black)
+  static const Color background = Color(0xFF080808);    // Pure black
+  static const Color surface = Color(0xFF0E0E0E);       // Near-black surface
+  static const Color surfaceLight = Color(0xFF161616);  // Slightly lifted
+  static const Color surfaceCard = Color(0xFF111111);   // Card background
 
-  static const Color primary = Color(0xFFF43F5E);      // Rose — main brand color
-  static const Color secondary = Color(0xFF3B82F6);    // Blue — secondary brand color
-  static const Color accent = Color(0xFFFB7185);       // Coral — warm highlight
-  static const Color emerald = Color(0xFF10B981);      // Green — success/badges
-  static const Color amber = Color(0xFFF59E0B);        // Gold — awards/highlights
-  static const Color rose = Color(0xFFF43F5E);         // Rose alias
+  static const Color primary = Color(0xFF00E676);       // Terminal green
+  static const Color secondary = Color(0xFFEAB308);     // Amber contrast
+  static const Color accent = Color(0xFF69F0AE);        // Lighter green highlight
+  static const Color emerald = Color(0xFF22C55E);       // Emerald success
+  static const Color amber = Color(0xFFEAB308);         // Amber alias
+  static const Color rose = Color(0xFFF43F5E);          // Red — errors/warnings only
 
-  static const Color textPrimary = Color(0xFFFDF2F4);  // Warm white
-  static const Color textSecondary = Color(0xFFC4A4B0); // Muted rose-grey
-  static const Color textMuted = Color(0xFF7E6070);    // Dimmed text
-  static const Color border = Color(0x44F43F5E);       // Glassmorphic rose border
+  static const Color textPrimary = Color(0xFFE8E8E8);   // Off-white
+  static const Color textSecondary = Color(0xFF8A9A8A); // Muted green-grey
+  static const Color textMuted = Color(0xFF4A5A4A);     // Dim text
+  static const Color border = Color(0x2200E676);        // Subtle green border
 
   static ThemeData get darkTheme {
     return ThemeData(
@@ -39,7 +39,7 @@ class AppTheme {
         color: surfaceCard,
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(18),
+          borderRadius: BorderRadius.circular(10),
           side: const BorderSide(color: border, width: 1),
         ),
       ),
@@ -51,7 +51,7 @@ class AppTheme {
       dialogTheme: DialogThemeData(
         backgroundColor: surfaceCard,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(16),
           side: const BorderSide(color: border, width: 1.5),
         ),
       ),

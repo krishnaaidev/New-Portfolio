@@ -36,7 +36,7 @@
   width: 62px !important;
   height: 62px !important;
   border-radius: 50% !important;
-  background: linear-gradient(135deg, #0284c7 0%, #8b5cf6 50%, #fb7185 100%) !important;
+  background: linear-gradient(135deg, #0284c7 0%, #8b5cf6 50%, #69f0ae 100%) !important;
   border: 2px solid rgba(255, 255, 255, 0.45) !important;
   box-shadow: 0 10px 30px rgba(2, 132, 199, 0.5), 0 0 25px rgba(139, 92, 246, 0.4) !important;
   cursor: pointer !important;
@@ -199,7 +199,7 @@
   width: 44px !important;
   height: 44px !important;
   border-radius: 50% !important;
-  background: linear-gradient(135deg, #f43f5e, #3b82f6, #fb7185) !important;
+  background: linear-gradient(135deg, #00e676, #eab308, #69f0ae) !important;
   padding: 2px !important;
   display: flex !important;
   align-items: center !important;
@@ -217,7 +217,7 @@
   align-items: center !important;
   justify-content: center !important;
   font-size: 1.35rem !important;
-  color: #f43f5e !important;
+  color: #00e676 !important;
 }
 
 .kikat-online-dot {
@@ -287,7 +287,7 @@
 .kikat-wave-bar {
   width: 3px !important;
   height: 6px !important;
-  background: #f43f5e !important;
+  background: #00e676 !important;
   border-radius: 3px !important;
   transition: height 0.15s ease !important;
 }
@@ -308,14 +308,14 @@
 @keyframes kikat-wave-bounce {
   0% {
     height: 4px;
-    background: #f43f5e;
+    background: #00e676;
   }
   50% {
     background: #818cf8;
   }
   100% {
     height: 19px;
-    background: #fb7185;
+    background: #69f0ae;
   }
 }
 
@@ -382,7 +382,7 @@
 .kikat-chip:hover {
   background: rgba(56, 189, 248, 0.25) !important;
   color: #ffffff !important;
-  border-color: #f43f5e !important;
+  border-color: #00e676 !important;
   transform: translateY(-1px) !important;
 }
 
@@ -438,7 +438,7 @@
   width: 28px !important;
   height: 28px !important;
   border-radius: 50% !important;
-  background: linear-gradient(135deg, #f43f5e, #3b82f6) !important;
+  background: linear-gradient(135deg, #00e676, #eab308) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -473,7 +473,7 @@
 }
 
 .kikat-bubble strong {
-  color: #f43f5e !important;
+  color: #00e676 !important;
   font-weight: 700 !important;
 }
 
@@ -482,7 +482,7 @@
 }
 
 .kikat-bubble a {
-  color: #f43f5e !important;
+  color: #00e676 !important;
   text-decoration: underline !important;
   font-weight: 600 !important;
 }
@@ -501,7 +501,7 @@
 .kikat-replay-btn {
   background: none !important;
   border: none !important;
-  color: #f43f5e !important;
+  color: #00e676 !important;
   font-size: 0.74rem !important;
   font-family: inherit !important;
   cursor: pointer !important;
@@ -530,7 +530,7 @@
   width: 6px !important;
   height: 6px !important;
   border-radius: 50% !important;
-  background: #f43f5e !important;
+  background: #00e676 !important;
   animation: kikat-typing-blink 1.2s infinite ease-in-out !important;
 }
 
@@ -549,7 +549,7 @@
   40% {
     transform: scale(1.15);
     opacity: 1;
-    background: #fb7185;
+    background: #69f0ae;
   }
 }
 
@@ -573,7 +573,7 @@
 }
 
 .kikat-input-form:focus-within {
-  border-color: #f43f5e !important;
+  border-color: #00e676 !important;
   box-shadow: 0 0 16px rgba(56, 189, 248, 0.35) !important;
 }
 
@@ -610,7 +610,7 @@
 }
 
 .kikat-btn-icon:hover {
-  color: #f43f5e !important;
+  color: #00e676 !important;
   background: rgba(56, 189, 248, 0.16) !important;
 }
 
@@ -635,7 +635,7 @@
 }
 
 .kikat-send-btn:hover {
-  background: linear-gradient(135deg, #f43f5e, #3b82f6) !important;
+  background: linear-gradient(135deg, #00e676, #eab308) !important;
   transform: scale(1.05) !important;
 }
 
@@ -994,7 +994,7 @@
           <i class="fa-brands fa-instagram" style="color: #e1306c;"></i> <strong>@bruh.vision</strong> (Photography Handle)
         </a>
         <a href="https://instagram.com/krishna.ai.dev" target="_blank" rel="noopener noreferrer" class="social-pill" style="font-size: 0.8rem; padding: 0.4rem 0.8rem; background: rgba(168, 85, 247, 0.15); border: 1px solid rgba(168, 85, 247, 0.4);">
-          <i class="fa-brands fa-instagram" style="color: #3b82f6;"></i> <strong>@krishna.ai.dev</strong> (Personal Handle)
+          <i class="fa-brands fa-instagram" style="color: #eab308;"></i> <strong>@krishna.ai.dev</strong> (Personal Handle)
         </a>
       </div>
       <a href="about.html#gallery" style="font-weight: 700;">Open Portfolio Photo Gallery &rarr;</a>`
@@ -1554,7 +1554,7 @@
       </div>
       <span class="kikat-launcher-badge"></span>
       <div class="kikat-launcher-tooltip">
-        <i class="fa-solid fa-volume-high" style="color: #f43f5e;"></i>
+        <i class="fa-solid fa-volume-high" style="color: #00e676;"></i>
         <span>Ask KITKAT (Indian Voice AI)</span>
       </div>
     `;
