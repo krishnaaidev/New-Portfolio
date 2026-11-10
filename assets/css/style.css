@@ -3,22 +3,22 @@
    ========================================================================== */
 
 :root {
-  /* Dark Theme (Default) */
-  --bg-primary: #07090e;
-  --bg-secondary: #0d121f;
-  --bg-card: rgba(16, 23, 38, 0.75);
-  --bg-card-hover: rgba(22, 32, 54, 0.85);
-  --bg-card-solid: #111827;
-  --bg-glass: rgba(13, 18, 31, 0.8);
-  --bg-glass-nav: rgba(7, 9, 14, 0.85);
+  /* Dark Theme (Default) — Rose/Coral + Blue Palette */
+  --bg-primary: #0c0810;
+  --bg-secondary: #130d1a;
+  --bg-card: rgba(26, 14, 22, 0.78);
+  --bg-card-hover: rgba(38, 18, 32, 0.88);
+  --bg-card-solid: #1a0e16;
+  --bg-glass: rgba(20, 10, 18, 0.82);
+  --bg-glass-nav: rgba(12, 8, 16, 0.88);
 
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --text-inverse: #07090e;
+  --text-primary: #fdf2f4;
+  --text-secondary: #c4a4b0;
+  --text-muted: #7e6070;
+  --text-inverse: #0c0810;
 
   /* Accent Colors */
-  --accent-cyan: #38bdf8;
+  --accent-cyan: #f43f5e;
   --accent-blue: #3b82f6;
   --accent-indigo: #6366f1;
   --accent-purple: #a855f7;
@@ -26,20 +26,28 @@
   --accent-amber: #f59e0b;
   --accent-rose: #f43f5e;
 
+  /* Primary Brand Colors */
+  --primary: #f43f5e;
+  --primary-light: #fb7185;
+  --primary-dark: #e11d48;
+  --secondary: #3b82f6;
+  --secondary-light: #60a5fa;
+  --coral: #fb7185;
+
   /* Gradients */
-  --grad-primary: linear-gradient(135deg, #38bdf8 0%, #6366f1 50%, #a855f7 100%);
-  --grad-cyan-indigo: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
-  --grad-card-border: linear-gradient(135deg, rgba(56, 189, 248, 0.3) 0%, rgba(99, 102, 241, 0.1) 50%, rgba(168, 85, 247, 0.25) 100%);
-  --grad-radial: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.15) 0%, rgba(99, 102, 241, 0.05) 50%, transparent 80%);
+  --grad-primary: linear-gradient(135deg, #f43f5e 0%, #fb7185 40%, #3b82f6 100%);
+  --grad-cyan-indigo: linear-gradient(135deg, #f43f5e 0%, #3b82f6 100%);
+  --grad-card-border: linear-gradient(135deg, rgba(244, 63, 94, 0.35) 0%, rgba(251, 113, 133, 0.12) 50%, rgba(59, 130, 246, 0.28) 100%);
+  --grad-radial: radial-gradient(circle at 50% 0%, rgba(244, 63, 94, 0.18) 0%, rgba(59, 130, 246, 0.07) 55%, transparent 80%);
 
   /* Borders & Shadows */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-focus: rgba(56, 189, 248, 0.5);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 35px rgba(56, 189, 248, 0.25);
-  --shadow-glow-purple: 0 0 35px rgba(168, 85, 247, 0.25);
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-focus: rgba(244, 63, 94, 0.55);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.55);
+  --shadow-glow: 0 0 38px rgba(244, 63, 94, 0.28);
+  --shadow-glow-purple: 0 0 38px rgba(59, 130, 246, 0.28);
 
   /* Layout & Transitions */
   --max-width: 1200px;
@@ -54,26 +62,26 @@
 
 /* Light Theme Overrides */
 body.light-theme {
-  --bg-primary: #f8fafc;
-  --bg-secondary: #f1f5f9;
-  --bg-card: rgba(255, 255, 255, 0.9);
+  --bg-primary: #fff5f7;
+  --bg-secondary: #fce8ec;
+  --bg-card: rgba(255, 245, 247, 0.92);
   --bg-card-hover: #ffffff;
   --bg-card-solid: #ffffff;
-  --bg-glass: rgba(255, 255, 255, 0.85);
-  --bg-glass-nav: rgba(248, 250, 252, 0.9);
+  --bg-glass: rgba(255, 245, 247, 0.88);
+  --bg-glass-nav: rgba(255, 245, 247, 0.92);
 
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --text-inverse: #f8fafc;
+  --text-primary: #1a020a;
+  --text-secondary: #6b3040;
+  --text-muted: #8c5060;
+  --text-inverse: #fff5f7;
 
-  --border-subtle: rgba(0, 0, 0, 0.08);
-  --border-focus: rgba(37, 99, 235, 0.5);
+  --border-subtle: rgba(0, 0, 0, 0.07);
+  --border-focus: rgba(244, 63, 94, 0.55);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.12);
-  --shadow-glow: 0 0 30px rgba(59, 130, 246, 0.2);
-  --grad-card-border: linear-gradient(135deg, rgba(59, 130, 246, 0.3) 0%, rgba(99, 102, 241, 0.1) 50%, rgba(168, 85, 247, 0.2) 100%);
+  --shadow-glow: 0 0 32px rgba(244, 63, 94, 0.22);
+  --grad-card-border: linear-gradient(135deg, rgba(244, 63, 94, 0.32) 0%, rgba(251, 113, 133, 0.1) 50%, rgba(59, 130, 246, 0.22) 100%);
 }
 
 /* ==========================================================================
@@ -1264,7 +1272,7 @@ ul {
 }
 
 .skill-category-card:hover {
-  border-color: rgba(56, 189, 248, 0.35);
+  border-color: rgba(244, 63, 94, 0.3);
   box-shadow: var(--shadow-md);
   transform: translateY(-4px);
 }
@@ -1280,8 +1288,8 @@ ul {
   width: 46px;
   height: 46px;
   border-radius: 12px;
-  background: rgba(56, 189, 248, 0.1);
-  color: var(--accent-cyan);
+  background: rgba(244, 63, 94, 0.1);
+  color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1330,15 +1338,97 @@ ul {
 }
 
 .skill-chip i {
-  color: var(--accent-cyan);
+  color: var(--primary);
   font-size: 0.95rem;
 }
 
 .skill-chip:hover {
-  border-color: var(--accent-cyan);
-  background: rgba(56, 189, 248, 0.1);
-  color: var(--accent-cyan);
+  border-color: var(--primary);
+  background: rgba(244, 63, 94, 0.1);
+  color: var(--primary);
   transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Skills Section — Proficiency Bars
+   ========================================================================== */
+.skills-proficiency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.1rem;
+  margin-bottom: 2.5rem;
+}
+
+.skill-bar-card {
+  padding: 1.2rem 1.5rem;
+  border-radius: var(--border-radius-md);
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition-normal);
+}
+
+.skill-bar-card:hover {
+  border-color: rgba(244, 63, 94, 0.3);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
+}
+
+.skill-bar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.65rem;
+}
+
+.skill-bar-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.skill-bar-label i {
+  color: var(--primary);
+}
+
+.skill-bar-pct {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.skill-bar-track {
+  width: 100%;
+  height: 7px;
+  background: var(--border-subtle);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: var(--bar-color, var(--primary));
+  transition: width 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--bar-color, var(--primary)) 50%, transparent);
+}
+
+.skills-chips-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+}
+
+/* Skill Category Card hover — rose */
+.skill-category-card:hover {
+  border-color: rgba(244, 63, 94, 0.3);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
 }
 
 /* ==========================================================================
@@ -2664,7 +2754,7 @@ textarea.form-control {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #38bdf8;
+  color: #f43f5e;
   margin-bottom: 0.2rem;
 }
 
@@ -2763,7 +2853,7 @@ textarea.form-control {
 
 .lightbox-category {
   font-size: 0.82rem;
-  color: #38bdf8;
+  color: #f43f5e;
   font-weight: 600;
 }
 
@@ -2945,7 +3035,7 @@ textarea.form-control {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #06b6d4, #a855f7);
+  background: linear-gradient(135deg, #f43f5e, #3b82f6);
   padding: 2px;
   display: flex;
   align-items: center;
@@ -2961,7 +3051,7 @@ textarea.form-control {
   align-items: center;
   justify-content: center;
   font-size: 1.25rem;
-  color: #38bdf8;
+  color: #f43f5e;
 }
 
 .kikat-online-dot {
@@ -3024,7 +3114,7 @@ textarea.form-control {
 .kikat-wave-bar {
   width: 3px;
   height: 6px;
-  background: #38bdf8;
+  background: #f43f5e;
   border-radius: 3px;
   transition: height 0.15s ease;
 }
@@ -3045,7 +3135,7 @@ textarea.form-control {
 @keyframes wave-bounce {
   0% {
     height: 4px;
-    background: #38bdf8;
+    background: #f43f5e;
   }
   100% {
     height: 18px;
@@ -3113,7 +3203,7 @@ textarea.form-control {
 .kikat-chip:hover {
   background: rgba(56, 189, 248, 0.2);
   color: #ffffff;
-  border-color: #38bdf8;
+  border-color: #f43f5e;
   transform: translateY(-1px);
 }
 
@@ -3169,7 +3259,7 @@ textarea.form-control {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #06b6d4, #a855f7);
+  background: linear-gradient(135deg, #f43f5e, #3b82f6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3204,7 +3294,7 @@ textarea.form-control {
 }
 
 .kikat-bubble strong {
-  color: #38bdf8;
+  color: #f43f5e;
   font-weight: 700;
 }
 
@@ -3213,7 +3303,7 @@ textarea.form-control {
 }
 
 .kikat-bubble a {
-  color: #38bdf8;
+  color: #f43f5e;
   text-decoration: underline;
   font-weight: 600;
 }
@@ -3232,7 +3322,7 @@ textarea.form-control {
 .kikat-replay-btn {
   background: none;
   border: none;
-  color: #38bdf8;
+  color: #f43f5e;
   font-size: 0.72rem;
   cursor: pointer;
   display: inline-flex;
@@ -3260,7 +3350,7 @@ textarea.form-control {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #38bdf8;
+  background: #f43f5e;
   animation: typing-blink 1.2s infinite ease-in-out;
 }
 
@@ -3301,7 +3391,7 @@ textarea.form-control {
 }
 
 .kikat-input-form:focus-within {
-  border-color: #38bdf8;
+  border-color: #f43f5e;
   box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
 }
 
@@ -3336,7 +3426,7 @@ textarea.form-control {
 }
 
 .kikat-btn-icon:hover {
-  color: #38bdf8;
+  color: #f43f5e;
   background: rgba(56, 189, 248, 0.15);
 }
 
@@ -3361,7 +3451,7 @@ textarea.form-control {
 }
 
 .kikat-send-btn:hover {
-  background: linear-gradient(135deg, #38bdf8, #a855f7);
+  background: linear-gradient(135deg, #f43f5e, #3b82f6);
   transform: scale(1.05);
 }
 
