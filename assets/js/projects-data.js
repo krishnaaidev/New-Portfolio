@@ -246,6 +246,90 @@ const projectsData = [
     ],
     github: "https://github.com/krishnaaidev",
     demo: "https://blogsitesk.netlify.app/?article=3"
+  },
+  {
+    id: "ct-events",
+    title: "CT Events — College Event Management Platform",
+    category: "flutter",
+    categoryLabel: "Flutter Mobile & Full-Stack",
+    featured: true,
+    badge: "Institutional App",
+    status: "Deployed & Active",
+    date: "2026 — CT Group of Institutions",
+    image: "assets/images/projects/kra-app.svg",
+    shortDesc: "Full-stack college event management app built with Flutter & Firebase, enabling students to discover, register, and track campus events with real-time updates and admin dashboard.",
+    fullDesc: "CT Events is an institutional event management platform developed for CT Group of Institutions. It allows students to browse upcoming campus events, register with one tap, receive push notifications, and check-in via QR code. Admins can create events, manage attendee lists, and publish announcements — all from a unified dashboard.",
+    highlights: [
+      "Built cross-platform mobile app (Android & iOS) with Flutter & Dart using Material 3 design system.",
+      "Integrated Firebase Firestore for real-time event data sync and Firebase Auth for secure student login.",
+      "Implemented QR-code based event check-in system with attendance tracking and PDF export.",
+      "Developed admin dashboard for event creation, registration management, and push notification dispatch.",
+      "Added event calendar view, category filters (Tech, Cultural, Sports), and countdown timers."
+    ],
+    tags: ["Flutter", "Dart", "Firebase", "Firestore", "QR Code", "Push Notifications", "Admin Dashboard", "Material 3"],
+    metrics: [
+      { label: "Platform", value: "Android & iOS" },
+      { label: "Backend", value: "Firebase Firestore" },
+      { label: "Feature", value: "QR Check-In" }
+    ],
+    github: "https://github.com/krishnaaidev",
+    demo: "#"
+  },
+  {
+    id: "ct-epass",
+    title: "CT E-Pass — Digital Gate Pass & Visitor Management System",
+    category: "flutter",
+    categoryLabel: "Flutter Mobile & IoT",
+    featured: true,
+    badge: "Campus Security System",
+    status: "Deployed & Active",
+    date: "2026 — CT Group of Institutions",
+    image: "assets/images/projects/kra-app.svg",
+    shortDesc: "Smart digital gate-pass system replacing paper-based visitor logs at CT Group campuses. Features QR-based entry, real-time guard verification, student/staff pass generation, and admin oversight.",
+    fullDesc: "CT E-Pass modernizes campus access control by replacing manual paper entry registers with a fully digital, QR-driven pass system. Students and staff generate verified digital passes through the app. Security personnel scan QR codes at the gate for real-time validation. Admins monitor all campus entry/exit logs from a centralized dashboard with filtering and export capabilities.",
+    highlights: [
+      "Designed and developed end-to-end Flutter mobile application for pass generation and QR scanning.",
+      "Implemented dynamic QR code generation with time-bound expiry and tamper-detection validation.",
+      "Built real-time Firebase sync between student pass requests and security guard verification screens.",
+      "Added admin panel with entry/exit audit logs, date-range filters, and CSV export for compliance.",
+      "Integrated offline guard mode with local cache fallback ensuring uninterrupted campus security."
+    ],
+    tags: ["Flutter", "Dart", "Firebase", "QR Code", "Campus Security", "Real-Time Sync", "Admin Panel", "IoT"],
+    metrics: [
+      { label: "Pass Type", value: "Student & Visitor" },
+      { label: "Validation", value: "QR + Time-Bound" },
+      { label: "Logging", value: "Real-Time Audit Trail" }
+    ],
+    github: "https://github.com/krishnaaidev",
+    demo: "#"
+  },
+  {
+    id: "ai-doc-assistant",
+    title: "AI Document Assistant — RAG-Powered Knowledge Chat",
+    category: "ml",
+    categoryLabel: "LLMs & Retrieval-Augmented Generation",
+    featured: true,
+    badge: "Generative AI",
+    status: "Completed",
+    date: "2026",
+    image: "assets/images/projects/aihire.svg",
+    shortDesc: "Retrieval-Augmented Generation (RAG) system that lets users upload PDFs, Word docs, or text files and instantly chat with their documents using LLM-powered semantic search.",
+    fullDesc: "AI Document Assistant is a production-grade RAG pipeline that transforms static documents into interactive knowledge bases. Users upload any PDF, DOCX, or TXT file; the system chunks, embeds, and indexes the content using FAISS vector store. A conversational LLM then answers natural language questions grounded strictly in the uploaded document context — no hallucinations, citations included.",
+    highlights: [
+      "Built end-to-end RAG pipeline: document ingestion → chunking → embedding (sentence-transformers) → FAISS vector index → LLM retrieval-augmented response.",
+      "Integrated Google Gemini API as the generative backbone with custom prompt templates enforcing document-grounded answers.",
+      "Implemented multi-document support with source citation — responses include the exact page and paragraph they came from.",
+      "Designed clean Streamlit web UI with drag-and-drop upload, conversation history, and answer confidence display.",
+      "Added hybrid search combining dense vector similarity and BM25 keyword retrieval for improved recall on technical documents."
+    ],
+    tags: ["RAG", "LangChain", "FAISS", "Gemini API", "Sentence Transformers", "Python", "Streamlit", "Vector DB"],
+    metrics: [
+      { label: "Architecture", value: "RAG + FAISS Index" },
+      { label: "LLM Backend", value: "Gemini API" },
+      { label: "Retrieval", value: "Hybrid Dense + BM25" }
+    ],
+    github: "https://github.com/krishnaaidev",
+    demo: "#"
   }
 ];
 
