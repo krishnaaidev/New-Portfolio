@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found | Suman Krishna Portfolio</title>
+  <meta name="description" content="The page you're looking for doesn't exist. Return to Suman Krishna's portfolio to explore ML projects, experience, and certifications.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://sumankrishnaportfolio.netlify.app/">
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="assets/css/style.css?v=5.0">
+  <style>
+    .err-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: var(--bg-primary);
+    }
+    .err-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(5rem, 20vw, 10rem);
+      font-weight: 800;
+      line-height: 1;
+      background: var(--grad-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+    .err-title {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+    .err-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 480px;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+    .err-terminal {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--primary);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--border-radius-md);
+      padding: 1rem 1.5rem;
+      margin-bottom: 2.5rem;
+      max-width: 500px;
+      text-align: left;
+    }
+    .err-terminal .prompt { color: var(--text-muted); }
+    .err-terminal .cmd { color: var(--primary); }
+    .err-terminal .out { color: var(--text-secondary); }
+    .err-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <main class="err-page" role="main">
+    <div class="err-code" aria-label="Error 404">404</div>
+
+    <h1 class="err-title">Page Not Found</h1>
+    <p class="err-subtitle">
+      This route doesn't exist in the codebase. Maybe it was deleted, renamed, or you mistyped the URL.
+    </p>
+
+    <div class="err-terminal" aria-label="Terminal output">
+      <div><span class="prompt">$ </span><span class="cmd">curl https://sumankrishnaportfolio.netlify.app/<em>this-page</em></span></div>
+      <div class="out">404 Not Found — route unresolved</div>
+      <div class="out">Redirecting to <strong>/ </strong>in 10s...</div>
+    </div>
+
+    <nav class="err-links" aria-label="Recovery navigation">
+      <a href="/" class="btn btn-primary">
+        <i class="fa-solid fa-house"></i>
+        <span>Go Home</span>
+      </a>
+      <a href="/projects" class="btn btn-secondary">
+        <i class="fa-solid fa-laptop-code"></i>
+        <span>View Projects</span>
+      </a>
+      <a href="/contact" class="btn btn-outline">
+        <i class="fa-regular fa-paper-plane"></i>
+        <span>Contact Me</span>
+      </a>
+    </nav>
+  </main>
+
+  <script>
+    // Auto-redirect to home after 10 seconds
+    setTimeout(function () { window.location.href = '/'; }, 10000);
+  </script>
+</body>
+</html>

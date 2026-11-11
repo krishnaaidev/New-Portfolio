@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Block access to build artifacts and private files
+Disallow: /assets/docs/certificates/
+Disallow: /.git/
+Disallow: /suman_krishna_app/
+
+# Crawl delay for politeness
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://sumankrishnaportfolio.netlify.app/sitemap.xml

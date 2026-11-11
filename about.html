@@ -7,11 +7,61 @@
   <title>About Me | Suman Krishna — ML & Data Science Engineer</title>
   
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://sumankrishnaportfolio.netlify.app/about">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="About Suman Krishna | B.Tech CSE, CTIEMT — ML &amp; Flutter Engineer">
+  <meta property="og:description" content="Final-year B.Tech CSE student (CGPA 8.0/10) at CTIEMT Jalandhar. Google Student Ambassador, GDG Member, 7× NASSCOM Gold Certified, Chess player, Photographer.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sumankrishnaportfolio.netlify.app/about">
+  <meta property="og:image" content="https://sumankrishnaportfolio.netlify.app/assets/images/og-image.png">
+  <meta property="og:image:secure_url" content="https://sumankrishnaportfolio.netlify.app/assets/images/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="About Suman Krishna — Machine Learning &amp; Data Science Engineer">
+  <meta property="og:site_name" content="Suman Krishna Portfolio">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Suman Krishna | B.Tech CSE, CTIEMT — ML &amp; Flutter Engineer">
+  <meta name="twitter:description" content="Final-year B.Tech CSE student (CGPA 8.0/10) at CTIEMT Jalandhar. Google Student Ambassador, GDG Member, 7× NASSCOM Gold Certified, Chess player, Photographer.">
+  <meta name="twitter:image" content="https://sumankrishnaportfolio.netlify.app/assets/images/og-image.png">
+  <meta name="twitter:image:alt" content="About Suman Krishna — Machine Learning &amp; Data Science Engineer">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=4.4">
+  <link rel="stylesheet" href="assets/css/style.css?v=5.0">
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://sumankrishnaportfolio.netlify.app/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About",
+        "item": "https://sumankrishnaportfolio.netlify.app/about"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <div id="scroll-progress"></div>
@@ -50,6 +100,17 @@
       </button>
     </div>
   </header>
+
+  <!-- Breadcrumb navigation -->
+  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li class="breadcrumb-item"><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li class="breadcrumb-sep" aria-hidden="true">/</li>
+        <li class="breadcrumb-item breadcrumb-current" aria-current="page"></li>
+      </ol>
+    </div>
+  </nav>
 
   <main>
     <!-- Page Header Banner -->
@@ -432,7 +493,7 @@
     <div class="photo-lightbox" id="photo-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
       <div class="lightbox-content">
         <button class="lightbox-close-btn" id="lightbox-close-btn" aria-label="Close image preview">&times;</button>
-        <img src="" alt="" class="lightbox-img" id="lightbox-img">
+        <img src="" alt="" class="lightbox-img" id="lightbox-img" aria-label="Photography lightbox — full-size view of selected photo by Suman Krishna">
         <div class="lightbox-meta">
           <div>
             <h3 class="lightbox-title" id="lightbox-title"></h3>
@@ -498,7 +559,7 @@
 
   <button id="back-to-top" aria-label="Scroll back to top"><i class="fa-solid fa-arrow-up"></i></button>
 
-  <script src="assets/js/main.js?v=4.4"></script>
-  <script src="assets/js/kikat-agent.js?v=4.5"></script>
+  <script defer src="assets/js/main.js?v=5.0"></script>
+  <script defer src="assets/js/kikat-agent.js?v=5.0"></script>
 </body>
 </html>

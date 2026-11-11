@@ -1298,7 +1298,7 @@
 
   function initSpeechSynthesis() {
     if (!("speechSynthesis" in window)) {
-      console.warn("Kikat: Web Speech Synthesis not supported in this browser.");
+      // console.warn("Kikat: Web Speech Synthesis not supported in this browser.");
       return;
     }
 
@@ -1491,7 +1491,7 @@
     };
 
     recognition.onerror = (event) => {
-      console.warn("Kikat: Speech recognition error", event.error);
+      // console.warn("Kikat: Speech recognition error", event.error);
       resetMicUI();
     };
 
@@ -1520,7 +1520,7 @@
       try {
         state.recognition.start();
       } catch (err) {
-        console.warn("Recognition start error:", err);
+        // console.warn("Recognition start error:", err);
       }
     }
   }

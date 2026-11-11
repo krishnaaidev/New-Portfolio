@@ -12,7 +12,7 @@ This portfolio is structured across clean, responsive, standalone pages:
 
 - **`index.html`** — **Home**: Hero with interactive neural particle canvas, dynamic role typing, key metric counters, featured project spotlights (AIHire, CTG Faculty App, Multimodal Depression), and quick navigation.
 - **`about.html`** — **About Me**: In-depth personal story, engineering philosophy, academic journey (B.Tech CSE with **8.0/10.0 CGPA**), scholastic milestones, and creative pursuits (Chess **750+ rating**, Photography, Anchoring).
-- **`projects.html`** — **Projects Showcase**: Interactive categorized filter grid with in-depth **Case Study Modals** for all 9 projects (AIHire, CTG Faculty App, Multimodal Depression Detection, Superstore BI, Plant Disease, Career Guidance, Air Pollution, Robo Car, JARVIS).
+- **`projects.html`** — **Projects Showcase**: Interactive categorized filter grid with in-depth **Case Study Modals** for all 12 projects (AIHire, CTG Faculty App, Multimodal Depression Detection, Superstore BI, Plant Disease, Career Guidance, Air Pollution, Robo Car, JARVIS, CT Events, CT E-Pass, AI Document Assistant RAG).
 - **`experience.html`** — **Experience & Leadership**: Complete timeline of internships (EduTech Solutions, Averixis Solutions Jun–Sep 2025), Google Student Ambassador, Google Developer Groups (GDG) membership, and event leadership (United Fest 500+ attendees).
 - **`certifications.html`** — **Certifications Grid**: Dedicated grid showcasing **7x NASSCOM FutureSkills Prime Gold Certifications** with exact scores, government accreditation IDs, and direct PDF view links.
 - **`resume.html`** — **Curriculum Vitae**: Professional, ATS-friendly, interactive and printable resume with detailed breakdowns of **AIHire** and the **CTG Faculty App**, 1-click **"Print / Save as PDF"** button, and PDF download.
@@ -66,7 +66,12 @@ Portfolio/
     │       └── Nasscom_DataOps_Gold_Certificate.pdf
     └── images/
         ├── profile.jpg              # High-resolution profile photo
-        ├── favicon.svg              # Custom monogram favicon
+        ├── favicon.svg              # Custom monogram vector favicon
+        ├── favicon-32x32.png        # Raster favicon 32x32
+        ├── favicon-16x16.png        # Raster favicon 16x16
+        ├── apple-touch-icon.png     # iOS bookmark icon 180x180
+        ├── og-image.png             # Open Graph preview card (1200x630)
+        ├── og-image.jpg             # Social share JPEG fallback (1200x630)
         └── projects/                # Custom SVGs for all featured projects
             ├── aihire.svg
             ├── kra-app.svg
@@ -78,6 +83,47 @@ Portfolio/
             ├── robo-car.svg
             └── jarvis.svg
 ```
+
+---
+
+## 🌐 Custom Domain Setup
+
+To point your custom domain (e.g. `sumankrishna.dev` or `sumankrishna.tech`) to this portfolio on Netlify:
+
+1. **In Netlify Dashboard**:
+   - Go to **Site Configuration** > **Domain Management**.
+   - Click **Add a domain** and enter your custom domain (e.g., `sumankrishna.dev`).
+   - Netlify will prompt you to set your primary domain (with automatic HTTPS provisioning).
+
+2. **In Your Domain Registrar DNS (Namecheap, GoDaddy, Cloudflare, Google Domains)**:
+   - **Apex / Root (`@`)**: Add an **A Record** pointing to Netlify's load balancer IP:  
+     `75.2.60.5`
+   - **Subdomain (`www`)**: Add a **CNAME Record** pointing to your Netlify site URL:  
+     `sumankrishnaportfolio.netlify.app`
+
+3. **Clean Page Slugs**:
+   - Rewrites and 301 canonical redirects are already configured in `netlify.toml`:
+     - `/about` -> `about.html`
+     - `/experience` -> `experience.html`
+     - `/projects` -> `projects.html`
+     - `/certifications` -> `certifications.html`
+     - `/resume` -> `resume.html`
+     - `/contact` -> `contact.html`
+     - `/*` -> `404.html` (Custom terminal-themed error page)
+
+---
+
+## 🔍 SEO & Crawlability Architecture
+
+- **`sitemap.xml`**: Clean-slug XML sitemap indexed with priority and change frequencies.
+- **`robots.txt`**: Standard search engine crawler directive pointing to `sitemap.xml`.
+- **`llms.txt`**: Machine-readable markdown profile following the `/llms.txt` specification for AI agents (ChatGPT, Claude, Gemini, Perplexity).
+- **Structured Data (JSON-LD)**:
+  - `Person` schema with skills, alma mater, social handles, and job title.
+  - `WebSite` schema with search and publisher info.
+  - `ProfessionalService` (Local Business) schema with service address in Jalandhar, Punjab and remote coverage.
+  - `BreadcrumbList` schema on all secondary pages for enhanced Google search snippets.
+- **Social Previews**: 1200x630 `og-image.png` with terminal hacker branding, verified stats, and crisp metadata for WhatsApp, LinkedIn, Twitter/X, and Facebook previews.
 
 ---
 

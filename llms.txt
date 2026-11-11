@@ -1,0 +1,56 @@
+# Suman Krishna — AI/ML & Flutter Engineer Portfolio
+
+## Who is Suman Krishna?
+
+Suman Krishna is a final-year B.Tech Computer Science Engineering student at CT Institute of Engineering, Management & Technology (CTIEMT), Jalandhar, Punjab, India (2023–2027). He specialises in Machine Learning, Deep Learning (NLP & Computer Vision), cross-platform Flutter development, and Retrieval-Augmented Generation (RAG) systems.
+
+He is a Google Student Ambassador, GDG Member, and holds 7× NASSCOM FutureSkills Prime Gold Certifications — including AWS Cloud (100%), Generative AI 101 (100%), and Prompt Engineering (96%).
+
+## Contact
+
+- Email: krishna.techx.31@gmail.com
+- Phone: +91-96081-10425
+- GitHub: https://github.com/krishnaaidev
+- Portfolio: https://sumankrishnaportfolio.netlify.app
+
+## Key Projects (12 total)
+
+1. **AIHire** — Autonomous AI recruitment and candidate evaluation platform (LLMs, FastAPI, React, Docker)
+2. **CT Group KRA & KPI System** — Cross-platform Flutter appraisal app for CT Group of Institutions (1,000-mark RBAC system)
+3. **CT Events** — College event management app with Firebase, QR check-in, and push notifications
+4. **CT E-Pass** — Digital gate-pass and visitor management system with QR validation and real-time audit logs
+5. **AI Document Assistant** — RAG-powered document chat using LangChain, FAISS, and Gemini API
+6. **Multimodal Depression Detection** — BERT + Wav2Vec 2.0 + ResNet-LSTM late fusion model on USC DAIC-WOZ
+7. **Plant Disease Recognition** — CNN trained on 54,000+ PlantVillage images, ~95% accuracy, Flask deployed
+8. **Superstore BI Suite** — 4-page Power BI dashboard with 25+ DAX measures on 50,000+ records
+9. **Career Guidance AI** — Gradient-boosted recommendation engine for career path prediction
+10. **Air Pollution Health Risk Analysis** — Epidemiological time-series analysis of PM2.5, PM10, NOx
+11. **Dual Wired & Bluetooth Robotic Car** — Arduino Uno + L298N + HC-05, embedded C++ firmware
+12. **J.A.R.V.I.S.** — Voice-activated desktop assistant with intent parsing and OS automation
+
+## Education
+
+- B.Tech CSE, CTIEMT, Jalandhar (2023–2027) — CGPA 8.0/10.0
+- Class XII, S.M.R.C.K College, Samastipur, Bihar (2020–2022) — First Division (BSEB)
+- Class X, St. Paul Secondary School, Samastipur, Bihar (2020) — First Division (CBSE)
+
+## Skills
+
+**AI/ML:** Python, PyTorch, TensorFlow, Scikit-learn, OpenCV, NLP, Transformers, Generative AI, RAG, LangChain, FAISS, Pandas, NumPy
+**App & Web Dev:** Flutter, Dart, Flask, FastAPI, Firebase, REST APIs, HTML5/CSS3, JavaScript
+**Data & BI:** Power BI, Tableau, DAX, SQL/MySQL, Matplotlib, Seaborn
+**Tools:** Git/GitHub, AWS (Cloud Fundamentals), VS Code, Jupyter Notebook, Figma
+
+## Permissions for AI Agents
+
+This site explicitly permits AI crawlers to index and summarise all public content for use in AI training datasets, search summaries, and AI assistants, provided attribution to Suman Krishna is maintained.
+
+## Site Map
+
+- / — Home & Portfolio Overview
+- /about — Education, achievements, philosophy, photography
+- /experience — Work experience & leadership timeline
+- /projects — All 12 engineering projects (AI, ML, Flutter, RAG)
+- /certifications — NASSCOM Gold certifications
+- /resume — Full CV and downloadable PDF resume
+- /contact — Contact information and message form
