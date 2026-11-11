@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  // Brand Color Palette — Senior Engineering Aesthetic (Obsidian Slate, Electric Cyan, Deep Indigo, Emerald)
-  static const Color background = Color(0xFF0A0F1D);    // Deep obsidian slate
-  static const Color surface = Color(0xFF0F172A);       // Midnight slate surface
-  static const Color surfaceLight = Color(0xFF1E293B);  // Elevated slate
-  static const Color surfaceCard = Color(0xFF151F38);   // High-contrast slate card
+  // Brand Color Palette — Executive Precision Craft (Matte Carbon, Warm Amber-Gold & Emerald)
+  static const Color background = Color(0xFF0D1117);    // Deep matte carbon
+  static const Color surface = Color(0xFF161B22);       // Elevated graphite surface
+  static const Color surfaceLight = Color(0xFF21262D);  // High-contrast slate
+  static const Color surfaceCard = Color(0xFF161B22);   // Card surface
 
-  static const Color primary = Color(0xFF38BDF8);       // Electric cyan / sky
-  static const Color secondary = Color(0xFF6366F1);     // Deep indigo
-  static const Color accent = Color(0xFF10B981);        // Vibrant emerald
+  static const Color primary = Color(0xFFF59E0B);       // Warm Burnished Amber / Gold
+  static const Color secondary = Color(0xFFD97706);     // Rich Bronze
+  static const Color accent = Color(0xFF10B981);        // Forest Emerald
   static const Color emerald = Color(0xFF10B981);       // Emerald success
-  static const Color amber = Color(0xFFF59E0B);         // Warm amber warning
+  static const Color amber = Color(0xFFF59E0B);         // Amber alias
   static const Color rose = Color(0xFFF43F5E);          // Coral rose error
 
-  static const Color textPrimary = Color(0xFFF8FAFC);   // Crisp white / slate 50
-  static const Color textSecondary = Color(0xFF94A3B8); // Slate 400
-  static const Color textMuted = Color(0xFF64748B);     // Slate 500
-  static const Color border = Color(0x2B38BDF8);        // Subtle cyan-tinted border
+  static const Color textPrimary = Color(0xFFF8FAFC);   // Crisp ivory white
+  static const Color textSecondary = Color(0xFF94A3B8); // Muted slate steel
+  static const Color textMuted = Color(0xFF64748B);     // Dim slate
+  static const Color border = Color(0x33F59E0B);        // Subtle warm amber border
 
   static ThemeData get darkTheme {
     return ThemeData(
