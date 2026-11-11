@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
     <linearGradient id="skGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00e676" />
-      <stop offset="100%" stop-color="#eab308" />
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
     </linearGradient>
   </defs>
-  <!-- Background square with rounded corners -->
-  <rect width="100" height="100" rx="22" fill="#080808"/>
-  <!-- Green border -->
+  <!-- Background rounded squircle -->
+  <rect width="100" height="100" rx="22" fill="#0a0f1d"/>
+  <!-- Highlight border -->
   <rect x="2" y="2" width="96" height="96" rx="20" fill="none" stroke="url(#skGrad)" stroke-width="2.5" stroke-opacity="0.85"/>
-  <!-- S letter -->
-  <text x="50" y="68" font-family="'JetBrains Mono', 'Courier New', monospace"
-        font-size="58" font-weight="800" text-anchor="middle"
-        fill="url(#skGrad)">S</text>
+  <!-- Monogram -->
+  <text x="50" y="68" font-family="'JetBrains Mono', 'Plus Jakarta Sans', system-ui, monospace"
+        font-size="52" font-weight="900" text-anchor="middle"
+        fill="url(#skGrad)">SK</text>
 </svg>

@@ -420,7 +420,30 @@ class PortfolioData {
       metrics: {"Architecture": "RAG + FAISS", "LLM Backend": "Gemini API", "Retrieval": "Hybrid Dense + BM25"},
       github: "https://github.com/krishnaaidev",
       demo: "",
-      image: "assets/images/profile.jpg",
+      image: "assets/images/projects/ai-doc-assistant.svg",
+    ),
+    ProjectItem(
+      id: "jarvis-assistant",
+      title: "J.A.R.V.I.S. Context-Aware AI Desktop Assistant",
+      category: "ml",
+      categoryLabel: "Speech AI & Desktop Systems",
+      date: "2024",
+      badge: "Speech AI & Automation",
+      shortDesc:
+          "Voice-activated multimodal desktop agent orchestrating local OS automation, system telemetry, calendar orchestration, and conversational LLM query synthesis.",
+      fullDesc:
+          "Context-aware AI desktop assistant bridging local system telemetry with cloud LLM inference. Features hands-free continuous hotword detection, asynchronous speech-to-text, neural TTS feedback, and dynamic command dispatch for developer workflows.",
+      highlights: [
+        "Authored continuous listening loop using PyAudio and Google Speech Recognition with under 500ms voice intent parsing.",
+        "Integrated dual TTS engine combining pyttsx3 offline fallback with ElevenLabs neural voice synthesis.",
+        "Engineered secure OS automation primitives executing terminal scripts, web browsing, application launches, and system monitoring.",
+        "Configured Gemini conversational fallback responding contextually to unscripted general knowledge and coding queries.",
+      ],
+      tags: ["Python", "SpeechRecognition", "Pyttsx3", "OS Automation", "Gemini API", "Subprocess", "NLP"],
+      metrics: {"Response Latency": "< 450ms", "Intent Precision": "93.8%", "Dispatch Scope": "20+ OS Actions"},
+      github: "https://github.com/krishnaaidev",
+      demo: "",
+      image: "assets/images/projects/jarvis.svg",
     ),
   ];
 

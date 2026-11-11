@@ -43,11 +43,10 @@ function initTypingEffect() {
 
   const roles = [
     "Machine Learning Engineer",
-    "Data Science Engineer",
-    "Google Student Ambassador",
-    "Google Developer Groups Member",
-    "Deep Learning & NLP Specialist",
-    "Prompt & Generative AI Builder"
+    "Flutter & Mobile Architect",
+    "RAG & LLM Systems Engineer",
+    "Data Science & BI Specialist",
+    "Google Student Ambassador & GDG"
   ];
 
   let roleIndex = 0;
@@ -134,6 +133,7 @@ function initNavigation() {
 
   // Header scroll blur effect
   window.addEventListener("scroll", () => {
+    if (!navbar) return;
     if (window.scrollY > 40) {
       navbar.classList.add("scrolled");
     } else {
@@ -293,13 +293,13 @@ function initProjectsSection() {
               <i class="fa-solid fa-chevron-right"></i>
             </button>
             <div class="project-links">
-              ${p.github && p.github !== "#" ? `
-                <a href="${p.github}" target="_blank" rel="noopener noreferrer" class="proj-icon-btn" title="GitHub Code" aria-label="GitHub Repository">
+              ${(p.githubUrl || p.github) && (p.githubUrl || p.github) !== "#" ? `
+                <a href="${p.githubUrl || p.github}" target="_blank" rel="noopener noreferrer" class="proj-icon-btn" title="GitHub Code" aria-label="GitHub Repository">
                   <i class="fa-brands fa-github"></i>
                 </a>
               ` : ""}
-              ${p.demo && p.demo !== "#" ? `
-                <a href="${p.demo}" target="_blank" rel="noopener noreferrer" class="proj-icon-btn" title="Live Application" aria-label="Live Demo">
+              ${(p.demoUrl || p.demo) && (p.demoUrl || p.demo) !== "#" ? `
+                <a href="${p.demoUrl || p.demo}" target="_blank" rel="noopener noreferrer" class="proj-icon-btn" title="Live Application" aria-label="Live Demo">
                   <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </a>
               ` : ""}
@@ -392,13 +392,13 @@ function openProjectModal(id) {
       </div>
 
       <div class="modal-action-bar">
-        ${project.github && project.github !== "#" ? `
-          <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        ${(project.githubUrl || project.github) && (project.githubUrl || project.github) !== "#" ? `
+          <a href="${project.githubUrl || project.github}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
             <i class="fa-brands fa-github"></i> View GitHub Repository
           </a>
         ` : ""}
-        ${project.demo && project.demo !== "#" ? `
-          <a href="${project.demo}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+        ${(project.demoUrl || project.demo) && (project.demoUrl || project.demo) !== "#" ? `
+          <a href="${project.demoUrl || project.demo}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
             <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Project
           </a>
         ` : ""}
